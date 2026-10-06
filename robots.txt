@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kamalbera198-sudo.github.io/needly/sitemap.xml
