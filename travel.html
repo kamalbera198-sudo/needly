@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Travel Budget Calculator - Estimate Your Trip Cost | Needly</title>
 
-  <meta name="description" content="Use Needly's free Travel Budget Calculator to estimate your total trip cost based on travel days, daily budget, and other travel expenses.">
+  <meta name="description" content="Use Needly's free Travel Budget Calculator to estimate your total trip cost based on travel days, daily budget, travel expenses, and currency.">
 
-  <meta name="keywords" content="travel budget calculator, trip cost calculator, vacation budget calculator, travel expense calculator, trip budget planner">
+  <meta name="keywords" content="travel budget calculator, trip cost calculator, vacation budget calculator, travel expense calculator, trip budget planner, currency travel calculator">
 
   <meta name="robots" content="index, follow">
 
@@ -20,7 +19,7 @@
 
   <header>
     <h1>Travel Budget Calculator</h1>
-    <p>Estimate your total travel cost and plan your trip budget.</p>
+    <p>Estimate your total travel cost in your preferred currency.</p>
   </header>
 
   <main>
@@ -28,18 +27,51 @@
     <section>
       <h2>Calculate Your Travel Budget</h2>
 
+      <label for="currency">Currency</label>
+      <select id="currency">
+        <option value="USD">$ USD - US Dollar</option>
+        <option value="EUR">€ EUR - Euro</option>
+        <option value="GBP">£ GBP - British Pound</option>
+        <option value="INR">₹ INR - Indian Rupee</option>
+        <option value="CAD">C$ CAD - Canadian Dollar</option>
+        <option value="AUD">A$ AUD - Australian Dollar</option>
+        <option value="JPY">¥ JPY - Japanese Yen</option>
+        <option value="CHF">CHF - Swiss Franc</option>
+        <option value="SGD">S$ SGD - Singapore Dollar</option>
+        <option value="NZD">NZ$ NZD - New Zealand Dollar</option>
+      </select>
+
+      <br><br>
+
       <label for="days">Number of Days</label>
-      <input type="number" id="days" placeholder="e.g. 7" min="1">
+      <input
+        type="number"
+        id="days"
+        placeholder="e.g. 7"
+        min="1"
+      >
 
       <br><br>
 
-      <label for="daily">Daily Budget ($)</label>
-      <input type="number" id="daily" placeholder="e.g. 100" min="0" step="0.01">
+      <label for="daily">Daily Budget</label>
+      <input
+        type="number"
+        id="daily"
+        placeholder="e.g. 100"
+        min="0"
+        step="0.01"
+      >
 
       <br><br>
 
-      <label for="travel">Travel Expenses ($)</label>
-      <input type="number" id="travel" placeholder="e.g. 300" min="0" step="0.01">
+      <label for="travel">Travel Expenses</label>
+      <input
+        type="number"
+        id="travel"
+        placeholder="e.g. 300"
+        min="0"
+        step="0.01"
+      >
 
       <br><br>
 
@@ -53,15 +85,16 @@
       <h2>How the Travel Budget Calculator Works</h2>
 
       <p>
-        Needly's Travel Budget Calculator helps you estimate how much money
-        you may need for a trip. Enter the number of travel days, your
-        expected daily budget, and additional travel expenses.
+        Needly's Travel Budget Calculator helps you estimate how much
+        money you may need for a trip. Select your preferred currency,
+        enter the number of travel days, your daily budget, and any
+        additional travel expenses.
       </p>
 
       <p>
-        The calculator adds your estimated daily spending for the entire trip
-        to your additional travel expenses to give you an estimated total
-        trip cost.
+        The calculator calculates your estimated daily trip cost and
+        adds your additional travel expenses to give you an estimated
+        total trip cost.
       </p>
     </section>
 
@@ -69,9 +102,13 @@
     <section>
       <h2>Travel Budget Formula</h2>
 
-      <p><strong>Daily Trip Cost = Number of Days × Daily Budget</strong></p>
+      <p>
+        <strong>Daily Trip Cost = Number of Days × Daily Budget</strong>
+      </p>
 
-      <p><strong>Total Travel Budget = Daily Trip Cost + Travel Expenses</strong></p>
+      <p>
+        <strong>Total Travel Budget = Daily Trip Cost + Travel Expenses</strong>
+      </p>
     </section>
 
 
@@ -79,8 +116,8 @@
       <h2>Travel Budget Example</h2>
 
       <p>
-        Suppose you are planning a 7-day trip with a daily budget of $100
-        and additional travel expenses of $300.
+        Suppose you are planning a 7-day trip with a daily budget of
+        $100 and additional travel expenses of $300.
       </p>
 
       <p>
@@ -88,7 +125,14 @@
       </p>
 
       <p>
-        Total travel budget = $700 + $300 = <strong>$1,000</strong>
+        Total travel budget = $700 + $300 =
+        <strong>$1,000</strong>
+      </p>
+
+      <p>
+        You can select another currency from the currency menu.
+        The calculator will display your entered amounts and results
+        using that currency.
       </p>
     </section>
 
@@ -98,12 +142,13 @@
 
       <p>
         Creating a travel budget before your trip can help you understand
-        your expected expenses and avoid unexpected spending.
+        your expected expenses and plan your spending.
       </p>
 
       <p>
-        You can use this calculator for vacations, weekend trips, family
-        travel, road trips, business travel, and other types of trips.
+        You can use this calculator for vacations, weekend trips,
+        family travel, road trips, business travel, and international
+        trips.
       </p>
     </section>
 
@@ -113,25 +158,31 @@
 
       <h3>How do I calculate my travel budget?</h3>
       <p>
-        Multiply the number of travel days by your estimated daily budget,
-        then add your additional travel expenses.
+        Multiply the number of travel days by your estimated daily
+        budget, then add your additional travel expenses.
       </p>
 
-      <h3>What should a travel budget include?</h3>
+      <h3>Which currencies are supported?</h3>
       <p>
-        A travel budget can include accommodation, food, transportation,
-        activities, flights, local travel, and other trip-related expenses.
+        Needly currently supports USD, EUR, GBP, INR, CAD, AUD, JPY,
+        CHF, SGD, and NZD.
+      </p>
+
+      <h3>Does this calculator convert currencies?</h3>
+      <p>
+        No. The currency selector changes the currency displayed for
+        your budget. It does not perform live exchange-rate conversion.
+      </p>
+
+      <h3>Can I use this calculator for an international trip?</h3>
+      <p>
+        Yes. Select the currency you want to use and enter your estimated
+        travel expenses in that currency.
       </p>
 
       <h3>Is this Travel Budget Calculator free?</h3>
       <p>
         Yes. Needly's Travel Budget Calculator is free to use.
-      </p>
-
-      <h3>Can I use this calculator for an international trip?</h3>
-      <p>
-        Yes. You can use the calculator for domestic or international trips.
-        Enter your estimated expenses in the currency you want to use.
       </p>
     </section>
 
@@ -144,38 +195,77 @@
 
 
   <script>
+
+    const currencySymbols = {
+      USD: "$",
+      EUR: "€",
+      GBP: "£",
+      INR: "₹",
+      CAD: "C$",
+      AUD: "A$",
+      JPY: "¥",
+      CHF: "CHF ",
+      SGD: "S$",
+      NZD: "NZ$"
+    };
+
+
     function calculateTravel() {
 
       const days = Number(document.getElementById("days").value);
       const daily = Number(document.getElementById("daily").value);
       const travel = Number(document.getElementById("travel").value);
+      const currency = document.getElementById("currency").value;
+
+      const symbol = currencySymbols[currency];
 
       const result = document.getElementById("result");
 
+
       if (days <= 0) {
-        result.innerHTML = "<p>Please enter a valid number of days.</p>";
+        result.innerHTML =
+          "<p>Please enter a valid number of days.</p>";
         return;
       }
+
 
       if (daily < 0) {
-        result.innerHTML = "<p>Daily budget cannot be negative.</p>";
+        result.innerHTML =
+          "<p>Daily budget cannot be negative.</p>";
         return;
       }
 
+
       if (travel < 0) {
-        result.innerHTML = "<p>Travel expenses cannot be negative.</p>";
+        result.innerHTML =
+          "<p>Travel expenses cannot be negative.</p>";
         return;
       }
+
 
       const dailyCost = days * daily;
       const total = dailyCost + travel;
 
+
       result.innerHTML = `
         <h2>Estimated Travel Budget</h2>
-        <p>Daily trip cost: <strong>$${dailyCost.toFixed(2)}</strong></p>
-        <p>Total estimated trip cost: <strong>$${total.toFixed(2)}</strong></p>
+
+        <p>
+          Currency: <strong>${currency}</strong>
+        </p>
+
+        <p>
+          Daily trip cost:
+          <strong>${symbol}${dailyCost.toFixed(2)}</strong>
+        </p>
+
+        <p>
+          Total estimated trip cost:
+          <strong>${symbol}${total.toFixed(2)}</strong>
+        </p>
       `;
     }
+
   </script>
 
 </body>
