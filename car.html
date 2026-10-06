@@ -20,127 +20,170 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
+      color: #172033;
       background:
-        linear-gradient(135deg, #dbeafe, #ede9fe, #fce7f3);
-      color: #1f2937;
+        linear-gradient(135deg, #dbeafe 0%, #eef2ff 48%, #fce7f3 100%);
       line-height: 1.6;
     }
 
-    /* HEADER */
+    /* HERO */
 
-    header {
+    .hero {
+      position: relative;
+      overflow: hidden;
       background:
-        linear-gradient(135deg, #2563eb, #4f46e5, #9333ea, #db2777);
+        linear-gradient(135deg, #1d4ed8, #2563eb, #4f46e5, #7c3aed);
       color: white;
       text-align: center;
-      padding: 55px 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+      padding: 60px 20px 85px;
+      box-shadow: 0 12px 35px rgba(37, 99, 235, 0.25);
     }
 
-    header .car-icon {
-      font-size: 48px;
-      margin-bottom: 8px;
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
     }
 
-    header h1 {
+    .hero::before {
+      width: 240px;
+      height: 240px;
+      left: -90px;
+      top: -110px;
+    }
+
+    .hero::after {
+      width: 320px;
+      height: 320px;
+      right: -120px;
+      bottom: -170px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .car-icon {
+      font-size: 54px;
+      margin-bottom: 5px;
+    }
+
+    .hero h1 {
       margin: 0;
-      font-size: 38px;
+      font-size: 40px;
       font-weight: 800;
     }
 
-    header p {
-      margin: 10px 0 0;
+    .hero p {
+      margin: 10px auto 0;
       font-size: 18px;
-      opacity: 0.95;
+      max-width: 650px;
+      opacity: 0.94;
     }
 
     /* MAIN */
 
     main {
       max-width: 900px;
-      margin: 35px auto;
+      margin: -35px auto 50px;
       padding: 0 18px;
+      position: relative;
+      z-index: 5;
     }
 
-    /* CALCULATOR CARD */
+    /* CALCULATOR */
 
-    .calculator-card {
+    .calculator {
       background: rgba(255,255,255,0.97);
+      border-radius: 24px;
       padding: 32px;
-      border-radius: 22px;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
-      border-top: 7px solid #7c3aed;
+      box-shadow: 0 15px 40px rgba(15,23,42,0.13);
+      border: 1px solid rgba(255,255,255,0.8);
       margin-bottom: 28px;
     }
 
-    .calculator-card h2 {
-      margin-top: 0;
-      color: #4f46e5;
+    .calculator-title {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .calculator-title h2 {
+      margin: 0;
+      color: #1d4ed8;
       font-size: 28px;
     }
 
-    .subtitle {
-      color: #6b7280;
-      margin-bottom: 25px;
+    .calculator-title p {
+      color: #64748b;
+      margin: 7px 0 0;
     }
 
     /* INPUTS */
 
-    .input-group {
+    .field {
       margin-bottom: 20px;
     }
 
     label {
       display: block;
-      font-weight: 700;
       margin-bottom: 8px;
-      color: #374151;
+      font-weight: 700;
+      color: #334155;
     }
 
     input {
       width: 100%;
       padding: 15px;
-      font-size: 16px;
-      border: 2px solid #c7d2fe;
       border-radius: 12px;
+      border: 2px solid #cbd5e1;
       background: #f8fafc;
-      color: #111827;
+      color: #172033;
+      font-size: 16px;
       outline: none;
       transition: 0.2s;
     }
 
     input:focus {
-      border-color: #7c3aed;
+      border-color: #2563eb;
       background: white;
-      box-shadow: 0 0 0 4px rgba(124,58,237,0.12);
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.10);
     }
 
     /* BUTTON */
 
-    button {
+    .calculate-btn {
       width: 100%;
       padding: 16px;
       border: none;
       border-radius: 13px;
       background:
-        linear-gradient(135deg, #2563eb, #7c3aed, #db2777);
+        linear-gradient(135deg, #2563eb, #4f46e5, #7c3aed);
       color: white;
       font-size: 18px;
       font-weight: 700;
       cursor: pointer;
+      box-shadow: 0 8px 20px rgba(37,99,235,0.25);
       transition: 0.2s;
-      box-shadow: 0 7px 18px rgba(79,70,229,0.25);
     }
 
-    button:hover {
+    .calculate-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(79,70,229,0.35);
+      box-shadow: 0 12px 26px rgba(37,99,235,0.35);
     }
 
-    button:active {
+    .calculate-btn:active {
       transform: translateY(0);
     }
 
@@ -148,104 +191,109 @@
 
     #result {
       margin-top: 25px;
-      padding: 24px;
-      border-radius: 16px;
+      padding: 25px;
+      border-radius: 17px;
       background:
-        linear-gradient(135deg, #ecfdf5, #dbeafe);
-      border-left: 6px solid #10b981;
+        linear-gradient(135deg, #eff6ff, #eef2ff, #f5f3ff);
+      border: 1px solid #bfdbfe;
+      display: none;
     }
 
     #result h2 {
       margin-top: 0;
-      color: #047857;
+      color: #1d4ed8;
     }
 
     #result p {
-      font-size: 17px;
       margin: 10px 0;
+      font-size: 17px;
     }
 
     #result strong {
-      color: #1d4ed8;
+      color: #4f46e5;
       font-size: 18px;
     }
 
-    /* INFORMATION SECTIONS */
+    /* INFO CARDS */
 
     .info-card {
-      background: rgba(255,255,255,0.96);
+      background: rgba(255,255,255,0.95);
       padding: 28px;
+      border-radius: 20px;
       margin-bottom: 22px;
-      border-radius: 18px;
-      box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 25px rgba(15,23,42,0.07);
     }
 
     .info-card h2 {
-      color: #4f46e5;
       margin-top: 0;
+      color: #1d4ed8;
     }
 
     .info-card h3 {
-      color: #9333ea;
+      color: #7c3aed;
       margin-bottom: 5px;
     }
 
     .formula {
-      background: #eef2ff;
-      padding: 15px;
+      background: #eff6ff;
+      border-left: 5px solid #2563eb;
+      padding: 14px 16px;
       margin: 12px 0;
       border-radius: 10px;
-      color: #3730a3;
-      font-weight: bold;
+      color: #1e3a8a;
+      font-weight: 700;
     }
 
-    /* HOME LINK */
+    /* HOME */
 
     .home-link {
       display: inline-block;
-      margin: 5px 0 30px;
       padding: 12px 18px;
       border-radius: 10px;
       background: white;
-      color: #4f46e5;
-      font-weight: bold;
+      color: #1d4ed8;
       text-decoration: none;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      font-weight: 700;
+      box-shadow: 0 5px 18px rgba(15,23,42,0.08);
     }
 
     .home-link:hover {
-      color: #db2777;
+      color: #7c3aed;
     }
 
     /* MOBILE */
 
     @media (max-width: 600px) {
 
-      header {
-        padding: 40px 15px;
+      .hero {
+        padding: 45px 15px 75px;
       }
 
-      header h1 {
+      .hero h1 {
         font-size: 29px;
       }
 
-      header p {
+      .hero p {
         font-size: 16px;
       }
 
-      .calculator-card,
-      .info-card {
-        padding: 21px;
-        border-radius: 16px;
-      }
-
-      .calculator-card h2 {
-        font-size: 23px;
+      .car-icon {
+        font-size: 45px;
       }
 
       main {
-        margin-top: 22px;
+        margin-top: -25px;
         padding: 0 12px;
+      }
+
+      .calculator,
+      .info-card {
+        padding: 21px;
+        border-radius: 17px;
+      }
+
+      .calculator-title h2 {
+        font-size: 23px;
       }
 
     }
@@ -255,34 +303,51 @@
 
 <body>
 
-  <header>
+  <!-- HERO -->
 
-    <div class="car-icon">🚗</div>
+  <header class="hero">
 
-    <h1>Car Affordability Calculator</h1>
+    <div class="hero-content">
 
-    <p>
-      Find out how much car you may be able to afford.
-    </p>
+      <div class="car-icon">
+        🚗
+      </div>
+
+      <h1>
+        Car Affordability Calculator
+      </h1>
+
+      <p>
+        Estimate how much car you may be able to afford
+        based on your income, expenses, and down payment.
+      </p>
+
+    </div>
 
   </header>
 
 
   <main>
 
+
     <!-- CALCULATOR -->
 
-    <section class="calculator-card">
+    <section class="calculator">
 
-      <h2>💰 Calculate Your Car Budget</h2>
+      <div class="calculator-title">
 
-      <p class="subtitle">
-        Enter your monthly income, expenses, and down payment
-        to estimate an affordable car price.
-      </p>
+        <h2>
+          🚘 Find Your Car Budget
+        </h2>
+
+        <p>
+          Enter your monthly financial details to get an estimate.
+        </p>
+
+      </div>
 
 
-      <div class="input-group">
+      <div class="field">
 
         <label for="income">
           Monthly Income ($)
@@ -292,14 +357,14 @@
           type="number"
           id="income"
           placeholder="e.g. 5000"
-          min="1"
+          min="0.01"
           step="0.01"
         >
 
       </div>
 
 
-      <div class="input-group">
+      <div class="field">
 
         <label for="expenses">
           Monthly Expenses ($)
@@ -316,15 +381,15 @@
       </div>
 
 
-      <div class="input-group">
+      <div class="field">
 
-        <label for="down">
+        <label for="downPayment">
           Down Payment ($)
         </label>
 
         <input
           type="number"
-          id="down"
+          id="downPayment"
           placeholder="e.g. 5000"
           min="0"
           step="0.01"
@@ -333,8 +398,11 @@
       </div>
 
 
-      <button onclick="calculateCar()">
-        🚘 Calculate Car Affordability
+      <button
+        class="calculate-btn"
+        onclick="calculateCar()"
+      >
+        🚗 Calculate Car Affordability
       </button>
 
 
@@ -347,18 +415,21 @@
 
     <section class="info-card">
 
-      <h2>How the Car Affordability Calculator Works</h2>
+      <h2>
+        How the Car Affordability Calculator Works
+      </h2>
 
       <p>
-        Needly's Car Affordability Calculator helps you estimate
-        a potential car price based on your monthly income,
-        monthly expenses, and down payment.
+        Needly's Car Affordability Calculator provides an estimate
+        of how much you may be able to spend on a car based on your
+        monthly income, monthly expenses, and down payment.
       </p>
 
       <p>
-        The calculator first estimates the amount of money
-        available after monthly expenses. It then uses 20%
-        of that amount as an estimated monthly car budget.
+        The calculator first estimates the money available after
+        your monthly expenses. It then uses a simple budgeting
+        rule to estimate a monthly car budget and an approximate
+        car price.
       </p>
 
     </section>
@@ -368,7 +439,9 @@
 
     <section class="info-card">
 
-      <h2>Car Affordability Formula</h2>
+      <h2>
+        Car Affordability Formula
+      </h2>
 
       <div class="formula">
         Available Income =
@@ -376,7 +449,7 @@
       </div>
 
       <div class="formula">
-        Estimated Monthly Car Budget =
+        Monthly Car Budget =
         Available Income × 20%
       </div>
 
@@ -385,6 +458,11 @@
         Monthly Car Budget × 60 + Down Payment
       </div>
 
+      <p>
+        This is a simplified budgeting estimate and is not a
+        personalized financial recommendation.
+      </p>
+
     </section>
 
 
@@ -392,27 +470,32 @@
 
     <section class="info-card">
 
-      <h2>Car Affordability Example</h2>
+      <h2>
+        Car Affordability Example
+      </h2>
 
       <p>
-        Suppose your monthly income is $5,000,
-        monthly expenses are $2,500, and your
-        down payment is $5,000.
+        Suppose your monthly income is $5,000, your monthly
+        expenses are $2,500, and your down payment is $5,000.
       </p>
 
       <div class="formula">
-        Available Income = $5,000 − $2,500 = $2,500
+        Available income = $5,000 − $2,500 = $2,500
       </div>
 
       <div class="formula">
-        Monthly Car Budget =
-        $2,500 × 20% = $500
+        Monthly car budget = $2,500 × 20% = $500
       </div>
 
       <div class="formula">
-        Estimated Car Price =
-        $500 × 60 + $5,000 = $35,000
+        Estimated car price = $500 × 60 + $5,000
+        = $35,000
       </div>
+
+      <p>
+        The estimated affordable car price would therefore be
+        approximately <strong>$35,000</strong>.
+      </p>
 
     </section>
 
@@ -421,18 +504,20 @@
 
     <section class="info-card">
 
-      <h2>Why Use a Car Affordability Calculator?</h2>
+      <h2>
+        Why Use a Car Affordability Calculator?
+      </h2>
 
       <p>
-        Buying a car is a major financial decision.
-        Estimating your affordable car price before
-        shopping can help you create a realistic budget.
+        Buying a car is a major financial decision. Estimating
+        your car budget before shopping can help you compare
+        vehicles within a realistic price range.
       </p>
 
       <p>
-        You can use this calculator when comparing vehicles,
-        planning a down payment, or preparing for a future
-        car purchase.
+        You can use this calculator before visiting dealerships,
+        comparing used cars, planning a down payment, or creating
+        a monthly transportation budget.
       </p>
 
     </section>
@@ -442,54 +527,59 @@
 
     <section class="info-card">
 
-      <h2>Frequently Asked Questions</h2>
+      <h2>
+        Frequently Asked Questions
+      </h2>
 
 
-      <h3>How much car can I afford?</h3>
+      <h3>
+        How much car can I afford?
+      </h3>
 
       <p>
-        Your affordable car price depends on your income,
-        expenses, down payment, financing costs, and other
-        financial commitments. Needly provides an estimate
-        for initial planning.
+        It depends on your income, expenses, existing financial
+        commitments, down payment, and other costs associated
+        with owning a vehicle.
       </p>
 
 
-      <h3>Does this calculator include loan interest?</h3>
+      <h3>
+        Does this calculator include insurance and fuel?
+      </h3>
 
       <p>
-        No. This calculator estimates a potential car price
-        based on your income, expenses, and down payment.
-        Actual financing costs can vary.
+        No. The estimate is based on the income, expenses, and
+        down payment you enter. Insurance, fuel, maintenance,
+        taxes, and registration should also be considered when
+        creating a complete car budget.
       </p>
 
 
-      <h3>Can I use this calculator before buying a car?</h3>
+      <h3>
+        Is the result a guaranteed affordable car price?
+      </h3>
 
       <p>
-        Yes. It can help you establish an estimated budget
-        before comparing vehicles.
+        No. It is a simplified estimate intended for planning
+        purposes. Your actual affordable amount may be different.
       </p>
 
 
-      <h3>Is the result guaranteed?</h3>
+      <h3>
+        Is the Car Affordability Calculator free?
+      </h3>
 
       <p>
-        No. The result is an estimate and should not be
-        considered financial advice.
-      </p>
-
-
-      <h3>Is Needly's Car Affordability Calculator free?</h3>
-
-      <p>
-        Yes. The calculator is free to use.
+        Yes. Needly's Car Affordability Calculator is free to use.
       </p>
 
     </section>
 
 
-    <a class="home-link" href="index.html">
+    <a
+      class="home-link"
+      href="index.html"
+    >
       ← Back to Home
     </a>
 
@@ -501,13 +591,19 @@
     function calculateCar() {
 
       const income =
-        Number(document.getElementById("income").value);
+        Number(
+          document.getElementById("income").value
+        );
 
       const expenses =
-        Number(document.getElementById("expenses").value);
+        Number(
+          document.getElementById("expenses").value
+        );
 
-      const down =
-        Number(document.getElementById("down").value);
+      const downPayment =
+        Number(
+          document.getElementById("downPayment").value
+        );
 
       const result =
         document.getElementById("result");
@@ -515,37 +611,49 @@
 
       if (income <= 0) {
 
+        result.style.display = "block";
+
         result.innerHTML =
-          "<p>Please enter a valid monthly income.</p>";
+          "<p>Please enter a valid monthly income greater than $0.</p>";
 
         return;
+
       }
 
 
       if (expenses < 0) {
 
+        result.style.display = "block";
+
         result.innerHTML =
           "<p>Monthly expenses cannot be negative.</p>";
 
         return;
+
       }
 
 
-      if (down < 0) {
+      if (downPayment < 0) {
+
+        result.style.display = "block";
 
         result.innerHTML =
           "<p>Down payment cannot be negative.</p>";
 
         return;
+
       }
 
 
       if (expenses >= income) {
 
+        result.style.display = "block";
+
         result.innerHTML =
           "<p>Monthly expenses should be less than monthly income.</p>";
 
         return;
+
       }
 
 
@@ -558,12 +666,17 @@
 
 
       const estimatedCarPrice =
-        monthlyCarBudget * 60 + down;
+        monthlyCarBudget * 60 + downPayment;
+
+
+      result.style.display = "block";
 
 
       result.innerHTML = `
 
-        <h2>🎯 Estimated Car Budget</h2>
+        <h2>
+          🚘 Your Estimated Car Budget
+        </h2>
 
         <p>
           Available income:
@@ -576,6 +689,13 @@
           Estimated monthly car budget:
           <strong>
             $${monthlyCarBudget.toFixed(2)}
+          </strong>
+        </p>
+
+        <p>
+          Down payment:
+          <strong>
+            $${downPayment.toFixed(2)}
           </strong>
         </p>
 
