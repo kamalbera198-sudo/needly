@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <title>Needly - Free Online Calculators for Everyday Life</title>
 
-  <title>Needly - Smart Calculators</title>
+  <meta name="description" content="Needly offers free online calculators for savings, travel, car affordability, rent, debt, mortgage, freelancer rates, electricity costs, wedding budgets and more.">
 
-  <meta name="description"
-        content="Needly offers simple and useful online calculators for savings, travel, car affordability, rent, debt, mortgage and more.">
+  <meta name="keywords" content="online calculators, free calculators, savings calculator, travel budget calculator, car affordability calculator, rent calculator, debt payoff calculator, mortgage calculator">
 
-  <meta name="keywords"
-        content="online calculators, savings calculator, mortgage calculator, debt calculator, car affordability calculator, rent calculator, travel budget calculator, freelancer rate calculator">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/">
 
   <style>
 
@@ -22,390 +20,697 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      color: #111827;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #172033;
+      background:
+        linear-gradient(135deg, #eef6ff 0%, #f5f3ff 50%, #fff1f7 100%);
+      line-height: 1.6;
     }
+
+    /* =========================
+       HEADER
+    ========================= */
 
     header {
-      background: #111827;
+      position: relative;
+      overflow: hidden;
       color: white;
       text-align: center;
-      padding: 45px 20px;
+      padding: 70px 20px 80px;
+      background:
+        linear-gradient(
+          135deg,
+          #2563eb,
+          #4f46e5,
+          #7c3aed,
+          #db2777
+        );
+      box-shadow: 0 10px 35px rgba(37, 99, 235, 0.25);
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 42px;
+    header::before,
+    header::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
     }
 
-    header p {
-      margin-top: 12px;
-      font-size: 18px;
-      color: #d1d5db;
+    header::before {
+      width: 220px;
+      height: 220px;
+      top: -90px;
+      left: -70px;
     }
 
-    .container {
-      max-width: 1100px;
+    header::after {
+      width: 280px;
+      height: 280px;
+      right: -100px;
+      bottom: -130px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
       margin: auto;
-      padding: 35px 20px;
     }
 
-    .intro {
-      text-align: center;
-      margin-bottom: 30px;
+    .logo {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 5px;
     }
 
-    .intro h2 {
-      font-size: 30px;
-      margin-bottom: 10px;
+    .tagline {
+      font-size: 20px;
+      margin: 5px 0 18px;
+      opacity: 0.95;
     }
 
-    .intro p {
-      color: #6b7280;
+    .hero-text {
+      max-width: 680px;
+      margin: auto;
       font-size: 16px;
+      opacity: 0.9;
     }
 
-    .search-box {
-      max-width: 600px;
-      margin: 0 auto 35px;
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 35px 18px 60px;
     }
 
-    .search-box input {
+    /* =========================
+       SEARCH
+    ========================= */
+
+    .search-area {
+      margin: -20px auto 35px;
+      max-width: 720px;
+      position: relative;
+      z-index: 5;
+    }
+
+    #searchBox {
       width: 100%;
-      padding: 15px;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
-      font-size: 16px;
+      padding: 18px 22px;
+      border: none;
+      border-radius: 16px;
+      font-size: 17px;
+      background: white;
+      color: #111827;
       outline: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.14);
     }
 
-    .tools {
+    #searchBox:focus {
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.14),
+        0 0 0 4px rgba(99,102,241,0.18);
+    }
+
+    /* =========================
+       SECTION TITLE
+    ========================= */
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: 32px;
+      color: #312e81;
+    }
+
+    .section-heading p {
+      margin: 8px auto 0;
+      max-width: 650px;
+      color: #64748b;
+    }
+
+    /* =========================
+       CALCULATOR GRID
+    ========================= */
+
+    .tools-grid {
       display: grid;
       grid-template-columns:
-        repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+        repeat(3, minmax(0, 1fr));
+      gap: 22px;
     }
 
     .tool {
-      background: white;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255,255,255,0.96);
+      border-radius: 20px;
       padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      transition: 0.2s;
+      min-height: 220px;
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 8px 25px rgba(15,23,42,0.08);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
     }
 
     .tool:hover {
-      transform: translateY(-3px);
+      transform: translateY(-7px);
+      box-shadow: 0 18px 35px rgba(15,23,42,0.14);
+    }
+
+    .tool::before {
+      content: "";
+      position: absolute;
+      height: 5px;
+      left: 0;
+      right: 0;
+      top: 0;
+      background: linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed,
+        #db2777
+      );
+    }
+
+    .tool-icon {
+      width: 58px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      font-size: 29px;
+      margin-bottom: 16px;
+      background: #eef2ff;
     }
 
     .tool h3 {
-      margin-top: 0;
+      margin: 0 0 8px;
       font-size: 20px;
+      color: #1e293b;
     }
 
     .tool p {
-      color: #6b7280;
-      line-height: 1.5;
+      margin: 0 0 18px;
+      color: #64748b;
+      font-size: 14px;
     }
 
     .tool a {
       display: inline-block;
-      margin-top: 10px;
-      padding: 10px 15px;
-      background: #2563eb;
-      color: white;
       text-decoration: none;
-      border-radius: 7px;
+      font-weight: 700;
+      color: #4f46e5;
+      padding: 9px 14px;
+      border-radius: 9px;
+      background: #eef2ff;
+      transition: 0.2s;
     }
 
-    .no-result {
+    .tool a:hover {
+      color: white;
+      background: #4f46e5;
+    }
+
+    /* =========================
+       NO RESULT
+    ========================= */
+
+    #noResult {
       display: none;
       text-align: center;
-      margin-top: 25px;
-      color: #6b7280;
-      font-weight: bold;
+      padding: 30px;
+      background: white;
+      border-radius: 15px;
+      color: #64748b;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
     }
 
+    /* =========================
+       ABOUT SECTION
+    ========================= */
+
+    .intro-section {
+      margin-top: 45px;
+      background: rgba(255,255,255,0.9);
+      padding: 32px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+    }
+
+    .intro-section h2 {
+      margin-top: 0;
+      color: #4f46e5;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
     footer {
-      margin-top: 40px;
-      padding: 30px 20px;
-      background: #111827;
       color: white;
+      background:
+        linear-gradient(
+          135deg,
+          #111827,
+          #1e1b4b,
+          #312e81
+        );
+      padding: 45px 20px;
       text-align: center;
     }
 
-    footer a {
-      color: #dbeafe;
-      text-decoration: none;
-      margin: 0 8px;
+    footer h2 {
+      margin: 0 0 8px;
+      color: white;
     }
 
     footer p {
-      color: #9ca3af;
+      color: #cbd5e1;
+      margin: 5px 0 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #e0e7ff;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    .footer-links a:hover {
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    .copyright {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .tools-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      header {
+        padding: 50px 18px 65px;
+      }
+
+      .logo {
+        font-size: 40px;
+      }
+
+      .tagline {
+        font-size: 17px;
+      }
+
+      main {
+        padding: 25px 12px 45px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading h2 {
+        font-size: 27px;
+      }
+
+      .tool {
+        min-height: auto;
+      }
+
+      .intro-section {
+        padding: 24px;
+      }
+
     }
 
   </style>
-
 </head>
 
 
 <body>
 
 
+  <!-- HERO -->
+
   <header>
 
-    <h1>Needly</h1>
+    <div class="hero-content">
 
-    <p>
-      Calculate smarter. Plan better. Move forward.
-    </p>
+      <div class="logo">
+        Needly
+      </div>
+
+      <div class="tagline">
+        Calculate smarter. Plan better. Move forward.
+      </div>
+
+      <p class="hero-text">
+        Simple, free and useful online calculators designed to
+        help you make smarter everyday financial and planning decisions.
+      </p>
+
+    </div>
 
   </header>
 
 
-  <main class="container">
+  <main>
 
 
-    <section class="intro">
+    <!-- SEARCH -->
 
-      <h2>Smart Calculators</h2>
-
-      <p>
-        Simple online tools to help you make better everyday decisions.
-      </p>
-
-    </section>
-
-
-    <div class="search-box">
+    <div class="search-area">
 
       <input
-        type="text"
+        type="search"
         id="searchBox"
-        placeholder="Search a calculator..."
+        placeholder="🔎 Search a calculator..."
         onkeyup="searchTools()"
+        aria-label="Search calculators"
       >
 
     </div>
 
 
-    <section class="tools" id="tools">
+    <!-- CALCULATORS -->
 
+    <section>
 
-      <!-- Savings Calculator -->
+      <div class="section-heading">
 
-      <div class="tool">
-
-        <h3>💰 Savings Calculator</h3>
+        <h2>Smart Calculators</h2>
 
         <p>
-          Find out how long it may take to reach your savings goal.
+          Choose a calculator and get a quick estimate in seconds.
         </p>
-
-        <a href="savings.html">
-          Open Calculator
-        </a>
 
       </div>
 
 
-      <!-- Travel Budget -->
+      <div class="tools-grid">
 
-      <div class="tool">
 
-        <h3>✈️ Travel Budget</h3>
+        <!-- SAVINGS -->
 
-        <p>
-          Estimate your total travel budget based on days and costs.
-        </p>
+        <div class="tool">
 
-        <a href="travel.html">
-          Open Calculator
-        </a>
+          <div class="tool-icon">💰</div>
+
+          <h3>Savings Calculator</h3>
+
+          <p>
+            Estimate how long it may take to reach your savings goal.
+          </p>
+
+          <a href="savings.html">
+            Calculate →
+          </a>
+
+        </div>
+
+
+        <!-- TRAVEL -->
+
+        <div class="tool">
+
+          <div class="tool-icon">✈️</div>
+
+          <h3>Travel Budget</h3>
+
+          <p>
+            Estimate your total trip cost based on days and expenses.
+          </p>
+
+          <a href="travel.html">
+            Calculate →
+          </a>
+
+        </div>
+
+
+        <!-- CAR -->
+
+        <div class="tool">
+
+          <div class="tool-icon">🚗</div>
+
+          <h3>Car Affordability</h3>
+
+          <p>
+            Find out how much car you may be able to afford.
+          </p>
+
+          <a href="car.html">
+            Calculate →
+          </a>
+
+        </div>
+
+
+        <!-- RENT -->
+
+        <div class="tool">
+
+          <div class="tool-icon">🏠</div>
+
+          <h3>Rent Affordability</h3>
+
+          <p>
+            Estimate a monthly rent budget based on your income.
+          </p>
+
+          <a href="rent.html">
+            Calculate →
+          </a>
+
+        </div>
+
+
+        <!-- DEBT -->
+
+        <div class="tool">
+
+          <div class="tool-icon">💳</div>
+
+          <h3>Debt Payoff</h3>
+
+          <p>
+            Estimate how long it may take to pay off your debt.
+          </p>
+
+          <a href="debt.html">
+            Calculate →
+          </a>
+
+        </div>
+
+
+        <!-- FREELANCER -->
+
+        <div class="tool">
+
+          <div class="tool-icon">💻</div>
+
+          <h3>Freelancer Rate</h3>
+
+          <p>
+            Calculate an estimated hourly freelance rate.
+          </p>
+
+          <a href="freelancer.html">
+            Calculate →
+          </a>
+
+        </div>
+
+
+        <!-- ELECTRICITY -->
+
+        <div class="tool">
+
+          <div class="tool-icon">⚡</div>
+
+          <h3>Electricity Cost</h3>
+
+          <p>
+            Estimate your electricity cost from usage and rate.
+          </p>
+
+          <a href="electricity.html">
+            Calculate →
+          </a>
+
+        </div>
+
+
+        <!-- WEDDING -->
+
+        <div class="tool">
+
+          <div class="tool-icon">💍</div>
+
+          <h3>Wedding Budget</h3>
+
+          <p>
+            Add your wedding expenses and estimate the total budget.
+          </p>
+
+          <a href="wedding.html">
+            Calculate →
+          </a>
+
+        </div>
+
+
+        <!-- MORTGAGE -->
+
+        <div class="tool">
+
+          <div class="tool-icon">🏡</div>
+
+          <h3>Mortgage Calculator</h3>
+
+          <p>
+            Estimate monthly mortgage payments and total interest.
+          </p>
+
+          <a href="mortgage.html">
+            Calculate →
+          </a>
+
+        </div>
+
 
       </div>
 
 
-      <!-- Car Affordability -->
-
-      <div class="tool">
-
-        <h3>🚗 Car Affordability</h3>
-
+      <div id="noResult">
+        <h3>No calculator found</h3>
         <p>
-          Estimate a car price based on your income and expenses.
+          Try searching for another calculator.
         </p>
-
-        <a href="car.html">
-          Open Calculator
-        </a>
-
       </div>
-
-
-      <!-- Rent Affordability -->
-
-      <div class="tool">
-
-        <h3>🏠 Rent Affordability</h3>
-
-        <p>
-          Estimate a recommended monthly rent based on income.
-        </p>
-
-        <a href="rent.html">
-          Open Calculator
-        </a>
-
-      </div>
-
-
-      <!-- Debt Payoff -->
-
-      <div class="tool">
-
-        <h3>💳 Debt Payoff</h3>
-
-        <p>
-          Estimate how long it may take to pay off your debt.
-        </p>
-
-        <a href="debt.html">
-          Open Calculator
-        </a>
-
-      </div>
-
-
-      <!-- Freelancer Rate -->
-
-      <div class="tool">
-
-        <h3>💻 Freelancer Rate</h3>
-
-        <p>
-          Calculate the hourly rate needed to reach your income goal.
-        </p>
-
-        <a href="freelancer.html">
-          Open Calculator
-        </a>
-
-      </div>
-
-
-      <!-- Electricity Cost -->
-
-      <div class="tool">
-
-        <h3>⚡ Electricity Cost</h3>
-
-        <p>
-          Estimate your electricity cost from usage and price per kWh.
-        </p>
-
-        <a href="electricity.html">
-          Open Calculator
-        </a>
-
-      </div>
-
-
-      <!-- Wedding Budget -->
-
-      <div class="tool">
-
-        <h3>💍 Wedding Budget</h3>
-
-        <p>
-          Add your wedding expenses and calculate the total budget.
-        </p>
-
-        <a href="wedding.html">
-          Open Calculator
-        </a>
-
-      </div>
-
-
-      <!-- Mortgage Calculator -->
-
-      <div class="tool">
-
-        <h3>🏡 Mortgage Calculator</h3>
-
-        <p>
-          Estimate your monthly mortgage payment and total interest.
-        </p>
-
-        <a href="mortgage.html">
-          Open Calculator
-        </a>
-
-      </div>
-
 
     </section>
 
 
-    <div
-      id="noResult"
-      class="no-result"
-    >
-      No calculator found.
-    </div>
+    <!-- ABOUT NEEDLY -->
+
+    <section class="intro-section">
+
+      <h2>Why Use Needly?</h2>
+
+      <p>
+        Needly provides simple online calculators for everyday
+        financial planning and decision-making.
+      </p>
+
+      <p>
+        Whether you are planning a trip, buying a car, managing debt,
+        saving money, calculating mortgage payments, or planning a
+        wedding, Needly helps you get quick estimates without
+        complicated calculations.
+      </p>
+
+      <p>
+        All calculators are designed to be easy to use on both
+        desktop and mobile devices.
+      </p>
+
+    </section>
 
 
   </main>
 
 
+  <!-- FOOTER -->
+
   <footer>
 
-    <p>
-      © 2026 Needly. All rights reserved.
-    </p>
+    <h2>Needly</h2>
 
     <p>
+      Calculate smarter. Plan better. Move forward.
+    </p>
+
+
+    <div class="footer-links">
 
       <a href="about.html">
-        About Us
+        About
       </a>
-
-      |
 
       <a href="contact.html">
-        Contact Us
+        Contact
       </a>
-
-      |
 
       <a href="privacy.html">
-        Privacy Policy
+        Privacy
       </a>
-
-      |
 
       <a href="terms.html">
-        Terms & Conditions
+        Terms
       </a>
 
-    </p>
+    </div>
+
+
+    <div class="copyright">
+      © 2026 Needly. All rights reserved.
+    </div>
 
   </footer>
 
+
+  <!-- SEARCH SCRIPT -->
 
   <script>
 
     function searchTools() {
 
-      const searchBox =
-        document.getElementById("searchBox");
-
-      const searchText =
-        searchBox.value.toLowerCase().trim();
+      const search =
+        document
+          .getElementById("searchBox")
+          .value
+          .toLowerCase()
+          .trim();
 
       const tools =
         document.querySelectorAll(".tool");
@@ -413,7 +718,7 @@
       const noResult =
         document.getElementById("noResult");
 
-      let found = 0;
+      let found = false;
 
 
       tools.forEach(function(tool) {
@@ -421,12 +726,11 @@
         const text =
           tool.innerText.toLowerCase();
 
-
-        if (text.includes(searchText)) {
+        if (text.includes(search)) {
 
           tool.style.display = "";
 
-          found++;
+          found = true;
 
         } else {
 
@@ -437,7 +741,7 @@
       });
 
 
-      if (found === 0) {
+      if (search !== "" && !found) {
 
         noResult.style.display = "block";
 
@@ -453,8 +757,4 @@
 
 
 </body>
-
-</html>
-      
-        
-      
+  </html>
