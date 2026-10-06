@@ -1,231 +1,769 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <title>Savings Calculator - Calculate Your Savings Goal | Needly</title>
 
-  <title>Savings Calculator - Needly</title>
-<meta name="description"
-      content="Use Needly's free Savings Calculator to find how long it may take to reach your savings goal.">
+  <meta name="description" content="Use Needly's free Savings Calculator to estimate how long it may take to reach your savings goal based on your current savings and monthly savings.">
 
-<meta name="keywords"
-      content="savings calculator, savings goal calculator, money savings calculator, savings planner">
+  <meta name="keywords" content="savings calculator, savings goal calculator, savings planner, monthly savings calculator, money savings calculator">
+
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/savings.html">
+
   <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #172033;
+      background:
+        linear-gradient(135deg, #dcfce7 0%, #eff6ff 45%, #f5f3ff 100%);
+      line-height: 1.6;
     }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, #047857, #059669, #0284c7, #4f46e5);
+      color: white;
+      text-align: center;
+      padding: 60px 20px 85px;
+      box-shadow: 0 12px 35px rgba(5, 150, 105, 0.25);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .hero::before {
+      width: 240px;
+      height: 240px;
+      left: -90px;
+      top: -110px;
+    }
+
+    .hero::after {
+      width: 310px;
+      height: 310px;
+      right: -120px;
+      bottom: -160px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .money-icon {
+      font-size: 54px;
+      margin-bottom: 5px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 40px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      margin: 10px auto 0;
+      font-size: 18px;
+      max-width: 650px;
+      opacity: 0.94;
+    }
+
+    /* MAIN */
+
+    main {
+      max-width: 900px;
+      margin: -35px auto 50px;
+      padding: 0 18px;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* CALCULATOR */
 
     .calculator {
-      max-width: 500px;
-      margin: 30px auto;
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.97);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 15px 40px rgba(15,23,42,0.13);
+      border: 1px solid rgba(255,255,255,0.8);
+      margin-bottom: 28px;
     }
 
-    h1 {
+    .calculator-title {
       text-align: center;
+      margin-bottom: 28px;
     }
 
-    .home {
-      display: block;
-      text-align: center;
+    .calculator-title h2 {
+      margin: 0;
+      color: #047857;
+      font-size: 28px;
+    }
+
+    .calculator-title p {
+      color: #64748b;
+      margin: 7px 0 0;
+    }
+
+    /* INPUT */
+
+    .field {
       margin-bottom: 20px;
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: bold;
     }
 
     label {
       display: block;
-      margin-top: 15px;
-      font-weight: bold;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #334155;
     }
 
     input {
       width: 100%;
-      padding: 12px;
-      margin-top: 7px;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      padding: 15px;
+      border-radius: 12px;
+      border: 2px solid #cbd5e1;
+      background: #f8fafc;
+      color: #172033;
       font-size: 16px;
+      outline: none;
+      transition: 0.2s;
     }
 
-    button {
+    input:focus {
+      border-color: #059669;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(5,150,105,0.10);
+    }
+
+    /* BUTTON */
+
+    .calculate-btn {
       width: 100%;
-      margin-top: 20px;
-      padding: 14px;
+      padding: 16px;
       border: none;
-      border-radius: 8px;
-      background: #2563eb;
+      border-radius: 13px;
+      background:
+        linear-gradient(135deg, #059669, #0284c7, #4f46e5);
       color: white;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(5,150,105,0.25);
+      transition: 0.2s;
+    }
+
+    .calculate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(5,150,105,0.35);
+    }
+
+    .calculate-btn:active {
+      transform: translateY(0);
+    }
+
+    /* RESULT */
+
+    #result {
+      margin-top: 25px;
+      padding: 25px;
+      border-radius: 17px;
+      background:
+        linear-gradient(135deg, #ecfdf5, #eff6ff, #eef2ff);
+      border: 1px solid #a7f3d0;
+      display: none;
+    }
+
+    #result h2 {
+      margin-top: 0;
+      color: #047857;
+    }
+
+    #result p {
+      margin: 10px 0;
       font-size: 17px;
     }
 
-    #result {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background: #eef6ff;
+    #result strong {
+      color: #047857;
+      font-size: 18px;
+    }
+
+    /* INFO CARDS */
+
+    .info-card {
+      background: rgba(255,255,255,0.95);
+      padding: 28px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 25px rgba(15,23,42,0.07);
+    }
+
+    .info-card h2 {
+      margin-top: 0;
+      color: #047857;
+    }
+
+    .info-card h3 {
+      color: #4f46e5;
+      margin-bottom: 5px;
+    }
+
+    .formula {
+      background: #ecfdf5;
+      border-left: 5px solid #059669;
+      padding: 14px 16px;
+      margin: 12px 0;
       border-radius: 10px;
+      color: #065f46;
+      font-weight: 700;
+    }
+
+    /* HOME */
+
+    .home-link {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: white;
+      color: #047857;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 5px 18px rgba(15,23,42,0.08);
+    }
+
+    .home-link:hover {
+      color: #4f46e5;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .hero {
+        padding: 45px 15px 75px;
+      }
+
+      .hero h1 {
+        font-size: 29px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .money-icon {
+        font-size: 45px;
+      }
+
+      main {
+        margin-top: -25px;
+        padding: 0 12px;
+      }
+
+      .calculator,
+      .info-card {
+        padding: 21px;
+        border-radius: 17px;
+      }
+
+      .calculator-title h2 {
+        font-size: 23px;
+      }
+
     }
 
   </style>
-
 </head>
 
 <body>
 
-  <div class="calculator">
+  <!-- HERO -->
 
-    <h1>💰 Savings Calculator</h1>
+  <header class="hero">
 
-    <a class="home" href="index.html">
+    <div class="hero-content">
+
+      <div class="money-icon">
+        💰
+      </div>
+
+      <h1>
+        Savings Calculator
+      </h1>
+
+      <p>
+        Set your savings goal, track your progress,
+        and estimate how long it may take to reach your target.
+      </p>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+
+    <!-- CALCULATOR -->
+
+    <section class="calculator">
+
+      <div class="calculator-title">
+
+        <h2>
+          🎯 Plan Your Savings Goal
+        </h2>
+
+        <p>
+          Enter your savings details to estimate your timeline.
+        </p>
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="goal">
+          Savings Goal ($)
+        </label>
+
+        <input
+          type="number"
+          id="goal"
+          placeholder="e.g. 10000"
+          min="1"
+          step="0.01"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="current">
+          Current Savings ($)
+        </label>
+
+        <input
+          type="number"
+          id="current"
+          placeholder="e.g. 2000"
+          min="0"
+          step="0.01"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="monthly">
+          Monthly Savings ($)
+        </label>
+
+        <input
+          type="number"
+          id="monthly"
+          placeholder="e.g. 500"
+          min="0.01"
+          step="0.01"
+        >
+
+      </div>
+
+
+      <button
+        class="calculate-btn"
+        onclick="calculateSavings()"
+      >
+        💰 Calculate Savings Timeline
+      </button>
+
+
+      <div id="result"></div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+
+    <section class="info-card">
+
+      <h2>
+        How the Savings Calculator Works
+      </h2>
+
+      <p>
+        Needly's Savings Calculator estimates how long it may take
+        you to reach a savings goal based on your current savings
+        and the amount you plan to save every month.
+      </p>
+
+      <p>
+        Enter your target savings amount, your current savings,
+        and your expected monthly savings. The calculator will
+        estimate the remaining amount and the number of months
+        required to reach your goal.
+      </p>
+
+    </section>
+
+
+    <!-- FORMULA -->
+
+    <section class="info-card">
+
+      <h2>
+        Savings Calculator Formula
+      </h2>
+
+      <div class="formula">
+        Remaining Savings =
+        Savings Goal − Current Savings
+      </div>
+
+      <div class="formula">
+        Months Needed =
+        Remaining Savings ÷ Monthly Savings
+      </div>
+
+      <p>
+        The result is rounded up to the next complete month because
+        savings are normally added monthly.
+      </p>
+
+    </section>
+
+
+    <!-- EXAMPLE -->
+
+    <section class="info-card">
+
+      <h2>
+        Savings Calculator Example
+      </h2>
+
+      <p>
+        Suppose your savings goal is $10,000, you already have
+        $2,000 saved, and you can save $500 every month.
+      </p>
+
+      <div class="formula">
+        Remaining savings = $10,000 − $2,000 = $8,000
+      </div>
+
+      <div class="formula">
+        Months needed = $8,000 ÷ $500 = 16 months
+      </div>
+
+      <p>
+        That means you would need approximately
+        <strong>1 year and 4 months</strong> to reach your goal.
+      </p>
+
+    </section>
+
+
+    <!-- WHY USE -->
+
+    <section class="info-card">
+
+      <h2>
+        Why Use a Savings Goal Calculator?
+      </h2>
+
+      <p>
+        A savings calculator can help you create a realistic
+        savings timeline before making a major financial goal.
+      </p>
+
+      <p>
+        You can use it for an emergency fund, vacation,
+        new car, home down payment, education, business,
+        or any other savings target.
+      </p>
+
+    </section>
+
+
+    <!-- FAQ -->
+
+    <section class="info-card">
+
+      <h2>
+        Frequently Asked Questions
+      </h2>
+
+
+      <h3>
+        How does a savings calculator work?
+      </h3>
+
+      <p>
+        It subtracts your current savings from your savings goal
+        and estimates how many months are needed based on your
+        monthly savings amount.
+      </p>
+
+
+      <h3>
+        What if my current savings are already higher than my goal?
+      </h3>
+
+      <p>
+        The calculator will tell you that your savings goal has
+        already been reached.
+      </p>
+
+
+      <h3>
+        Does the calculator include investment returns?
+      </h3>
+
+      <p>
+        No. This calculator uses your current savings and monthly
+        savings only. It does not assume interest, investment
+        returns, taxes, or inflation.
+      </p>
+
+
+      <h3>
+        Is the Savings Calculator free?
+      </h3>
+
+      <p>
+        Yes. Needly's Savings Calculator is free to use.
+      </p>
+
+    </section>
+
+
+    <a
+      class="home-link"
+      href="index.html"
+    >
       ← Back to Home
     </a>
 
-    <label>Savings Goal ($)</label>
-
-    <input
-      type="number"
-      id="goal"
-      placeholder="Example: 10000"
-    >
-
-    <label>Current Savings ($)</label>
-
-    <input
-      type="number"
-      id="current"
-      placeholder="Example: 2000"
-    >
-
-    <label>Monthly Savings ($)</label>
-
-    <input
-      type="number"
-      id="monthly"
-      placeholder="Example: 500"
-    >
-
-    <button onclick="calculate()">
-      Calculate
-    </button>
-
-    <div id="result"></div>
-
-  </div>
+  </main>
 
 
   <script>
 
-    function calculate() {
+    function calculateSavings() {
 
-      let goal =
-        Number(document.getElementById("goal").value);
+      const goal =
+        Number(
+          document.getElementById("goal").value
+        );
 
-      let current =
-        Number(document.getElementById("current").value);
+      const current =
+        Number(
+          document.getElementById("current").value
+        );
 
-      let monthly =
-        Number(document.getElementById("monthly").value);
+      const monthly =
+        Number(
+          document.getElementById("monthly").value
+        );
 
-      let result =
+      const result =
         document.getElementById("result");
 
 
-      if (goal <= 0 || monthly <= 0 || current < 0) {
-
-        result.innerHTML =
-          "Please enter valid numbers.";
+      if (goal <= 0) {
 
         result.style.display = "block";
 
+        result.innerHTML =
+          "<p>Please enter a valid savings goal greater than $0.</p>";
+
         return;
+
+      }
+
+
+      if (current < 0) {
+
+        result.style.display = "block";
+
+        result.innerHTML =
+          "<p>Current savings cannot be negative.</p>";
+
+        return;
+
+      }
+
+
+      if (monthly <= 0) {
+
+        result.style.display = "block";
+
+        result.innerHTML =
+          "<p>Monthly savings must be greater than $0.</p>";
+
+        return;
+
       }
 
 
       if (current >= goal) {
 
-        result.innerHTML =
-          "🎉 You already reached your savings goal!";
-
         result.style.display = "block";
 
+        result.innerHTML = `
+
+          <h2>
+            🎉 Goal Already Reached!
+          </h2>
+
+          <p>
+            Your current savings of
+            <strong>$${current.toFixed(2)}</strong>
+            are already equal to or greater than your
+            savings goal of
+            <strong>$${goal.toFixed(2)}</strong>.
+          </p>
+
+        `;
+
         return;
+
       }
 
 
-      let remaining = goal - current;
-
-      let months = Math.ceil(
-        remaining / monthly
-      );
+      const remaining =
+        goal - current;
 
 
-      let years = Math.floor(months / 12);
+      const months =
+        Math.ceil(
+          remaining / monthly
+        );
 
-      let extraMonths = months % 12;
+
+      const years =
+        Math.floor(months / 12);
 
 
-      let time = "";
+      const remainingMonths =
+        months % 12;
+
+
+      let timeText = "";
 
 
       if (years > 0) {
 
-        time += years + " year";
-
-        if (years > 1) {
-          time += "s";
-        }
+        timeText +=
+          years +
+          (years === 1 ? " year" : " years");
 
       }
 
 
-      if (extraMonths > 0) {
+      if (remainingMonths > 0) {
 
-        if (years > 0) {
-          time += " ";
+        if (timeText !== "") {
+          timeText += " ";
         }
 
-        time += extraMonths + " month";
-
-        if (extraMonths > 1) {
-          time += "s";
-        }
+        timeText +=
+          remainingMonths +
+          (remainingMonths === 1
+            ? " month"
+            : " months");
 
       }
 
 
-      result.innerHTML =
-
-        "<h3>🎯 Your Result</h3>" +
-
-        "<p>Money remaining: <b>$" +
-        remaining.toFixed(2) +
-        "</b></p>" +
-
-        "<p>Time needed: <b>" +
-        time +
-        "</b></p>";
+      if (timeText === "") {
+        timeText = "Less than 1 month";
+      }
 
 
       result.style.display = "block";
+
+
+      result.innerHTML = `
+
+        <h2>
+          🎯 Your Savings Plan
+        </h2>
+
+        <p>
+          Savings goal:
+          <strong>
+            $${goal.toFixed(2)}
+          </strong>
+        </p>
+
+        <p>
+          Current savings:
+          <strong>
+            $${current.toFixed(2)}
+          </strong>
+        </p>
+
+        <p>
+          Remaining amount:
+          <strong>
+            $${remaining.toFixed(2)}
+          </strong>
+        </p>
+
+        <p>
+          Monthly savings:
+          <strong>
+            $${monthly.toFixed(2)}
+          </strong>
+        </p>
+
+        <p>
+          Estimated time:
+          <strong>
+            ${timeText}
+          </strong>
+        </p>
+
+        <p>
+          Total months:
+          <strong>
+            ${months}
+          </strong>
+        </p>
+
+      `;
 
     }
 
   </script>
 
 </body>
-
-</html>
+  </html>
