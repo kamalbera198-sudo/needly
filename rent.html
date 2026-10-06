@@ -1,270 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <title>Rent Affordability Calculator - How Much Rent Can I Afford? | Needly</title>
 
-  <title>Rent Affordability Calculator - Needly</title>
+  <meta name="description" content="Use Needly's free Rent Affordability Calculator to estimate how much monthly rent you may be able to afford based on your income and monthly debt payments.">
 
-  <style>
+  <meta name="keywords" content="rent affordability calculator, how much rent can I afford, rent budget calculator, affordable rent calculator, monthly rent calculator">
 
-    * {
-      box-sizing: border-box;
-    }
+  <meta name="robots" content="index, follow">
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      color: #111827;
-    }
-
-    header {
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 35px 20px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 34px;
-    }
-
-    header p {
-      color: #d1d5db;
-      margin-top: 10px;
-    }
-
-    .calculator {
-      max-width: 520px;
-      margin: 40px auto;
-      padding: 30px;
-      background: white;
-      border-radius: 18px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    }
-
-    .home {
-      display: inline-block;
-      margin-bottom: 20px;
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .home:hover {
-      text-decoration: underline;
-    }
-
-    label {
-      display: block;
-      margin-top: 18px;
-      font-weight: bold;
-    }
-
-    input {
-      width: 100%;
-      padding: 14px;
-      margin-top: 8px;
-      border: 1px solid #d1d5db;
-      border-radius: 9px;
-      font-size: 16px;
-      outline: none;
-    }
-
-    input:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
-    }
-
-    button {
-      width: 100%;
-      margin-top: 25px;
-      padding: 15px;
-      border: none;
-      border-radius: 9px;
-      background: #2563eb;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #1d4ed8;
-    }
-
-    #result {
-      display: none;
-      margin-top: 25px;
-      padding: 20px;
-      background: #eef6ff;
-      border-radius: 12px;
-      line-height: 1.7;
-    }
-
-    #result h3 {
-      margin-top: 0;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      color: #6b7280;
-    }
-
-    @media (max-width: 600px) {
-
-      .calculator {
-        margin: 25px 15px;
-        padding: 22px;
-      }
-
-      header h1 {
-        font-size: 28px;
-      }
-
-    }
-
-  </style>
-
+  <link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/rent.html">
 </head>
-
 
 <body>
 
-
   <header>
-
-    <h1>
-      🏠 Rent Affordability Calculator
-    </h1>
-
-    <p>
-      Estimate a recommended monthly rent budget.
-    </p>
-
+    <h1>Rent Affordability Calculator</h1>
+    <p>Estimate how much monthly rent you may be able to afford.</p>
   </header>
 
+  <main>
 
-  <main class="calculator">
+    <section>
+      <h2>Calculate Your Affordable Rent</h2>
 
+      <label for="income">Monthly Income ($)</label>
+      <input
+        type="number"
+        id="income"
+        placeholder="e.g. 5000"
+        min="0"
+        step="0.01"
+      >
 
-    <a
-      class="home"
-      href="index.html"
-    >
-      ← Back to Home
-    </a>
+      <br><br>
 
+      <label for="debt">Monthly Debt Payments ($)</label>
+      <input
+        type="number"
+        id="debt"
+        placeholder="e.g. 500"
+        min="0"
+        step="0.01"
+      >
 
-    <label>
-      Monthly Income ($)
-    </label>
+      <br><br>
 
-    <input
-      type="number"
-      id="income"
-      placeholder="5000"
-    >
+      <button onclick="calculateRent()">Calculate</button>
 
-
-    <label>
-      Monthly Debt Payments ($)
-    </label>
-
-    <input
-      type="number"
-      id="debt"
-      placeholder="500"
-    >
-
-
-    <button onclick="calculateRent()">
-      Calculate Rent Budget
-    </button>
+      <div id="result"></div>
+    </section>
 
 
-    <div id="result"></div>
+    <section>
+      <h2>How the Rent Affordability Calculator Works</h2>
 
+      <p>
+        Needly's Rent Affordability Calculator helps you estimate a
+        recommended monthly rent based on your monthly income.
+      </p>
+
+      <p>
+        The calculator uses 30% of your monthly income as a simple
+        starting estimate for recommended rent. It also shows your
+        income after monthly debt payments.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Rent Affordability Formula</h2>
+
+      <p>
+        <strong>
+          Recommended Monthly Rent = Monthly Income × 30%
+        </strong>
+      </p>
+
+      <p>
+        <strong>
+          Income After Debt = Monthly Income − Monthly Debt Payments
+        </strong>
+      </p>
+
+      <p>
+        This is a general budgeting estimate and not financial advice.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Rent Affordability Example</h2>
+
+      <p>
+        Suppose your monthly income is $5,000 and your monthly debt
+        payments are $500.
+      </p>
+
+      <p>
+        Recommended rent = $5,000 × 30% =
+        <strong>$1,500 per month</strong>
+      </p>
+
+      <p>
+        Income after debt payments = $5,000 − $500 =
+        <strong>$4,500</strong>
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Why Use a Rent Affordability Calculator?</h2>
+
+      <p>
+        Choosing an affordable rent can help you manage your monthly
+        budget and avoid taking on housing costs that are difficult to
+        maintain.
+      </p>
+
+      <p>
+        Before renting a home or apartment, you should also consider
+        utilities, transportation, groceries, insurance, savings,
+        emergency expenses, and other recurring costs.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>How much rent can I afford?</h3>
+      <p>
+        A common budgeting guideline is to keep rent around 30% of
+        monthly income, although the right amount depends on your
+        complete financial situation.
+      </p>
+
+      <h3>Does this calculator include debt payments?</h3>
+      <p>
+        Yes. You can enter your monthly debt payments to see how much
+        income remains after those payments.
+      </p>
+
+      <h3>Should I include utilities in my rent budget?</h3>
+      <p>
+        Yes. If utilities are not included in your rent, consider
+        electricity, water, internet, heating, and other housing costs
+        when planning your total monthly housing budget.
+      </p>
+
+      <h3>Is this Rent Affordability Calculator free?</h3>
+      <p>
+        Yes. Needly's Rent Affordability Calculator is free to use.
+      </p>
+    </section>
+
+
+    <br>
+
+    <a href="index.html">← Back to Home</a>
 
   </main>
 
 
-  <footer>
-
-    © 2026 Needly. All rights reserved.
-
-  </footer>
-
-
   <script>
-
     function calculateRent() {
 
-      const income =
-        Number(document.getElementById("income").value);
+      const income = Number(document.getElementById("income").value);
+      const debt = Number(document.getElementById("debt").value);
 
-      const debt =
-        Number(document.getElementById("debt").value);
+      const result = document.getElementById("result");
 
-      const result =
-        document.getElementById("result");
-
-
-      if (
-        income <= 0 ||
-        debt < 0 ||
-        debt >= income
-      ) {
-
+      if (income <= 0) {
         result.innerHTML =
-          "<b>Please enter valid numbers.</b>";
-
-        result.style.display = "block";
-
+          "<p>Please enter a valid monthly income.</p>";
         return;
-
       }
 
+      if (debt < 0) {
+        result.innerHTML =
+          "<p>Monthly debt payments cannot be negative.</p>";
+        return;
+      }
 
-      const recommendedRent =
-        income * 0.30;
+      if (debt >= income) {
+        result.innerHTML =
+          "<p>Monthly debt payments should be less than monthly income.</p>";
+        return;
+      }
 
+      const recommendedRent = income * 0.30;
+      const incomeAfterDebt = income - debt;
 
-      const incomeAfterDebt =
-        income - debt;
+      result.innerHTML = `
+        <h2>Estimated Rent Budget</h2>
+        <p>Recommended monthly rent:
+          <strong>$${recommendedRent.toFixed(2)}</strong>
+        </p>
 
-
-      result.innerHTML =
-
-        "<h3>🎯 Your Result</h3>" +
-
-        "<p>Recommended Monthly Rent: <b>$" +
-        recommendedRent.toFixed(2) +
-        "</b></p>" +
-
-        "<p>Income After Debt Payments: <b>$" +
-        incomeAfterDebt.toFixed(2) +
-        "</b></p>" +
-
-        "<p>Suggested Rent Limit: <b>$" +
-        recommendedRent.toFixed(2) +
-        " / month</b></p>";
-
-
-      result.style.display = "block";
-
+        <p>Income after debt payments:
+          <strong>$${incomeAfterDebt.toFixed(2)}</strong>
+        </p>
+      `;
     }
-
   </script>
 
-
 </body>
-
 </html>
