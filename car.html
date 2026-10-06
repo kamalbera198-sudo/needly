@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Car Affordability Calculator - Needly</title>
+
+  <style>
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+    }
+
+    .calculator {
+      max-width: 500px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .home {
+      display: block;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 7px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 17px;
+    }
+
+    #result {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: #eef6ff;
+      border-radius: 10px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="calculator">
+
+    <h1>🚗 Car Affordability Calculator</h1>
+
+    <a class="home" href="index.html">
+      ← Back to Home
+    </a>
+
+    <label>Monthly Income ($)</label>
+
+    <input
+      type="number"
+      id="income"
+      placeholder="Example: 5000"
+    >
+
+    <label>Monthly Expenses ($)</label>
+
+    <input
+      type="number"
+      id="expenses"
+      placeholder="Example: 2500"
+    >
+
+    <label>Down Payment ($)</label>
+
+    <input
+      type="number"
+      id="down"
+      placeholder="Example: 5000"
+    >
+
+    <button onclick="calculate()">
+      Calculate Car Budget
+    </button>
+
+    <div id="result"></div>
+
+  </div>
+
+
+  <script>
+
+    function calculate() {
+
+      let income =
+        Number(document.getElementById("income").value);
+
+      let expenses =
+        Number(document.getElementById("expenses").value);
+
+      let down =
+        Number(document.getElementById("down").value);
+
+      let result =
+        document.getElementById("result");
+
+
+      if (income <= 0 || expenses < 0 || down < 0) {
+
+        result.innerHTML =
+          "Please enter valid numbers.";
+
+        result.style.display = "block";
+
+        return;
+      }
+
+
+      if (expenses >= income) {
+
+        result.innerHTML =
+          "⚠️ Your expenses are too high compared with your income.";
+
+        result.style.display = "block";
+
+        return;
+      }
+
+
+      let available = income - expenses;
+
+      let monthlyCarBudget = available * 0.20;
+
+      let estimatedCarPrice =
+        (monthlyCarBudget * 60) + down;
+
+
+      result.innerHTML =
+
+        "<h3>🎯 Your Estimated Car Budget</h3>" +
+
+        "<p>Money available after expenses: <b>$" +
+        available.toFixed(2) +
+        "</b></p>" +
+
+        "<p>Suggested monthly car budget: <b>$" +
+        monthlyCarBudget.toFixed(2) +
+        "</b></p>" +
+
+        "<p>Estimated affordable car price: <b>$" +
+        estimatedCarPrice.toFixed(2) +
+        "</b></p>";
+
+
+      result.style.display = "block";
+
+    }
+
+  </script>
+
+</body>
+
+</html>

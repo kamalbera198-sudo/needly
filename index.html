@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Needly - Smart Calculators</title>
+
+  <meta name="description"
+        content="Needly offers simple and useful online calculators for savings, travel, car affordability, rent, debt, mortgage and more.">
+
+  <meta name="keywords"
+        content="online calculators, savings calculator, mortgage calculator, debt calculator, car affordability calculator, rent calculator, travel budget calculator, freelancer rate calculator">
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 42px;
+    }
+
+    header p {
+      margin-top: 12px;
+      font-size: 18px;
+      color: #d1d5db;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .intro h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      color: #6b7280;
+      font-size: 16px;
+    }
+
+    .search-box {
+      max-width: 600px;
+      margin: 0 auto 35px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .tool {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: 0.2s;
+    }
+
+    .tool:hover {
+      transform: translateY(-3px);
+    }
+
+    .tool h3 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .tool p {
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    .tool a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 7px;
+    }
+
+    .no-result {
+      display: none;
+      text-align: center;
+      margin-top: 25px;
+      color: #6b7280;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 30px 20px;
+      background: #111827;
+      color: white;
+      text-align: center;
+    }
+
+    footer a {
+      color: #dbeafe;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer p {
+      color: #9ca3af;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <header>
+
+    <h1>Needly</h1>
+
+    <p>
+      Calculate smarter. Plan better. Move forward.
+    </p>
+
+  </header>
+
+
+  <main class="container">
+
+
+    <section class="intro">
+
+      <h2>Smart Calculators</h2>
+
+      <p>
+        Simple online tools to help you make better everyday decisions.
+      </p>
+
+    </section>
+
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="searchBox"
+        placeholder="Search a calculator..."
+        onkeyup="searchTools()"
+      >
+
+    </div>
+
+
+    <section class="tools" id="tools">
+
+
+      <!-- Savings Calculator -->
+
+      <div class="tool">
+
+        <h3>💰 Savings Calculator</h3>
+
+        <p>
+          Find out how long it may take to reach your savings goal.
+        </p>
+
+        <a href="savings.html">
+          Open Calculator
+        </a>
+
+      </div>
+
+
+      <!-- Travel Budget -->
+
+      <div class="tool">
+
+        <h3>✈️ Travel Budget</h3>
+
+        <p>
+          Estimate your total travel budget based on days and costs.
+        </p>
+
+        <a href="travel.html">
+          Open Calculator
+        </a>
+
+      </div>
+
+
+      <!-- Car Affordability -->
+
+      <div class="tool">
+
+        <h3>🚗 Car Affordability</h3>
+
+        <p>
+          Estimate a car price based on your income and expenses.
+        </p>
+
+        <a href="car.html">
+          Open Calculator
+        </a>
+
+      </div>
+
+
+      <!-- Rent Affordability -->
+
+      <div class="tool">
+
+        <h3>🏠 Rent Affordability</h3>
+
+        <p>
+          Estimate a recommended monthly rent based on income.
+        </p>
+
+        <a href="rent.html">
+          Open Calculator
+        </a>
+
+      </div>
+
+
+      <!-- Debt Payoff -->
+
+      <div class="tool">
+
+        <h3>💳 Debt Payoff</h3>
+
+        <p>
+          Estimate how long it may take to pay off your debt.
+        </p>
+
+        <a href="debt.html">
+          Open Calculator
+        </a>
+
+      </div>
+
+
+      <!-- Freelancer Rate -->
+
+      <div class="tool">
+
+        <h3>💻 Freelancer Rate</h3>
+
+        <p>
+          Calculate the hourly rate needed to reach your income goal.
+        </p>
+
+        <a href="freelancer.html">
+          Open Calculator
+        </a>
+
+      </div>
+
+
+      <!-- Electricity Cost -->
+
+      <div class="tool">
+
+        <h3>⚡ Electricity Cost</h3>
+
+        <p>
+          Estimate your electricity cost from usage and price per kWh.
+        </p>
+
+        <a href="electricity.html">
+          Open Calculator
+        </a>
+
+      </div>
+
+
+      <!-- Wedding Budget -->
+
+      <div class="tool">
+
+        <h3>💍 Wedding Budget</h3>
+
+        <p>
+          Add your wedding expenses and calculate the total budget.
+        </p>
+
+        <a href="wedding.html">
+          Open Calculator
+        </a>
+
+      </div>
+
+
+      <!-- Mortgage Calculator -->
+
+      <div class="tool">
+
+        <h3>🏡 Mortgage Calculator</h3>
+
+        <p>
+          Estimate your monthly mortgage payment and total interest.
+        </p>
+
+        <a href="mortgage.html">
+          Open Calculator
+        </a>
+
+      </div>
+
+
+    </section>
+
+
+    <div
+      id="noResult"
+      class="no-result"
+    >
+      No calculator found.
+    </div>
+
+
+  </main>
+
+
+  <footer>
+
+    <p>
+      © 2026 Needly. All rights reserved.
+    </p>
+
+    <p>
+
+      <a href="about.html">
+        About Us
+      </a>
+
+      |
+
+      <a href="contact.html">
+        Contact Us
+      </a>
+
+      |
+
+      <a href="privacy.html">
+        Privacy Policy
+      </a>
+
+      |
+
+      <a href="terms.html">
+        Terms & Conditions
+      </a>
+
+    </p>
+
+  </footer>
+
+
+  <script>
+
+    function searchTools() {
+
+      const searchBox =
+        document.getElementById("searchBox");
+
+      const searchText =
+        searchBox.value.toLowerCase().trim();
+
+      const tools =
+        document.querySelectorAll(".tool");
+
+      const noResult =
+        document.getElementById("noResult");
+
+      let found = 0;
+
+
+      tools.forEach(function(tool) {
+
+        const text =
+          tool.innerText.toLowerCase();
+
+
+        if (text.includes(searchText)) {
+
+          tool.style.display = "";
+
+          found++;
+
+        } else {
+
+          tool.style.display = "none";
+
+        }
+
+      });
+
+
+      if (found === 0) {
+
+        noResult.style.display = "block";
+
+      } else {
+
+        noResult.style.display = "none";
+
+      }
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>
+      
+        
+      

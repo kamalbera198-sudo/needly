@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Rent Affordability Calculator - Needly</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+    }
+
+    header p {
+      color: #d1d5db;
+      margin-top: 10px;
+    }
+
+    .calculator {
+      max-width: 520px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .home {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .home:hover {
+      text-decoration: underline;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 15px;
+      border: none;
+      border-radius: 9px;
+      background: #2563eb;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    #result {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      background: #eef6ff;
+      border-radius: 12px;
+      line-height: 1.7;
+    }
+
+    #result h3 {
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 600px) {
+
+      .calculator {
+        margin: 25px 15px;
+        padding: 22px;
+      }
+
+      header h1 {
+        font-size: 28px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <header>
+
+    <h1>
+      🏠 Rent Affordability Calculator
+    </h1>
+
+    <p>
+      Estimate a recommended monthly rent budget.
+    </p>
+
+  </header>
+
+
+  <main class="calculator">
+
+
+    <a
+      class="home"
+      href="index.html"
+    >
+      ← Back to Home
+    </a>
+
+
+    <label>
+      Monthly Income ($)
+    </label>
+
+    <input
+      type="number"
+      id="income"
+      placeholder="5000"
+    >
+
+
+    <label>
+      Monthly Debt Payments ($)
+    </label>
+
+    <input
+      type="number"
+      id="debt"
+      placeholder="500"
+    >
+
+
+    <button onclick="calculateRent()">
+      Calculate Rent Budget
+    </button>
+
+
+    <div id="result"></div>
+
+
+  </main>
+
+
+  <footer>
+
+    © 2026 Needly. All rights reserved.
+
+  </footer>
+
+
+  <script>
+
+    function calculateRent() {
+
+      const income =
+        Number(document.getElementById("income").value);
+
+      const debt =
+        Number(document.getElementById("debt").value);
+
+      const result =
+        document.getElementById("result");
+
+
+      if (
+        income <= 0 ||
+        debt < 0 ||
+        debt >= income
+      ) {
+
+        result.innerHTML =
+          "<b>Please enter valid numbers.</b>";
+
+        result.style.display = "block";
+
+        return;
+
+      }
+
+
+      const recommendedRent =
+        income * 0.30;
+
+
+      const incomeAfterDebt =
+        income - debt;
+
+
+      result.innerHTML =
+
+        "<h3>🎯 Your Result</h3>" +
+
+        "<p>Recommended Monthly Rent: <b>$" +
+        recommendedRent.toFixed(2) +
+        "</b></p>" +
+
+        "<p>Income After Debt Payments: <b>$" +
+        incomeAfterDebt.toFixed(2) +
+        "</b></p>" +
+
+        "<p>Suggested Rent Limit: <b>$" +
+        recommendedRent.toFixed(2) +
+        " / month</b></p>";
+
+
+      result.style.display = "block";
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>

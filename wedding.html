@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wedding Budget Calculator - Needly</title>
+</head>
+
+<body>
+
+  <h1>💍 Wedding Budget Calculator</h1>
+
+  <a href="index.html">← Back to Home</a>
+
+  <hr>
+
+  <label>Venue Cost ($)</label><br>
+  <input type="number" id="venue" placeholder="5000">
+
+  <br><br>
+
+  <label>Food & Catering ($)</label><br>
+  <input type="number" id="food" placeholder="4000">
+
+  <br><br>
+
+  <label>Photography ($)</label><br>
+  <input type="number" id="photo" placeholder="2000">
+
+  <br><br>
+
+  <label>Decorations ($)</label><br>
+  <input type="number" id="decor" placeholder="1500">
+
+  <br><br>
+
+  <label>Other Costs ($)</label><br>
+  <input type="number" id="other" placeholder="1000">
+
+  <br><br>
+
+  <button onclick="calculateWedding()">
+    Calculate Budget
+  </button>
+
+  <div id="result"></div>
+
+
+  <script>
+
+    function calculateWedding() {
+
+      const venue =
+        Number(document.getElementById("venue").value);
+
+      const food =
+        Number(document.getElementById("food").value);
+
+      const photo =
+        Number(document.getElementById("photo").value);
+
+      const decor =
+        Number(document.getElementById("decor").value);
+
+      const other =
+        Number(document.getElementById("other").value);
+
+      const result =
+        document.getElementById("result");
+
+
+      if (
+        venue < 0 ||
+        food < 0 ||
+        photo < 0 ||
+        decor < 0 ||
+        other < 0
+      ) {
+
+        result.innerHTML =
+          "<b>Please enter valid numbers.</b>";
+
+        return;
+      }
+
+
+      const total =
+        venue +
+        food +
+        photo +
+        decor +
+        other;
+
+
+      result.innerHTML =
+        "<h3>🎯 Your Result</h3>" +
+        "<p>Total Wedding Budget: <b>$" +
+        total.toFixed(2) +
+        "</b></p>";
+
+    }
+
+  </script>
+
+</body>
+
+</html>      

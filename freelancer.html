@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Freelancer Rate Calculator - Needly</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+    }
+
+    header p {
+      color: #d1d5db;
+      margin-top: 10px;
+    }
+
+    .calculator {
+      max-width: 520px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .home {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .home:hover {
+      text-decoration: underline;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 15px;
+      border: none;
+      border-radius: 9px;
+      background: #2563eb;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    #result {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      background: #eef6ff;
+      border-radius: 12px;
+      line-height: 1.7;
+    }
+
+    #result h3 {
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 600px) {
+
+      .calculator {
+        margin: 25px 15px;
+        padding: 22px;
+      }
+
+      header h1 {
+        font-size: 28px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <header>
+
+    <h1>
+      💻 Freelancer Rate Calculator
+    </h1>
+
+    <p>
+      Calculate the hourly rate needed for your income goal.
+    </p>
+
+  </header>
+
+
+  <main class="calculator">
+
+
+    <a
+      class="home"
+      href="index.html"
+    >
+      ← Back to Home
+    </a>
+
+
+    <label>
+      Desired Annual Income ($)
+    </label>
+
+    <input
+      type="number"
+      id="income"
+      placeholder="60000"
+    >
+
+
+    <label>
+      Working Hours Per Week
+    </label>
+
+    <input
+      type="number"
+      id="hours"
+      placeholder="30"
+    >
+
+
+    <label>
+      Weeks Worked Per Year
+    </label>
+
+    <input
+      type="number"
+      id="weeks"
+      placeholder="48"
+    >
+
+
+    <button onclick="calculateRate()">
+      Calculate Hourly Rate
+    </button>
+
+
+    <div id="result"></div>
+
+
+  </main>
+
+
+  <footer>
+
+    © 2026 Needly. All rights reserved.
+
+  </footer>
+
+
+  <script>
+
+    function calculateRate() {
+
+      const income =
+        Number(document.getElementById("income").value);
+
+      const hours =
+        Number(document.getElementById("hours").value);
+
+      const weeks =
+        Number(document.getElementById("weeks").value);
+
+      const result =
+        document.getElementById("result");
+
+
+      if (
+        income <= 0 ||
+        hours <= 0 ||
+        weeks <= 0
+      ) {
+
+        result.innerHTML =
+          "<b>Please enter valid numbers.</b>";
+
+        result.style.display = "block";
+
+        return;
+
+      }
+
+
+      const totalHours =
+        hours * weeks;
+
+
+      const hourlyRate =
+        income / totalHours;
+
+
+      result.innerHTML =
+
+        "<h3>🎯 Your Result</h3>" +
+
+        "<p>Annual Income Goal: <b>$" +
+        income.toFixed(2) +
+        "</b></p>" +
+
+        "<p>Total Working Hours: <b>" +
+        totalHours.toLocaleString() +
+        " hours</b></p>" +
+
+        "<p>Recommended Hourly Rate: <b>$" +
+        hourlyRate.toFixed(2) +
+        "/hour</b></p>";
+
+
+      result.style.display = "block";
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>

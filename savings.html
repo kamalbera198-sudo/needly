@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Savings Calculator - Needly</title>
+<meta name="description"
+      content="Use Needly's free Savings Calculator to find how long it may take to reach your savings goal.">
+
+<meta name="keywords"
+      content="savings calculator, savings goal calculator, money savings calculator, savings planner">
+  <style>
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+    }
+
+    .calculator {
+      max-width: 500px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .home {
+      display: block;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 7px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 17px;
+    }
+
+    #result {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: #eef6ff;
+      border-radius: 10px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="calculator">
+
+    <h1>💰 Savings Calculator</h1>
+
+    <a class="home" href="index.html">
+      ← Back to Home
+    </a>
+
+    <label>Savings Goal ($)</label>
+
+    <input
+      type="number"
+      id="goal"
+      placeholder="Example: 10000"
+    >
+
+    <label>Current Savings ($)</label>
+
+    <input
+      type="number"
+      id="current"
+      placeholder="Example: 2000"
+    >
+
+    <label>Monthly Savings ($)</label>
+
+    <input
+      type="number"
+      id="monthly"
+      placeholder="Example: 500"
+    >
+
+    <button onclick="calculate()">
+      Calculate
+    </button>
+
+    <div id="result"></div>
+
+  </div>
+
+
+  <script>
+
+    function calculate() {
+
+      let goal =
+        Number(document.getElementById("goal").value);
+
+      let current =
+        Number(document.getElementById("current").value);
+
+      let monthly =
+        Number(document.getElementById("monthly").value);
+
+      let result =
+        document.getElementById("result");
+
+
+      if (goal <= 0 || monthly <= 0 || current < 0) {
+
+        result.innerHTML =
+          "Please enter valid numbers.";
+
+        result.style.display = "block";
+
+        return;
+      }
+
+
+      if (current >= goal) {
+
+        result.innerHTML =
+          "🎉 You already reached your savings goal!";
+
+        result.style.display = "block";
+
+        return;
+      }
+
+
+      let remaining = goal - current;
+
+      let months = Math.ceil(
+        remaining / monthly
+      );
+
+
+      let years = Math.floor(months / 12);
+
+      let extraMonths = months % 12;
+
+
+      let time = "";
+
+
+      if (years > 0) {
+
+        time += years + " year";
+
+        if (years > 1) {
+          time += "s";
+        }
+
+      }
+
+
+      if (extraMonths > 0) {
+
+        if (years > 0) {
+          time += " ";
+        }
+
+        time += extraMonths + " month";
+
+        if (extraMonths > 1) {
+          time += "s";
+        }
+
+      }
+
+
+      result.innerHTML =
+
+        "<h3>🎯 Your Result</h3>" +
+
+        "<p>Money remaining: <b>$" +
+        remaining.toFixed(2) +
+        "</b></p>" +
+
+        "<p>Time needed: <b>" +
+        time +
+        "</b></p>";
+
+
+      result.style.display = "block";
+
+    }
+
+  </script>
+
+</body>
+
+</html>
