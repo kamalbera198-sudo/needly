@@ -1,10 +1,662 @@
-<section class="info-section">
-  <h2>Related Needly Calculators</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
 
-  <div class="related-links">
-    <a href="rent.html">🏠 Rent Affordability Calculator</a>
-    <a href="car.html">🚗 Car Affordability Calculator</a>
-    <a href="debt.html">💳 Debt Payoff Calculator</a>
-    <a href="savings.html">💰 Savings Calculator</a>
-  </div>
-</section>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mortgage Calculator - Calculate Your Monthly Mortgage Payment | Needly</title>
+
+  <meta name="description" content="Use Needly's free Mortgage Calculator to estimate your monthly mortgage payment, total payments, and total interest based on your loan amount, interest rate, and loan term.">
+
+  <meta name="keywords" content="mortgage calculator, mortgage payment calculator, home loan calculator, monthly mortgage calculator, house payment calculator, mortgage interest calculator">
+
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/mortgage.html">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7ff;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #2563eb, #7c3aed, #ec4899);
+      color: white;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    .hero .icon {
+      font-size: 55px;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      max-width: 750px;
+      margin: auto;
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 900px;
+      margin: 35px auto;
+    }
+
+    .calculator {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+      border-top: 6px solid #7c3aed;
+    }
+
+    .calculator h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #4c1d95;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #7c3aed;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    button:hover {
+      opacity: 0.92;
+    }
+
+    #result {
+      margin-top: 25px;
+      padding: 22px;
+      border-radius: 15px;
+      background: #eef2ff;
+      border-left: 5px solid #7c3aed;
+      display: none;
+    }
+
+    #result h3 {
+      color: #4c1d95;
+      margin-bottom: 12px;
+    }
+
+    .result-item {
+      background: white;
+      margin: 10px 0;
+      padding: 13px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .section {
+      background: white;
+      margin-top: 25px;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+    }
+
+    .section h2 {
+      color: #4c1d95;
+      margin-bottom: 15px;
+    }
+
+    .section h3 {
+      color: #2563eb;
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+
+    .formula {
+      background: #f3e8ff;
+      padding: 18px;
+      border-radius: 12px;
+      margin: 15px 0;
+      overflow-x: auto;
+      font-weight: bold;
+    }
+
+    .example {
+      background: #ecfeff;
+      padding: 18px;
+      border-radius: 12px;
+      border-left: 5px solid #06b6d4;
+    }
+
+    .tips {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .tip {
+      padding: 18px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+    }
+
+    .related-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .related-links a {
+      text-decoration: none;
+      background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+      color: #3730a3;
+      padding: 15px;
+      border-radius: 12px;
+      font-weight: bold;
+      border: 1px solid #ddd6fe;
+      transition: 0.2s;
+    }
+
+    .related-links a:hover {
+      transform: translateY(-2px);
+      background: #ede9fe;
+    }
+
+    .faq {
+      margin-top: 15px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #f8fafc;
+    }
+
+    .faq strong {
+      display: block;
+      color: #4c1d95;
+      margin-bottom: 5px;
+    }
+
+    .back {
+      text-align: center;
+      margin: 25px 0;
+    }
+
+    .back a {
+      text-decoration: none;
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 40px;
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+    }
+
+    footer a {
+      color: #c4b5fd;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 650px) {
+      .hero h1 {
+        font-size: 29px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .calculator,
+      .section {
+        padding: 22px;
+      }
+
+      .tips,
+      .related-links {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <div class="icon">🏠</div>
+    <h1>Mortgage Calculator</h1>
+    <p>
+      Estimate your monthly mortgage payment, total payments,
+      and total interest before taking a home loan.
+    </p>
+  </header>
+
+  <main class="container">
+
+    <!-- CALCULATOR -->
+    <section class="calculator">
+
+      <h2>Calculate Your Mortgage</h2>
+
+      <div class="input-group">
+        <label for="loanAmount">Loan Amount ($)</label>
+        <input
+          type="number"
+          id="loanAmount"
+          placeholder="Example: 300000"
+          min="1"
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="interestRate">Annual Interest Rate (%)</label>
+        <input
+          type="number"
+          id="interestRate"
+          placeholder="Example: 6.5"
+          min="0"
+          step="0.01"
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="loanTerm">Loan Term (Years)</label>
+        <input
+          type="number"
+          id="loanTerm"
+          placeholder="Example: 30"
+          min="1"
+          max="50"
+        >
+      </div>
+
+      <button onclick="calculateMortgage()">
+        Calculate Mortgage
+      </button>
+
+      <div id="result"></div>
+
+    </section>
+
+
+    <!-- WHAT IS IT -->
+    <section class="section">
+
+      <h2>What Is a Mortgage Calculator?</h2>
+
+      <p>
+        A mortgage calculator helps you estimate how much you may need
+        to pay each month for a home loan. It uses your loan amount,
+        annual interest rate, and loan term to calculate an estimated
+        monthly principal and interest payment.
+      </p>
+
+      <p style="margin-top:12px;">
+        This can help you compare different loan amounts and terms
+        before making a home-buying decision.
+      </p>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+
+      <h2>How Does the Mortgage Calculator Work?</h2>
+
+      <p>The calculator uses three main inputs:</p>
+
+      <div class="tips">
+
+        <div class="tip">
+          <h3>💰 Loan Amount</h3>
+          <p>
+            The amount of money you plan to borrow for your home.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>📈 Interest Rate</h3>
+          <p>
+            The annual percentage rate charged on your mortgage.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>📅 Loan Term</h3>
+          <p>
+            The number of years you plan to take to repay the loan.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🏡 Monthly Payment</h3>
+          <p>
+            The estimated principal and interest payment each month.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FORMULA -->
+    <section class="section">
+
+      <h2>Mortgage Payment Formula</h2>
+
+      <p>
+        For a standard fixed-rate mortgage, the monthly payment can be
+        estimated using:
+      </p>
+
+      <div class="formula">
+        M = P × [r(1+r)ⁿ] ÷ [(1+r)ⁿ − 1]
+      </div>
+
+      <p>
+        Where:
+      </p>
+
+      <p>
+        <strong>M</strong> = monthly principal and interest payment<br>
+        <strong>P</strong> = loan principal<br>
+        <strong>r</strong> = monthly interest rate<br>
+        <strong>n</strong> = total number of monthly payments
+      </p>
+
+    </section>
+
+
+    <!-- EXAMPLE -->
+    <section class="section">
+
+      <h2>Mortgage Calculator Example</h2>
+
+      <div class="example">
+
+        <p><strong>Loan Amount:</strong> $300,000</p>
+        <p><strong>Interest Rate:</strong> 6.5%</p>
+        <p><strong>Loan Term:</strong> 30 years</p>
+
+        <br>
+
+        <p>
+          The calculator will estimate the monthly principal and
+          interest payment and show the estimated total amount paid
+          over the full loan term.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- TIPS -->
+    <section class="section">
+
+      <h2>Ways to Reduce Your Mortgage Cost</h2>
+
+      <div class="tips">
+
+        <div class="tip">
+          <h3>💵 Larger Down Payment</h3>
+          <p>
+            A larger down payment can reduce the amount you need to borrow.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>📉 Compare Interest Rates</h3>
+          <p>
+            Comparing lenders may help you find a more competitive rate.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>⏱️ Consider Loan Terms</h3>
+          <p>
+            A shorter term can reduce total interest but may increase
+            your monthly payment.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>📊 Check Your Budget</h3>
+          <p>
+            Make sure your estimated mortgage payment fits comfortably
+            within your overall housing budget.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- INTERNAL LINKS -->
+    <section class="section">
+
+      <h2>Related Needly Calculators</h2>
+
+      <p>
+        Explore these free calculators to plan your finances and
+        understand your overall budget.
+      </p>
+
+      <div class="related-links">
+
+        <a href="rent.html">
+          🏠 Rent Affordability Calculator
+        </a>
+
+        <a href="car.html">
+          🚗 Car Affordability Calculator
+        </a>
+
+        <a href="debt.html">
+          💳 Debt Payoff Calculator
+        </a>
+
+        <a href="savings.html">
+          💰 Savings Calculator
+        </a>
+
+        <a href="travel.html">
+          ✈️ Travel Budget Calculator
+        </a>
+
+        <a href="electricity.html">
+          ⚡ Electricity Cost Calculator
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="section">
+
+      <h2>Mortgage Calculator FAQ</h2>
+
+      <div class="faq">
+        <strong>What does a mortgage calculator calculate?</strong>
+        It estimates your monthly principal and interest payment,
+        total payments, and estimated interest.
+      </div>
+
+      <div class="faq">
+        <strong>Does this include property taxes and insurance?</strong>
+        No. This calculator estimates principal and interest only.
+        Property taxes, homeowners insurance, HOA fees, and other
+        costs may need to be added separately.
+      </div>
+
+      <div class="faq">
+        <strong>Is the result exact?</strong>
+        No. It is an estimate based on the information entered.
+        Actual mortgage payments can vary depending on the lender,
+        loan terms, fees, taxes, insurance, and other factors.
+      </div>
+
+      <div class="faq">
+        <strong>Can I compare different mortgage terms?</strong>
+        Yes. Try different interest rates, loan amounts, and terms
+        to compare estimated monthly payments and total interest.
+      </div>
+
+      <div class="faq">
+        <strong>Can I use this calculator for a home loan?</strong>
+        Yes. It can provide a general estimate for a standard
+        fixed-rate mortgage.
+
+      </div>
+
+    </section>
+
+
+    <div class="back">
+      <a href="index.html">← Back to Needly Calculators</a>
+    </div>
+
+  </main>
+
+
+  <footer>
+
+    <p>
+      © 2026 Needly. Calculate smarter. Plan better. Move forward.
+    </p>
+
+    <div style="margin-top:12px;">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    function calculateMortgage() {
+
+      const loanAmount =
+        parseFloat(document.getElementById("loanAmount").value);
+
+      const annualRate =
+        parseFloat(document.getElementById("interestRate").value);
+
+      const loanTerm =
+        parseFloat(document.getElementById("loanTerm").value);
+
+      const result =
+        document.getElementById("result");
+
+
+      // Validation
+
+      if (
+        isNaN(loanAmount) ||
+        loanAmount <= 0
+      ) {
+        result.style.display = "block";
+        result.innerHTML =
+          "<h3>Please enter a valid loan amount.</h3>";
+        return;
+      }
+
+
+      if (
+        isNaN(annualRate) ||
+        annualRate < 0
+      ) {
+        result.style.display = "block";
+        result.innerHTML =
+          "<h3>Please enter a valid interest rate.</h3>";
+        return;
+      }
+
+
+      if (
+        isNaN(loanTerm) ||
+        loanTerm <= 0 ||
+        loanTerm > 50
+      ) {
+        result.style.display = "block";
+        result.innerHTML =
+          "<h3>Please enter a valid loan term between 1 and 50 years.</h3>";
+        return;
+      }
+
+
+      const months = loanTerm * 12;
+
+      let monthlyPayment;
+
+
+      // Zero-interest calculation
+
+      if (annualRate === 0) {
+
+        monthlyPayment =
+          loanAmount / months;
+
+      }
+
+      // Standard mortgage formula
+
+      else {
+
+        const monthlyRate =
+          annualRate / 100 / 12
