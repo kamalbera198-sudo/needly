@@ -1,162 +1,904 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Cost Calculator - Estimate Your Energy Bill | Needly</title>
 
-  <title>Electricity Cost Calculator - Needly</title>
+    <meta name="description" content="Use Needly's free Electricity Cost Calculator to estimate the cost of running an appliance based on power usage, electricity rate, and hours of use.">
 
-  <style>
+    <meta name="keywords" content="electricity cost calculator, electricity bill calculator, energy cost calculator, appliance electricity cost calculator, kWh calculator, power consumption calculator">
 
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-    }
+    <meta name="robots" content="index, follow">
 
-    .calculator {
-      max-width: 500px;
-      margin: 30px auto;
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
+    <link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/electricity.html">
 
-    h1 {
-      text-align: center;
-    }
+    <style>
 
-    .home {
-      display: block;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f9ff;
+            color: #172033;
+            line-height: 1.65;
+        }
 
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-top: 7px;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
+        /* HERO */
 
-    button {
-      width: 100%;
-      margin-top: 20px;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #2563eb;
-      color: white;
-      font-size: 17px;
-    }
+        header {
+            background:
+                linear-gradient(
+                    135deg,
+                    #0369a1,
+                    #2563eb,
+                    #7c3aed,
+                    #0f766e
+                );
 
-    #result {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background: #eef6ff;
-      border-radius: 10px;
-    }
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
 
-  </style>
+        .hero-icon {
+            font-size: 55px;
+        }
 
+        header h1 {
+            font-size: 42px;
+            margin: 12px 0;
+        }
+
+        header p {
+            max-width: 760px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+
+        /* MAIN */
+
+        .container {
+            width: 92%;
+            max-width: 950px;
+            margin: 35px auto;
+        }
+
+
+        /* CALCULATOR */
+
+        .calculator {
+            background: white;
+            padding: 32px;
+            border-radius: 20px;
+
+            box-shadow:
+                0 12px 35px rgba(0,0,0,0.10);
+        }
+
+        .calculator h2 {
+            text-align: center;
+            color: #2563eb;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-top: 7px;
+
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow:
+                0 0 0 3px rgba(37,99,235,0.12);
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            margin-top: 25px;
+
+            border: none;
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0284c7,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.92;
+        }
+
+
+        /* RESULT */
+
+        #result {
+            margin-top: 25px;
+            padding: 22px;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eff6ff,
+                    #ecfeff,
+                    #f5f3ff
+                );
+
+            border-left: 6px solid #2563eb;
+
+            font-weight: bold;
+        }
+
+
+        /* CONTENT */
+
+        .section {
+            background: white;
+            margin-top: 25px;
+            padding: 30px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 7px 25px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-top: 0;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+        }
+
+
+        /* HIGHLIGHT */
+
+        .highlight {
+            padding: 20px;
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e0f2fe,
+                    #ede9fe,
+                    #ccfbf1
+                );
+
+            border-left: 5px solid #0ea5e9;
+        }
+
+
+        /* FORMULA */
+
+        .formula {
+            background: #111827;
+            color: white;
+
+            padding: 20px;
+            border-radius: 12px;
+
+            font-family: monospace;
+            overflow-x: auto;
+        }
+
+
+        /* STEPS */
+
+        .steps {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+
+            gap: 15px;
+        }
+
+        .step {
+            padding: 20px;
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eff6ff,
+                    #f5f3ff
+                );
+        }
+
+        .step strong {
+            color: #2563eb;
+        }
+
+
+        /* LINKS */
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* FAQ */
+
+        .faq {
+            margin-top: 20px;
+            padding: 18px;
+
+            border-radius: 12px;
+
+            background: #f8fafc;
+        }
+
+        .faq h3 {
+            margin-top: 0;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 50px;
+            padding: 35px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #1e3a8a,
+                    #312e81
+                );
+
+            color: white;
+            text-align: center;
+        }
+
+        footer a {
+            color: #bfdbfe;
+            margin: 0 8px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 45px 18px;
+            }
+
+            header h1 {
+                font-size: 31px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            .calculator,
+            .section {
+                padding: 21px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-  <div class="calculator">
 
-    <h1>⚡ Electricity Cost Calculator</h1>
+<!-- HERO -->
 
-    <a class="home" href="index.html">
-      ← Back to Home
-    </a>
+<header>
 
-    <label>Electricity Usage (kWh)</label>
+    <div class="hero-icon">⚡</div>
 
-    <input
-      type="number"
-      id="usage"
-      placeholder="Example: 300"
-    >
+    <h1>Electricity Cost Calculator</h1>
 
-    <label>Cost Per kWh ($)</label>
+    <p>
+        Estimate how much an appliance may cost to run
+        based on its power consumption, electricity rate,
+        and hours of use.
+    </p>
 
-    <input
-      type="number"
-      id="rate"
-      placeholder="Example: 0.15"
-      step="0.01"
-    >
-
-    <button onclick="calculate()">
-      Calculate Electricity Cost
-    </button>
-
-    <div id="result"></div>
-
-  </div>
+</header>
 
 
-  <script>
 
-    function calculate() {
+<div class="container">
 
-      let usage =
-        Number(document.getElementById("usage").value);
 
-      let rate =
-        Number(document.getElementById("rate").value);
+    <!-- CALCULATOR -->
 
-      let result =
+    <div class="calculator">
+
+        <h2>Calculate Your Electricity Cost</h2>
+
+
+        <label for="power">
+            Appliance Power (Watts)
+        </label>
+
+        <input
+            type="number"
+            id="power"
+            placeholder="Example: 1000"
+            min="0"
+            step="0.01"
+        >
+
+
+        <label for="hours">
+            Hours Used Per Day
+        </label>
+
+        <input
+            type="number"
+            id="hours"
+            placeholder="Example: 5"
+            min="0"
+            step="0.01"
+        >
+
+
+        <label for="rate">
+            Electricity Rate ($ per kWh)
+        </label>
+
+        <input
+            type="number"
+            id="rate"
+            placeholder="Example: 0.15"
+            min="0"
+            step="0.001"
+        >
+
+
+        <button onclick="calculateElectricity()">
+            Calculate Electricity Cost
+        </button>
+
+
+        <div id="result">
+
+            Enter your appliance information
+            and click the button to calculate.
+
+        </div>
+
+    </div>
+
+
+
+    <!-- INTRO -->
+
+    <div class="section">
+
+        <h2>What Is an Electricity Cost Calculator?</h2>
+
+        <p>
+            An Electricity Cost Calculator helps you estimate
+            how much an appliance may cost to operate based on
+            its power consumption, daily usage, and electricity
+            price.
+        </p>
+
+        <p>
+            You can use it to estimate the energy cost of common
+            household appliances such as air conditioners,
+            refrigerators, televisions, computers, heaters,
+            washing machines, fans, and lights.
+        </p>
+
+        <div class="highlight">
+
+            <strong>Important:</strong>
+
+            Your actual electricity bill may be different because
+            utility rates, taxes, fixed charges, time-of-use rates,
+            and other fees can vary by location and provider.
+
+        </div>
+
+    </div>
+
+
+
+    <!-- HOW IT WORKS -->
+
+    <div class="section">
+
+        <h2>How the Electricity Cost Calculator Works</h2>
+
+        <div class="steps">
+
+            <div class="step">
+
+                <strong>1. Enter appliance power</strong>
+
+                <p>
+                    Find the appliance's wattage on its label,
+                    manual, or manufacturer's specifications.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <strong>2. Enter daily usage</strong>
+
+                <p>
+                    Enter approximately how many hours the
+                    appliance runs each day.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <strong>3. Enter electricity rate</strong>
+
+                <p>
+                    Enter your electricity price per kilowatt-hour.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <strong>4. Calculate</strong>
+
+                <p>
+                    The calculator estimates daily and monthly
+                    electricity costs.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FORMULA -->
+
+    <div class="section">
+
+        <h2>Electricity Cost Formula</h2>
+
+        <p>
+            Electricity consumption can be estimated by converting
+            watts into kilowatts and multiplying by the number of
+            hours used.
+        </p>
+
+        <div class="formula">
+
+            Kilowatts = Watts ÷ 1000
+
+            <br><br>
+
+            Daily Energy =
+            Kilowatts × Hours Per Day
+
+            <br><br>
+
+            Daily Cost =
+            Daily Energy × Electricity Rate
+
+            <br><br>
+
+            Monthly Cost =
+            Daily Cost × 30
+
+        </div>
+
+    </div>
+
+
+
+    <!-- EXAMPLE -->
+
+    <div class="section">
+
+        <h2>Electricity Cost Calculator Example</h2>
+
+        <p>
+            Suppose a device uses
+            <strong>1,000 watts</strong> and runs for
+            <strong>5 hours per day</strong>.
+            If electricity costs
+            <strong>$0.15 per kWh</strong>, the estimated
+            energy usage and cost can be calculated as follows.
+        </p>
+
+        <div class="formula">
+
+            1,000 W ÷ 1,000 = 1 kW
+
+            <br><br>
+
+            1 kW × 5 hours = 5 kWh per day
+
+            <br><br>
+
+            5 × $0.15 = $0.75 per day
+
+            <br><br>
+
+            $0.75 × 30 = $22.50 per month
+
+        </div>
+
+        <p>
+            This is an estimate based on a constant usage pattern
+            and a rate of $0.15 per kWh.
+        </p>
+
+    </div>
+
+
+
+    <!-- SAVE ELECTRICITY -->
+
+    <div class="section">
+
+        <h2>Ways to Reduce Electricity Costs</h2>
+
+        <h3>1. Reduce unnecessary usage</h3>
+
+        <p>
+            Turn off lights and appliances when they are not needed.
+        </p>
+
+
+        <h3>2. Use energy-efficient appliances</h3>
+
+        <p>
+            More efficient appliances may consume less electricity
+            for the same type of work.
+        </p>
+
+
+        <h3>3. Check high-power appliances</h3>
+
+        <p>
+            Heating and cooling equipment can use significant
+            amounts of electricity. Tracking their usage can help
+            you understand where energy is being consumed.
+        </p>
+
+
+        <h3>4. Monitor your electricity rate</h3>
+
+        <p>
+            Your utility provider's current rate can have a large
+            effect on your estimated energy cost.
+        </p>
+
+    </div>
+
+
+
+    <!-- RELATED CALCULATORS -->
+
+    <div class="section">
+
+        <h2>Related Needly Calculators</h2>
+
+        <p>
+            You may also find these free financial and planning
+            calculators useful:
+        </p>
+
+        <ul>
+
+            <li>
+                <a href="savings.html">
+                    Savings Calculator
+                </a>
+            </li>
+
+            <li>
+                <a href="debt.html">
+                    Debt Payoff Calculator
+                </a>
+            </li>
+
+            <li>
+                <a href="rent.html">
+                    Rent Affordability Calculator
+                </a>
+            </li>
+
+            <li>
+                <a href="car.html">
+                    Car Affordability Calculator
+                </a>
+            </li>
+
+            <li>
+                <a href="travel.html">
+                    Travel Budget Calculator
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+
+
+    <!-- FAQ -->
+
+    <div class="section">
+
+        <h2>Frequently Asked Questions</h2>
+
+
+        <div class="faq">
+
+            <h3>
+                How do I calculate electricity cost?
+            </h3>
+
+            <p>
+                Convert appliance watts into kilowatts, multiply
+                by the hours used, and then multiply by your
+                electricity rate per kWh.
+            </p>
+
+        </div>
+
+
+        <div class="faq">
+
+            <h3>
+                What does kWh mean?
+            </h3>
+
+            <p>
+                kWh stands for kilowatt-hour. It is a common unit
+                used by electricity providers to measure energy
+                consumption.
+            </p>
+
+        </div>
+
+
+        <div class="faq">
+
+            <h3>
+                How much electricity does a 1,000-watt appliance use?
+            </h3>
+
+            <p>
+                A 1,000-watt appliance uses approximately 1 kWh
+                when it operates continuously for one hour.
+            </p>
+
+        </div>
+
+
+        <div class="faq">
+
+            <h3>
+                Can I calculate monthly electricity cost?
+            </h3>
+
+            <p>
+                Yes. This calculator estimates monthly cost by
+                multiplying the estimated daily cost by 30 days.
+            </p>
+
+        </div>
+
+
+        <div class="faq">
+
+            <h3>
+                Is the calculated electricity bill exact?
+            </h3>
+
+            <p>
+                No. It is an estimate. Your actual bill may include
+                taxes, fixed charges, utility fees, different rate
+                structures, and changes in appliance usage.
+            </p>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Needly.
+        Calculate smarter. Plan better. Move forward.
+    </p>
+
+    <p>
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a href="privacy.html">Privacy</a>
+
+        <a href="terms.html">Terms</a>
+
+    </p>
+
+</footer>
+
+
+
+<script>
+
+function calculateElectricity() {
+
+    const power =
+        parseFloat(
+            document.getElementById("power").value
+        );
+
+    const hours =
+        parseFloat(
+            document.getElementById("hours").value
+        );
+
+    const rate =
+        parseFloat(
+            document.getElementById("rate").value
+        );
+
+    const result =
         document.getElementById("result");
 
 
-      if (usage < 0 || rate < 0) {
+    /* VALIDATION */
+
+    if (isNaN(power) || power <= 0) {
 
         result.innerHTML =
-          "Please enter valid numbers.";
-
-        result.style.display = "block";
+            "⚠️ Please enter a valid appliance power.";
 
         return;
-      }
-
-
-      let monthlyCost = usage * rate;
-
-
-      result.innerHTML =
-
-        "<h3>🎯 Your Electricity Cost</h3>" +
-
-        "<p>Estimated monthly cost: <b>$" +
-        monthlyCost.toFixed(2) +
-        "</b></p>";
-
-
-      result.style.display = "block";
-
     }
 
-  </script>
+
+    if (isNaN(hours) || hours < 0 || hours > 24) {
+
+        result.innerHTML =
+            "⚠️ Please enter daily usage between 0 and 24 hours.";
+
+        return;
+    }
+
+
+    if (isNaN(rate) || rate < 0) {
+
+        result.innerHTML =
+            "⚠️ Please enter a valid electricity rate.";
+
+        return;
+    }
+
+
+    /* CALCULATION */
+
+    const kilowatts =
+        power / 1000;
+
+
+    const dailyEnergy =
+        kilowatts * hours;
+
+
+    const dailyCost =
+        dailyEnergy * rate;
+
+
+    const monthlyEnergy =
+        dailyEnergy * 30;
+
+
+    const monthlyCost =
+        dailyCost * 30;
+
+
+    const yearlyCost =
+        dailyCost * 365;
+
+
+    /* RESULT */
+
+    result.innerHTML = `
+
+        ⚡ <strong>Daily Energy:</strong>
+        ${dailyEnergy.toFixed(2)} kWh
+
+        <br><br>
+
+        💵 <strong>Daily Cost:</strong>
+        $${dailyCost.toFixed(2)}
+
+        <br><br>
+
+        📅 <strong>Monthly Energy:</strong>
+        ${monthlyEnergy.toFixed(2)} kWh
+
+        <br><br>
+
+        💰 <strong>Estimated Monthly Cost:</strong>
+        $${monthlyCost.toFixed(2)}
+
+        <br><br>
+
+        📊 <strong>Estimated Yearly Cost:</strong>
+        $${yearlyCost.toFixed(2)}
+
+    `;
+
+}
+
+</script>
+
 
 </body>
-
 </html>
