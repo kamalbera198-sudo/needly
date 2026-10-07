@@ -6,53 +6,16 @@
 
   <title>Travel Budget Calculator - Trip Cost & Vacation Budget Planner | Needly</title>
 
-  <meta name="description" content="Use Needly's free Travel Budget Calculator to estimate your total trip cost, daily travel budget and cost per person for domestic or international travel. Plan flights, hotels, food, transport, activities, visa, insurance and more.">
+  <meta name="description" content="Use Needly's free Travel Budget Calculator to estimate your total trip cost, cost per person and cost per day. Plan flights, hotels, food and optional travel expenses for domestic or international trips.">
 
-  <meta name="keywords" content="
-  travel budget calculator,
-  trip cost calculator,
-  travel calculator,
-  vacation budget calculator,
-  travel expense calculator,
-  trip budget planner,
-  vacation cost calculator,
-  travel cost calculator,
-  holiday budget calculator,
-  international travel calculator,
-  trip planner calculator,
-  how much does a trip cost,
-  how much money do I need to travel,
-  how to calculate a travel budget,
-  how much should I budget for a vacation,
-  international travel budget calculator,
-  international trip cost calculator,
-  travel budget calculator for USA,
-  vacation budget calculator for families,
-  travel cost calculator by country,
-  trip cost calculator by destination,
-  travel budget calculator for couples,
-  solo travel budget calculator,
-  family vacation cost calculator,
-  7 day trip budget calculator,
-  10 day vacation budget calculator,
-  14 day international trip budget calculator,
-  India to Japan travel cost,
-  India to Japan trip budget,
-  USA to Japan trip cost,
-  Japan trip budget calculator,
-  Europe trip budget calculator,
-  USA vacation budget calculator,
-  how much does a Japan trip cost,
-  how much does a Europe vacation cost,
-  hotel food transportation travel budget calculator
-  ">
+  <meta name="keywords" content="travel budget calculator, trip cost calculator, travel calculator, vacation budget calculator, travel expense calculator, trip budget planner, vacation cost calculator, travel cost calculator, international travel calculator, how much does a trip cost, international trip cost calculator, travel budget calculator for USA, solo travel budget calculator, family vacation cost calculator, 7 day trip budget calculator, Japan trip budget calculator, Europe trip budget calculator, USA vacation budget calculator, India to Japan travel cost">
 
   <meta name="robots" content="index, follow">
 
-  <link rel="canonical"
-        href="https://kamalbera198-sudo.github.io/needly/travel.html">
+  <link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/travel.html">
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -73,7 +36,7 @@
     }
 
     .hero-icon {
-      font-size: 60px;
+      font-size: 58px;
     }
 
     .hero h1 {
@@ -94,7 +57,7 @@
     }
 
     .calculator {
-      max-width: 800px;
+      max-width: 820px;
       margin: -15px auto 35px;
       background: white;
       padding: 30px;
@@ -145,7 +108,96 @@
       grid-column: 1 / -1;
     }
 
-    button {
+    .required-title {
+      grid-column: 1 / -1;
+      background: #eff6ff;
+      color: #1d4ed8;
+      padding: 12px 15px;
+      border-radius: 10px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .optional-title {
+      grid-column: 1 / -1;
+      background: #f5f3ff;
+      color: #6d28d9;
+      padding: 12px 15px;
+      border-radius: 10px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .optional-section {
+      display: none;
+      grid-column: 1 / -1;
+      background: #fafaff;
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .optional-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .optional-item {
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .check-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 10px;
+    }
+
+    .check-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+    }
+
+    .check-row label {
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .optional-input {
+      display: none;
+    }
+
+    .optional-input.active {
+      display: block;
+    }
+
+    .add-options {
+      width: 100%;
+      margin-top: 5px;
+      padding: 14px;
+      background: white;
+      color: #4f46e5;
+      border: 2px dashed #818cf8;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .add-options:hover {
+      background: #eef2ff;
+    }
+
+    .add-options.open {
+      background: #eef2ff;
+    }
+
+    .calculate-btn {
       width: 100%;
       padding: 16px;
       border: none;
@@ -158,7 +210,7 @@
       margin-top: 20px;
     }
 
-    button:hover {
+    .calculate-btn:hover {
       opacity: .92;
     }
 
@@ -355,6 +407,7 @@
     @media(max-width:800px) {
 
       .input-grid,
+      .optional-grid,
       .info-grid,
       .budget-types,
       .related,
@@ -370,6 +423,7 @@
         padding: 22px;
       }
     }
+
   </style>
 </head>
 
@@ -382,9 +436,9 @@
   <h1>Travel Budget Calculator</h1>
 
   <p>
-    Estimate your total trip cost, daily travel budget and cost per person
-    for domestic or international travel. Plan flights, hotels, food,
-    transportation, activities and other travel expenses in one place.
+    Estimate your total trip cost, cost per person and cost per day.
+    Plan domestic or international travel with flights, hotels, food
+    and optional travel expenses.
   </p>
 
 </header>
@@ -400,6 +454,13 @@
     <h2>Plan Your Trip Budget</h2>
 
     <div class="input-grid">
+
+
+      <!-- BASIC INFORMATION -->
+
+      <div class="required-title">
+        🌍 Trip Information
+      </div>
 
 
       <div class="input-group">
@@ -501,6 +562,7 @@
           value="1"
           min="1"
           max="100">
+
       </div>
 
 
@@ -520,10 +582,17 @@
       </div>
 
 
+      <!-- REQUIRED EXPENSES -->
+
+      <div class="required-title">
+        💵 Required Main Expenses
+      </div>
+
+
       <div class="input-group">
 
         <label for="flight">
-          ✈️ Flight / Main Travel Cost
+          ✈️ Flight / Main Transport
         </label>
 
         <input
@@ -565,107 +634,270 @@
       </div>
 
 
-      <div class="input-group">
+      <!-- OPTIONAL BUTTON -->
 
-        <label for="transport">
-          🚕 Local Transport Per Day
-        </label>
+      <div class="full">
 
-        <input
-          type="number"
-          id="transport"
-          placeholder="Example: 25"
-          min="0">
+        <button
+          type="button"
+          id="optionalButton"
+          class="add-options"
+          onclick="toggleOptionalExpenses()">
 
-      </div>
+          ＋ Add Optional Expenses
 
-
-      <div class="input-group">
-
-        <label for="activities">
-          🎟️ Activities / Attractions
-        </label>
-
-        <input
-          type="number"
-          id="activities"
-          placeholder="Example: 200"
-          min="0">
+        </button>
 
       </div>
 
 
-      <div class="input-group">
+      <!-- OPTIONAL EXPENSES -->
 
-        <label for="visa">
-          🛂 Visa / Entry Cost
-        </label>
+      <div
+        id="optionalSection"
+        class="optional-section">
 
-        <input
-          type="number"
-          id="visa"
-          placeholder="Example: 100"
-          min="0">
+        <div class="optional-title">
 
-      </div>
+          ⚙️ Optional Travel Expenses
 
+          <br>
 
-      <div class="input-group">
+          <small>
+            Select only the expenses you want to include.
+          </small>
 
-        <label for="insurance">
-          🛡️ Travel Insurance
-        </label>
-
-        <input
-          type="number"
-          id="insurance"
-          placeholder="Example: 80"
-          min="0">
-
-      </div>
+        </div>
 
 
-      <div class="input-group">
-
-        <label for="sim">
-          📱 SIM / Internet
-        </label>
-
-        <input
-          type="number"
-          id="sim"
-          placeholder="Example: 40"
-          min="0">
-
-      </div>
+        <div class="optional-grid">
 
 
-      <div class="input-group">
+          <!-- ACTIVITIES -->
 
-        <label for="shopping">
-          🛍️ Shopping
-        </label>
+          <div class="optional-item">
 
-        <input
-          type="number"
-          id="shopping"
-          placeholder="Example: 150"
-          min="0">
+            <div class="check-row">
 
-      </div>
+              <input
+                type="checkbox"
+                id="useActivities"
+                onchange="toggleOptionalInput('activities')">
+
+              <label for="useActivities">
+                🎟️ Activities & Attractions
+              </label>
+
+            </div>
+
+            <div
+              id="activitiesBox"
+              class="optional-input">
+
+              <input
+                type="number"
+                id="activities"
+                placeholder="Example: 200"
+                min="0">
+
+            </div>
+
+          </div>
 
 
-      <div class="input-group full">
+          <!-- LOCAL TRANSPORT -->
 
-        <label for="other">
-          💰 Other / Emergency Expenses
-        </label>
+          <div class="optional-item">
 
-        <input
-          type="number"
-          id="other"
-          placeholder="Example: 100"
-          min="0">
+            <div class="check-row">
+
+              <input
+                type="checkbox"
+                id="useTransport"
+                onchange="toggleOptionalInput('transport')">
+
+              <label for="useTransport">
+                🚕 Local Transport
+              </label>
+
+            </div>
+
+            <div
+              id="transportBox"
+              class="optional-input">
+
+              <input
+                type="number"
+                id="transport"
+                placeholder="Per day: 25"
+                min="0">
+
+            </div>
+
+          </div>
+
+
+          <!-- INSURANCE -->
+
+          <div class="optional-item">
+
+            <div class="check-row">
+
+              <input
+                type="checkbox"
+                id="useInsurance"
+                onchange="toggleOptionalInput('insurance')">
+
+              <label for="useInsurance">
+                🛡️ Travel Insurance
+              </label>
+
+            </div>
+
+            <div
+              id="insuranceBox"
+              class="optional-input">
+
+              <input
+                type="number"
+                id="insurance"
+                placeholder="Example: 80"
+                min="0">
+
+            </div>
+
+          </div>
+
+
+          <!-- SIM -->
+
+          <div class="optional-item">
+
+            <div class="check-row">
+
+              <input
+                type="checkbox"
+                id="useSim"
+                onchange="toggleOptionalInput('sim')">
+
+              <label for="useSim">
+                📱 SIM / Internet
+              </label>
+
+            </div>
+
+            <div
+              id="simBox"
+              class="optional-input">
+
+              <input
+                type="number"
+                id="sim"
+                placeholder="Example: 40"
+                min="0">
+
+            </div>
+
+          </div>
+
+
+          <!-- SHOPPING -->
+
+          <div class="optional-item">
+
+            <div class="check-row">
+
+              <input
+                type="checkbox"
+                id="useShopping"
+                onchange="toggleOptionalInput('shopping')">
+
+              <label for="useShopping">
+                🛍️ Shopping
+              </label>
+
+            </div>
+
+            <div
+              id="shoppingBox"
+              class="optional-input">
+
+              <input
+                type="number"
+                id="shopping"
+                placeholder="Example: 150"
+                min="0">
+
+            </div>
+
+          </div>
+
+
+          <!-- VISA -->
+
+          <div class="optional-item">
+
+            <div class="check-row">
+
+              <input
+                type="checkbox"
+                id="useVisa"
+                onchange="toggleOptionalInput('visa')">
+
+              <label for="useVisa">
+                🛂 Visa / Entry Cost
+              </label>
+
+            </div>
+
+            <div
+              id="visaBox"
+              class="optional-input">
+
+              <input
+                type="number"
+                id="visa"
+                placeholder="Example: 100"
+                min="0">
+
+            </div>
+
+          </div>
+
+
+          <!-- OTHER -->
+
+          <div class="optional-item">
+
+            <div class="check-row">
+
+              <input
+                type="checkbox"
+                id="useOther"
+                onchange="toggleOptionalInput('other')">
+
+              <label for="useOther">
+                💰 Other / Emergency
+              </label>
+
+            </div>
+
+            <div
+              id="otherBox"
+              class="optional-input">
+
+              <input
+                type="number"
+                id="other"
+                placeholder="Example: 100"
+                min="0">
+
+            </div>
+
+          </div>
+
+
+        </div>
 
       </div>
 
@@ -673,13 +905,20 @@
     </div>
 
 
-    <button onclick="calculateTrip()">
+    <button
+      type="button"
+      class="calculate-btn"
+      onclick="calculateTrip()">
+
       Calculate My Trip Budget
+
     </button>
 
 
     <div id="error" class="error"></div>
 
+
+    <!-- RESULT -->
 
     <div id="result" class="result">
 
@@ -687,1021 +926,47 @@
 
       <div id="total" class="total"></div>
 
+
       <div class="result-grid">
 
         <div class="result-card">
-          <strong>Per Person</strong>
+
+          <strong>Cost Per Person</strong>
+
           <span id="perPerson"></span>
+
         </div>
 
+
         <div class="result-card">
-          <strong>Per Day</strong>
+
+          <strong>Cost Per Day</strong>
+
           <span id="perDay"></span>
+
         </div>
 
+
         <div class="result-card">
+
+          <strong>Flight / Main Transport</strong>
+
+          <span id="flightResult"></span>
+
+        </div>
+
+
+        <div class="result-card">
+
           <strong>Accommodation</strong>
+
           <span id="hotelTotal"></span>
+
         </div>
 
+
         <div class="result-card">
+
           <strong>Food</strong>
-          <span id="foodTotal"></span>
-        </div>
 
-        <div class="result-card">
-          <strong>Local Transport</strong>
-          <span id="transportTotal"></span>
-        </div>
-
-        <div class="result-card">
-          <strong>Activities</strong>
-          <span id="activitiesTotal"></span>
-        </div>
-
-        <div class="result-card">
-          <strong>Visa & Insurance</strong>
-          <span id="visaInsurance"></span>
-        </div>
-
-        <div class="result-card">
-          <strong>Other Expenses</strong>
-          <span id="otherTotal"></span>
-        </div>
-
-      </div>
-
-
-      <h3>Suggested Budget Levels</h3>
-
-      <div class="budget-types">
-
-        <div class="budget-box">
-          <h4>🟢 Budget</h4>
-          <p id="budgetLevel"></p>
-        </div>
-
-        <div class="budget-box">
-          <h4>🟡 Mid-Range</h4>
-          <p id="midLevel"></p>
-        </div>
-
-        <div class="budget-box">
-          <h4>🔴 Luxury</h4>
-          <p id="luxuryLevel"></p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- INFO CARDS -->
-
-  <div class="info-grid">
-
-    <div class="info-card">
-
-      <h3>✈️ Plan Transportation</h3>
-
-      <p>
-        Include flights, trains, buses or other major transportation
-        costs when planning your trip budget.
-      </p>
-
-    </div>
-
-
-    <div class="info-card">
-
-      <h3>🏨 Estimate Accommodation</h3>
-
-      <p>
-        Enter your expected accommodation cost per night and the
-        calculator will estimate the total hotel cost.
-      </p>
-
-    </div>
-
-
-    <div class="info-card">
-
-      <h3>💰 Include Hidden Costs</h3>
-
-      <p>
-        Visa fees, travel insurance, internet, shopping and emergency
-        expenses can make a significant difference to your final budget.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <!-- CONTENT -->
-
-  <section>
-
-    <h2>What Is a Travel Budget Calculator?</h2>
-
-    <p>
-      A travel budget calculator helps you estimate how much money you
-      may need for a trip before you travel. Instead of thinking only
-      about flights and hotels, a complete travel budget should also
-      consider food, local transportation, activities, visa fees,
-      travel insurance, internet, shopping and unexpected expenses.
-    </p>
-
-    <p>
-      Needly's Travel Budget Calculator is designed for both domestic
-      and international trips. You can enter the number of travelers,
-      number of days and your expected travel expenses to get an
-      estimated total trip cost.
-    </p>
-
-    <p>
-      The calculator can be useful for solo travelers, couples,
-      families, students, business travelers and anyone planning a
-      vacation.
-    </p>
-
-  </section>
-
-
-  <section>
-
-    <h2>How to Calculate a Travel Budget</h2>
-
-    <p>
-      The easiest way to create a travel budget is to separate your
-      expenses into fixed costs and daily costs.
-    </p>
-
-    <p>
-      Fixed costs may include flights, visa fees, insurance and some
-      activities. Daily costs usually include accommodation, food and
-      local transportation.
-    </p>
-
-    <div class="formula">
-
-      Daily Trip Cost =
-      Accommodation + Food + Local Transport
-
-      <br><br>
-
-      Total Trip Cost =
-      Flight + Daily Costs + Activities +
-      Visa + Insurance + Other Expenses
-
-      <br><br>
-
-      Cost Per Person =
-      Total Trip Cost ÷ Number of Travelers
-
-    </div>
-
-  </section>
-
-
-  <section>
-
-    <h2>What Expenses Should Be Included in a Vacation Budget?</h2>
-
-    <h3>✈️ 1. Flights and Main Transportation</h3>
-
-    <p>
-      Your flight may be one of the largest expenses for an international
-      trip. If you are traveling by train, bus or car, include the
-      expected transportation cost instead.
-    </p>
-
-
-    <h3>🏨 2. Accommodation</h3>
-
-    <p>
-      Hotel, hostel, vacation rental or other accommodation costs should
-      be calculated based on the number of nights you expect to stay.
-    </p>
-
-
-    <h3>🍔 3. Food</h3>
-
-    <p>
-      Food costs can vary significantly depending on the destination
-      and travel style. Budget travelers may choose inexpensive local
-      restaurants while luxury travelers may spend considerably more.
-    </p>
-
-
-    <h3>🚕 4. Local Transportation</h3>
-
-    <p>
-      Consider buses, trains, taxis, rideshare services, rental cars,
-      fuel and other transportation costs inside your destination.
-    </p>
-
-
-    <h3>🎟️ 5. Activities and Attractions</h3>
-
-    <p>
-      Museums, theme parks, tours, guided experiences, attractions and
-      entertainment should be included in your trip budget.
-    </p>
-
-
-    <h3>🛂 6. Visa and Entry Fees</h3>
-
-    <p>
-      Some international destinations require visas or other entry
-      documents. Add these costs before finalizing your travel budget.
-    </p>
-
-
-    <h3>🛡️ 7. Travel Insurance</h3>
-
-    <p>
-      Travel insurance can be an important part of international travel
-      planning. Include your expected insurance cost in the budget.
-    </p>
-
-
-    <h3>📱 8. SIM and Internet</h3>
-
-    <p>
-      International SIM cards, eSIM plans and mobile data can create
-      additional travel expenses.
-    </p>
-
-
-    <h3>🛍️ 9. Shopping</h3>
-
-    <p>
-      If you plan to purchase gifts, souvenirs or clothing, set a
-      specific shopping budget rather than spending without a limit.
-    </p>
-
-
-    <h3>💰 10. Emergency Expenses</h3>
-
-    <p>
-      An emergency buffer can help you handle unexpected transportation,
-      medical, accommodation or other travel expenses.
-    </p>
-
-  </section>
-
-
-  <section>
-
-    <h2>How Much Does a 7-Day Trip Cost?</h2>
-
-    <p>
-      There is no universal price for a seven-day trip. The total cost
-      depends on the destination, number of travelers, accommodation,
-      transportation, food and activities.
-    </p>
-
-    <p>
-      A budget traveler may spend significantly less than a luxury
-      traveler visiting the same destination. That's why calculating
-      expenses individually is more useful than using one fixed global
-      travel price.
-    </p>
-
-    <p>
-      Enter your expected expenses in the calculator above to create a
-      personalized seven-day or longer trip budget.
-    </p>
-
-  </section>
-
-
-  <section>
-
-    <h2>International Travel Budget Planning</h2>
-
-    <p>
-      International travel often has additional costs compared with
-      domestic travel. Flights, passports, visas, travel insurance,
-      currency exchange, international SIM cards and airport
-      transportation may all need to be considered.
-    </p>
-
-    <p>
-      Before traveling internationally, create a complete list of
-      expected expenses and leave some money available for unexpected
-      costs.
-    </p>
-
-    <div class="tip">
-
-      <strong>Travel planning tip:</strong>
-
-      Do not plan your trip budget using only the hotel and flight
-      prices. Daily expenses and unexpected costs can significantly
-      change your final trip cost.
-
-    </div>
-
-  </section>
-
-
-  <section>
-
-    <h2>India to Japan Travel Budget Example</h2>
-
-    <p>
-      Suppose a traveler from India is planning a seven-day trip to
-      Japan. Their budget may include flights, hotels, Japanese food,
-      local trains, attractions, travel insurance, internet and
-      shopping.
-    </p>
-
-    <p>
-      The exact cost will depend on the travel dates, cities visited,
-      hotel type and travel style. Use the calculator above and enter
-      your own expected expenses instead of relying on a single fixed
-      estimate.
-    </p>
-
-    <p>
-      This makes the tool useful for searches such as
-      <strong>India to Japan travel cost</strong>,
-      <strong>India to Japan trip budget</strong> and
-      <strong>Japan trip budget calculator</strong>.
-    </p>
-
-  </section>
-
-
-  <section>
-
-    <h2>Budget vs Mid-Range vs Luxury Travel</h2>
-
-    <p>
-      Your travel style has a major effect on the total cost of a trip.
-    </p>
-
-    <h3>🟢 Budget Travel</h3>
-
-    <p>
-      Budget travel usually focuses on affordable accommodation,
-      public transportation, inexpensive food and free or low-cost
-      activities.
-    </p>
-
-    <h3>🟡 Mid-Range Travel</h3>
-
-    <p>
-      Mid-range travel generally balances comfort and cost with
-      comfortable hotels, a mix of local and paid activities and
-      moderate restaurant spending.
-    </p>
-
-    <h3>🔴 Luxury Travel</h3>
-
-    <p>
-      Luxury travel can include premium hotels, private transportation,
-      fine dining, premium experiences and higher spending on
-      entertainment.
-    </p>
-
-  </section>
-
-
-  <section>
-
-    <h2>How to Save Money on Travel</h2>
-
-    <ul>
-
-      <li>Compare flights before booking.</li>
-
-      <li>Travel during less expensive seasons when possible.</li>
-
-      <li>Compare hotels and vacation rentals.</li>
-
-      <li>Use public transportation when practical.</li>
-
-      <li>Eat some meals at affordable local restaurants.</li>
-
-      <li>Look for free attractions and activities.</li>
-
-      <li>Set a daily spending limit.</li>
-
-      <li>Keep an emergency fund separate from your daily budget.</li>
-
-      <li>Plan major activities before your trip.</li>
-
-      <li>Track expenses during the trip.</li>
-
-    </ul>
-
-  </section>
-
-
-  <!-- SEO KEYWORDS -->
-
-  <section>
-
-    <h2>Travel Calculator SEO Topics</h2>
-
-    <div class="keyword-box">
-
-      <span class="keyword">travel budget calculator</span>
-      <span class="keyword">trip cost calculator</span>
-      <span class="keyword">vacation budget calculator</span>
-      <span class="keyword">travel expense calculator</span>
-      <span class="keyword">international travel budget calculator</span>
-      <span class="keyword">trip budget planner</span>
-      <span class="keyword">travel cost calculator by country</span>
-      <span class="keyword">international trip cost calculator</span>
-      <span class="keyword">solo travel budget calculator</span>
-      <span class="keyword">family vacation cost calculator</span>
-      <span class="keyword">7 day trip budget calculator</span>
-      <span class="keyword">10 day vacation budget calculator</span>
-      <span class="keyword">Japan trip budget calculator</span>
-      <span class="keyword">Europe trip budget calculator</span>
-      <span class="keyword">USA vacation budget calculator</span>
-      <span class="keyword">India to Japan travel cost</span>
-      <span class="keyword">how much does a trip cost</span>
-      <span class="keyword">how much money do I need to travel</span>
-      <span class="keyword">how to calculate a travel budget</span>
-      <span class="keyword">how much should I budget for a vacation</span>
-
-    </div>
-
-  </section>
-
-
-  <!-- FAQ -->
-
-  <section>
-
-    <h2>Frequently Asked Questions About Travel Budgets</h2>
-
-
-    <div class="faq">
-
-      <h3>What is a travel budget calculator?</h3>
-
-      <p>
-        A travel budget calculator estimates the total cost of a trip
-        using expenses such as transportation, accommodation, food,
-        activities and other travel costs.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>How do I calculate my travel budget?</h3>
-
-      <p>
-        Add your transportation, accommodation, food, local transport,
-        activities, visa, insurance and other expected expenses.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>How much money do I need for a vacation?</h3>
-
-      <p>
-        The amount depends on your destination, trip length, number of
-        travelers and travel style. Use the calculator to create a
-        personalized estimate.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>Should flights be included in a travel budget?</h3>
-
-      <p>
-        Yes. If you are flying to your destination, include your
-        estimated flight cost in the transportation section.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>How much should I budget for food?</h3>
-
-      <p>
-        Food costs vary by destination and travel style. Enter your
-        estimated daily food spending in the calculator.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>Can I use this calculator for international travel?</h3>
-
-      <p>
-        Yes. The calculator is designed for both domestic and
-        international trip planning.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>Can I choose different currencies?</h3>
-
-      <p>
-        Yes. You can select a currency such as USD, EUR, GBP, INR, JPY,
-        CAD, AUD and several other currencies.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>Does the calculator automatically convert currencies?</h3>
-
-      <p>
-        No. The current version changes the currency used for your
-        budget calculations but does not provide live exchange-rate
-        conversion.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>Can I calculate the cost per traveler?</h3>
-
-      <p>
-        Yes. Enter the number of travelers and the calculator will
-        estimate the average total cost per person.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>Can I use it for a family vacation?</h3>
-
-      <p>
-        Yes. Enter the total number of travelers and your expected
-        family travel expenses.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>Can I calculate a Japan trip budget?</h3>
-
-      <p>
-        Yes. Select Japan as your destination and enter your expected
-        transportation, hotel, food, activities and other expenses.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>What is an emergency travel budget?</h3>
-
-      <p>
-        An emergency travel budget is money kept aside for unexpected
-        expenses such as transportation changes, medical needs or
-        additional accommodation.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>How much does a 7-day trip cost?</h3>
-
-      <p>
-        There is no fixed cost because destinations and travel styles
-        vary. Use your actual expected expenses to create a more useful
-        seven-day estimate.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>Can I use this calculator for solo travel?</h3>
-
-      <p>
-        Yes. Set the number of travelers to one and enter your expected
-        expenses.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>Can I use this calculator for couples?</h3>
-
-      <p>
-        Yes. Set the number of travelers to two and enter the expected
-        trip expenses.
-      </p>
-
-    </div>
-
-
-    <div class="faq">
-
-      <h3>What travel expenses should I not forget?</h3>
-
-      <p>
-        Commonly forgotten expenses include visa fees, insurance,
-        airport transportation, internet, tips, shopping and emergency
-        costs.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- INTERNAL LINKS -->
-
-  <section>
-
-    <h2>Related Needly Calculators</h2>
-
-    <p>
-      Planning a trip can affect other parts of your personal finances.
-      These Needly calculators can help you plan your money before and
-      after your trip.
-    </p>
-
-    <div class="related">
-
-      <a href="savings.html">
-        💰 Savings Calculator
-      </a>
-
-      <a href="debt.html">
-        💳 Debt Payoff
-      </a>
-
-      <a href="freelancer.html">
-        💻 Freelancer Rate
-      </a>
-
-      <a href="car.html">
-        🚗 Car Affordability
-      </a>
-
-      <a href="rent.html">
-        🏠 Rent Affordability
-      </a>
-
-      <a href="electricity.html">
-        ⚡ Electricity Cost
-      </a>
-
-      <a href="mortgage.html">
-        🏡 Mortgage Calculator
-      </a>
-
-      <a href="wedding.html">
-        💍 Wedding Budget
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <div class="back">
-
-    <a href="index.html">
-      ← Back to Needly Homepage
-    </a>
-
-  </div>
-
-</main>
-
-
-<footer>
-
-  <p>
-    © 2026 Needly.
-    Calculate smarter. Plan better. Move forward.
-  </p>
-
-  <p>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
-  </p>
-
-</footer>
-
-
-<script>
-
-  const currencySymbols = {
-
-    INR: "₹",
-    USD: "$",
-    EUR: "€",
-    GBP: "£",
-    CAD: "C$",
-    AUD: "A$",
-    NZD: "NZ$",
-    JPY: "¥",
-    CHF: "CHF ",
-    SGD: "S$",
-    AED: "AED ",
-    SAR: "SAR ",
-    ZAR: "R ",
-    BRL: "R$",
-    MXN: "MX$"
-
-  };
-
-
-  const destinationCurrency = {
-
-    Japan: "JPY",
-    "United States": "USD",
-    "United Kingdom": "GBP",
-    Europe: "EUR",
-    India: "INR",
-    Canada: "CAD",
-    Australia: "AUD",
-    "New Zealand": "NZD",
-    Switzerland: "CHF",
-    Singapore: "SGD",
-    UAE: "AED",
-    "Saudi Arabia": "SAR",
-    "South Africa": "ZAR",
-    Brazil: "BRL",
-    Mexico: "MXN"
-
-  };
-
-
-  const destinationSelect =
-    document.getElementById("destination");
-
-  const currencySelect =
-    document.getElementById("currency");
-
-
-  destinationSelect.addEventListener("change", function() {
-
-    const country =
-      this.options[this.selectedIndex].text
-      .replace(/^[^\w]+/, "")
-      .trim();
-
-    let code = null;
-
-    if (this.value) {
-      code = this.value;
-    }
-
-    if (code) {
-      currencySelect.value = code;
-    }
-
-  });
-
-
-  function getNumber(id) {
-
-    const value =
-      parseFloat(document.getElementById(id).value);
-
-    return isNaN(value) ? 0 : value;
-
-  }
-
-
-  function formatMoney(value, symbol) {
-
-    return symbol +
-      value.toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      });
-
-  }
-
-
-  function calculateTrip() {
-
-    const travelers =
-      getNumber("travelers");
-
-    const days =
-      getNumber("days");
-
-    const flight =
-      getNumber("flight");
-
-    const hotelPerNight =
-      getNumber("hotel");
-
-    const foodPerPersonDay =
-      getNumber("food");
-
-    const transportPerDay =
-      getNumber("transport");
-
-    const activities =
-      getNumber("activities");
-
-    const visa =
-      getNumber("visa");
-
-    const insurance =
-      getNumber("insurance");
-
-    const sim =
-      getNumber("sim");
-
-    const shopping =
-      getNumber("shopping");
-
-    const other =
-      getNumber("other");
-
-
-    const error =
-      document.getElementById("error");
-
-    const result =
-      document.getElementById("result");
-
-
-    error.textContent = "";
-
-    result.style.display = "none";
-
-
-    if (
-      travelers < 1 ||
-      travelers > 100 ||
-      days < 1 ||
-      days > 365 ||
-      flight < 0 ||
-      hotelPerNight < 0 ||
-      foodPerPersonDay < 0 ||
-      transportPerDay < 0 ||
-      activities < 0 ||
-      visa < 0 ||
-      insurance < 0 ||
-      sim < 0 ||
-      shopping < 0 ||
-      other < 0
-    ) {
-
-      error.textContent =
-        "Please enter valid values in all fields.";
-
-      return;
-
-    }
-
-
-    const currency =
-      currencySelect.value;
-
-    const symbol =
-      currencySymbols[currency];
-
-
-    const hotelTotal =
-      hotelPerNight * days;
-
-    const foodTotal =
-      foodPerPersonDay *
-      travelers *
-      days;
-
-    const transportTotal =
-      transportPerDay *
-      days;
-
-    const visaInsurance =
-      visa + insurance;
-
-    const otherTotal =
-      sim + shopping + other;
-
-
-    const total =
-      flight +
-      hotelTotal +
-      foodTotal +
-      transportTotal +
-      activities +
-      visaInsurance +
-      otherTotal;
-
-
-    const perPerson =
-      total / travelers;
-
-    const perDay =
-      total / days;
-
-
-    document.getElementById("total").textContent =
-      formatMoney(total, symbol);
-
-
-    document.getElementById("perPerson").textContent =
-      formatMoney(perPerson, symbol);
-
-
-    document.getElementById("perDay").textContent =
-      formatMoney(perDay, symbol);
-
-
-    document.getElementById("hotelTotal").textContent =
-      formatMoney(hotelTotal, symbol);
-
-
-    document.getElementById("foodTotal").textContent =
-      formatMoney(foodTotal, symbol);
-
-
-    document.getElementById("transportTotal").textContent =
-      formatMoney(transportTotal, symbol);
-
-
-    document.getElementById("activitiesTotal").textContent =
-      formatMoney(activities, symbol);
-
-
-    document.getElementById("visaInsurance").textContent =
-      formatMoney(visaInsurance, symbol);
-
-
-    document.getElementById("otherTotal").textContent =
-      formatMoney(otherTotal, symbol);
-
-
-    /*
-      These are planning ranges, not market prices.
-      They are based on the user's calculated trip budget.
-    */
-
-    const budget =
-      total * 0.75;
-
-    const mid =
-      total;
-
-    const luxury =
-      total * 1.50;
-
-
-    document.getElementById("budgetLevel").textContent =
-      formatMoney(budget, symbol);
-
-
-    document.getElementById("midLevel").textContent =
-      formatMoney(mid, symbol);
-
-
-    document.getElementById("luxuryLevel").textContent =
-      formatMoney(luxury, symbol);
-
-
-    result.style.display = "block";
-
-  }
-
-</script>
-
-</body>
-</html>
+          <span
