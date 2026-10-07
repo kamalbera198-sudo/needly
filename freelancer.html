@@ -1,17 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <title>Freelancer Rate Calculator - Calculate Your Freelance Hourly Rate | Needly</title>
 
-  <title>Freelancer Rate Calculator - Needly</title>
+  <meta name="description" content="Use Needly's free Freelancer Rate Calculator to calculate how much to charge per hour as a freelancer based on your target income, working hours, business expenses, and non-billable time.">
+
+  <meta name="keywords" content="
+  freelancer rate calculator,
+  freelance hourly rate calculator,
+  freelance pricing calculator,
+  freelancer income calculator,
+  freelance rate calculator USA,
+  freelance hourly rate calculator USA,
+  self employed hourly rate calculator,
+  how much should I charge as a freelancer,
+  how to calculate freelance hourly rate,
+  how much to charge per hour as a freelancer,
+  freelance rate calculator for beginners,
+  freelance hourly rate for beginners,
+  freelance hourly rate based on salary,
+  freelance project pricing calculator,
+  how to set freelance rates,
+  how to calculate freelance pricing,
+  how much should a freelancer charge per hour,
+  freelance income calculator for self employed,
+  freelance pricing calculator for beginners,
+  calculate freelance hourly rate from annual salary,
+  how to price freelance services,
+  freelance consulting rate calculator,
+  freelance web developer hourly rate calculator,
+  freelance designer rate calculator,
+  freelance writer rate calculator,
+  freelance developer rate calculator,
+  freelance consultant hourly rate calculator,
+  freelance business rate calculator,
+  freelance contractor rate calculator,
+  self employed pricing calculator,
+  independent contractor hourly rate calculator,
+  freelancer salary calculator,
+  freelance hourly pay calculator,
+  freelance earnings calculator
+  ">
+
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical"
+    href="https://kamalbera198-sudo.github.io/needly/freelancer.html">
 
   <style>
-
     * {
       box-sizing: border-box;
     }
@@ -20,75 +59,83 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f5f7fb;
-      color: #111827;
+      color: #172033;
+      line-height: 1.7;
     }
 
-    header {
-      background: #111827;
+    .hero {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
       color: white;
       text-align: center;
-      padding: 35px 20px;
+      padding: 60px 20px;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 34px;
+    .hero-icon {
+      font-size: 58px;
     }
 
-    header p {
-      color: #d1d5db;
-      margin-top: 10px;
+    .hero h1 {
+      margin: 10px 0;
+      font-size: 40px;
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 35px auto;
+      padding: 0 18px;
     }
 
     .calculator {
-      max-width: 520px;
-      margin: 40px auto;
-      padding: 30px;
+      max-width: 720px;
+      margin: -15px auto 35px;
       background: white;
-      border-radius: 18px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(0,0,0,.10);
     }
 
-    .home {
-      display: inline-block;
-      margin-bottom: 20px;
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: bold;
+    .calculator h2 {
+      text-align: center;
+      color: #4f46e5;
+      margin-top: 0;
     }
 
-    .home:hover {
-      text-decoration: underline;
+    .input-group {
+      margin-bottom: 18px;
     }
 
     label {
       display: block;
-      margin-top: 18px;
       font-weight: bold;
+      margin-bottom: 7px;
     }
 
     input {
       width: 100%;
       padding: 14px;
-      margin-top: 8px;
-      border: 1px solid #d1d5db;
-      border-radius: 9px;
+      border: 1px solid #d7dbea;
+      border-radius: 10px;
       font-size: 16px;
-      outline: none;
     }
 
     input:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99,102,241,.12);
     }
 
     button {
       width: 100%;
-      margin-top: 25px;
       padding: 15px;
       border: none;
-      border-radius: 9px;
-      background: #2563eb;
+      border-radius: 12px;
+      background: linear-gradient(135deg,#4f46e5,#9333ea);
       color: white;
       font-size: 17px;
       font-weight: bold;
@@ -96,189 +143,828 @@
     }
 
     button:hover {
-      background: #1d4ed8;
+      opacity: .92;
     }
 
-    #result {
+    .error {
+      color: #dc2626;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    .result {
       display: none;
       margin-top: 25px;
-      padding: 20px;
-      background: #eef6ff;
+      padding: 23px;
+      border-left: 5px solid #6366f1;
+      background: linear-gradient(135deg,#eef2ff,#faf5ff);
       border-radius: 12px;
-      line-height: 1.7;
     }
 
-    #result h3 {
+    .result h3 {
+      margin-top: 0;
+      color: #4f46e5;
+    }
+
+    .rate {
+      font-size: 36px;
+      font-weight: bold;
+      color: #7c3aed;
+      margin: 10px 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+      margin: 30px 0;
+    }
+
+    .info-card {
+      background: white;
+      padding: 22px;
+      border-radius: 16px;
+      box-shadow: 0 7px 22px rgba(0,0,0,.07);
+    }
+
+    .info-card h3 {
+      color: #4f46e5;
       margin-top: 0;
     }
 
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      color: #6b7280;
+    section {
+      background: white;
+      padding: 28px;
+      border-radius: 16px;
+      margin-bottom: 25px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.05);
     }
 
-    @media (max-width: 600px) {
+    section h2 {
+      color: #4f46e5;
+      margin-top: 0;
+    }
+
+    section h3 {
+      color: #7c3aed;
+    }
+
+    .formula {
+      background: #f3f4ff;
+      padding: 18px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      overflow-x: auto;
+    }
+
+    .example {
+      background: #fdf2f8;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .keyword-box {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .keyword {
+      display: inline-block;
+      background: #ede9fe;
+      color: #4f46e5;
+      padding: 7px 10px;
+      margin: 5px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    .related {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 12px;
+    }
+
+    .related a {
+      text-decoration: none;
+      background: #f5f3ff;
+      color: #4f46e5;
+      padding: 13px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .faq {
+      margin-bottom: 22px;
+    }
+
+    .back {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .back a {
+      color: #4f46e5;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+    }
+
+    footer a {
+      color: #c7d2fe;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    @media(max-width:800px) {
+      .info-grid,
+      .related {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+      }
 
       .calculator {
-        margin: 25px 15px;
         padding: 22px;
       }
-
-      header h1 {
-        font-size: 28px;
-      }
-
     }
-
   </style>
-
 </head>
-
 
 <body>
 
+<header class="hero">
 
-  <header>
+  <div class="hero-icon">💻</div>
 
-    <h1>
-      💻 Freelancer Rate Calculator
-    </h1>
+  <h1>Freelancer Rate Calculator</h1>
 
-    <p>
-      Calculate the hourly rate needed for your income goal.
-    </p>
+  <p>
+    Calculate your freelance hourly rate and find out how much you should
+    charge per hour based on your target income, working hours,
+    business expenses, and non-billable time.
+  </p>
 
-  </header>
+</header>
 
+<main class="container">
 
-  <main class="calculator">
+  <div class="calculator">
 
+    <h2>Freelance Hourly Rate Calculator</h2>
 
-    <a
-      class="home"
-      href="index.html"
-    >
-      ← Back to Home
-    </a>
+    <div class="input-group">
+      <label for="income">
+        Target Annual Income ($)
+      </label>
 
+      <input
+        type="number"
+        id="income"
+        placeholder="Example: 60000"
+        min="1">
+    </div>
 
-    <label>
-      Desired Annual Income ($)
-    </label>
+    <div class="input-group">
+      <label for="hours">
+        Working Hours Per Week
+      </label>
 
-    <input
-      type="number"
-      id="income"
-      placeholder="60000"
-    >
+      <input
+        type="number"
+        id="hours"
+        placeholder="Example: 40"
+        min="1"
+        max="168">
+    </div>
 
+    <div class="input-group">
+      <label for="weeks">
+        Working Weeks Per Year
+      </label>
 
-    <label>
-      Working Hours Per Week
-    </label>
+      <input
+        type="number"
+        id="weeks"
+        placeholder="Example: 48"
+        min="1"
+        max="52">
+    </div>
 
-    <input
-      type="number"
-      id="hours"
-      placeholder="30"
-    >
+    <div class="input-group">
+      <label for="expenses">
+        Annual Business Expenses ($)
+      </label>
 
+      <input
+        type="number"
+        id="expenses"
+        placeholder="Example: 5000"
+        min="0">
+    </div>
 
-    <label>
-      Weeks Worked Per Year
-    </label>
+    <div class="input-group">
+      <label for="unpaid">
+        Non-Billable Time (%)
+      </label>
 
-    <input
-      type="number"
-      id="weeks"
-      placeholder="48"
-    >
-
+      <input
+        type="number"
+        id="unpaid"
+        placeholder="Example: 20"
+        min="0"
+        max="90">
+    </div>
 
     <button onclick="calculateRate()">
-      Calculate Hourly Rate
+      Calculate My Freelance Rate
     </button>
 
+    <div id="error" class="error"></div>
 
-    <div id="result"></div>
+    <div id="result" class="result">
 
+      <h3>Your Estimated Freelance Hourly Rate</h3>
 
-  </main>
+      <div id="hourlyRate" class="rate"></div>
 
+      <p id="billableHours"></p>
 
-  <footer>
+      <p id="annualRevenue"></p>
 
-    © 2026 Needly. All rights reserved.
+      <p id="totalNeeded"></p>
 
-  </footer>
+    </div>
 
-
-  <script>
-
-    function calculateRate() {
-
-      const income =
-        Number(document.getElementById("income").value);
-
-      const hours =
-        Number(document.getElementById("hours").value);
-
-      const weeks =
-        Number(document.getElementById("weeks").value);
-
-      const result =
-        document.getElementById("result");
+  </div>
 
 
-      if (
-        income <= 0 ||
-        hours <= 0 ||
-        weeks <= 0
-      ) {
+  <div class="info-grid">
 
-        result.innerHTML =
-          "<b>Please enter valid numbers.</b>";
+    <div class="info-card">
+      <h3>💰 Income Goal</h3>
 
-        result.style.display = "block";
+      <p>
+        Enter the annual income you want to earn from your freelance
+        business.
+      </p>
+    </div>
 
-        return;
+    <div class="info-card">
+      <h3>⏰ Billable Hours</h3>
 
-      }
+      <p>
+        Account for the time spent on proposals, meetings, marketing,
+        administration, and other non-billable work.
+      </p>
+    </div>
 
+    <div class="info-card">
+      <h3>📈 Business Expenses</h3>
 
-      const totalHours =
-        hours * weeks;
+      <p>
+        Include software, equipment, advertising, insurance and other
+        freelance business expenses.
+      </p>
+    </div>
 
-
-      const hourlyRate =
-        income / totalHours;
-
-
-      result.innerHTML =
-
-        "<h3>🎯 Your Result</h3>" +
-
-        "<p>Annual Income Goal: <b>$" +
-        income.toFixed(2) +
-        "</b></p>" +
-
-        "<p>Total Working Hours: <b>" +
-        totalHours.toLocaleString() +
-        " hours</b></p>" +
-
-        "<p>Recommended Hourly Rate: <b>$" +
-        hourlyRate.toFixed(2) +
-        "/hour</b></p>";
+  </div>
 
 
-      result.style.display = "block";
+  <section>
 
-    }
+    <h2>What Is a Freelancer Rate Calculator?</h2>
 
-  </script>
+    <p>
+      A Freelancer Rate Calculator helps independent professionals
+      determine a sustainable hourly rate for their services.
+    </p>
+
+    <p>
+      If you are wondering
+      <strong>how much should I charge as a freelancer</strong>,
+      this calculator can help you estimate a starting rate based on
+      your income goal, working schedule, business expenses and
+      non-billable hours.
+    </p>
+
+    <p>
+      It can be useful for freelance writers, designers, developers,
+      consultants, photographers, marketers, virtual assistants and
+      other self-employed professionals.
+    </p>
+
+  </section>
 
 
-</body>
+  <section>
 
-</html>
+    <h2>How to Calculate Your Freelance Hourly Rate</h2>
+
+    <p>
+      To calculate a freelance hourly rate, first estimate your annual
+      billable hours. Then add your business expenses to your target
+      income and divide the result by your billable hours.
+    </p>
+
+    <div class="formula">
+
+      Billable Hours =
+      Working Hours × Working Weeks ×
+      (1 − Non-Billable Time)
+
+      <br><br>
+
+      Freelance Hourly Rate =
+      (Target Income + Business Expenses)
+      ÷ Billable Hours
+
+    </div>
+
+  </section>
+
+
+  <section>
+
+    <h2>How Much Should I Charge as a Freelancer?</h2>
+
+    <p>
+      There is no single freelance hourly rate that works for everyone.
+      Your ideal rate depends on your experience, skills, industry,
+      location, specialization, business expenses and the value you
+      provide to clients.
+    </p>
+
+    <p>
+      A beginner freelancer may use a competitive starting rate while
+      building experience and a portfolio. Experienced freelancers
+      with specialized skills may charge higher rates.
+    </p>
+
+    <p>
+      Before choosing a price, calculate your minimum sustainable
+      freelance hourly rate and then compare it with rates in your
+      market.
+    </p>
+
+  </section>
+
+
+  <section>
+
+    <h2>Freelance Hourly Rate Example</h2>
+
+    <div class="example">
+
+      <p>
+        <strong>Target annual income:</strong> $60,000
+      </p>
+
+      <p>
+        <strong>Working hours:</strong> 40 hours per week
+      </p>
+
+      <p>
+        <strong>Working weeks:</strong> 48 weeks per year
+      </p>
+
+      <p>
+        <strong>Business expenses:</strong> $5,000
+      </p>
+
+      <p>
+        <strong>Non-billable time:</strong> 20%
+      </p>
+
+      <p>
+        Total working hours =
+        40 × 48 = 1,920 hours
+      </p>
+
+      <p>
+        Billable hours =
+        1,920 × 80% = 1,536 hours
+      </p>
+
+      <p>
+        Total required income =
+        $60,000 + $5,000 = $65,000
+      </p>
+
+      <p>
+        Estimated freelance rate =
+        $65,000 ÷ 1,536
+        ≈ <strong>$42.32/hour</strong>
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section>
+
+    <h2>Freelance Rate Calculator for Beginners</h2>
+
+    <p>
+      If you are a beginner freelancer, calculating your rate from your
+      desired income can be more useful than simply copying another
+      freelancer's price.
+    </p>
+
+    <p>
+      Start by determining your annual income goal, expected working
+      hours and business expenses. Then remember that some of your
+      working time will not be billable.
+    </p>
+
+    <p>
+      This approach helps you understand
+      <strong>how to calculate freelance hourly rate</strong> and
+      create a pricing strategy that can support your freelance business.
+    </p>
+
+  </section>
+
+
+  <section>
+
+    <h2>Freelance Hourly Rate Calculator USA</h2>
+
+    <p>
+      Freelancers and self-employed professionals in the USA can use
+      this calculator to estimate a starting hourly rate in US dollars.
+    </p>
+
+    <p>
+      If you are searching for a
+      <strong>freelance hourly rate calculator USA</strong>,
+      enter your desired annual income, weekly working hours,
+      working weeks, business expenses and non-billable time.
+    </p>
+
+    <p>
+      The result is an estimate and should be adjusted for taxes,
+      insurance, retirement savings, market rates, experience and
+      your specific freelance industry.
+    </p>
+
+  </section>
+
+
+  <section>
+
+    <h2>How to Set Freelance Rates</h2>
+
+    <ul>
+      <li>Calculate your minimum sustainable hourly rate.</li>
+      <li>Include business and operating expenses.</li>
+      <li>Account for non-billable working hours.</li>
+      <li>Research rates in your specific industry.</li>
+      <li>Consider your experience and specialization.</li>
+      <li>Increase your rate as your skills and portfolio grow.</li>
+      <li>Consider project-based or value-based pricing.</li>
+    </ul>
+
+  </section>
+
+
+  <section>
+
+    <h2>Freelance Pricing for Different Professionals</h2>
+
+    <p>
+      The same pricing formula can be used as a starting point for
+      different freelance careers, including:
+    </p>
+
+    <ul>
+      <li>Freelance web developers</li>
+      <li>Freelance designers</li>
+      <li>Freelance writers</li>
+      <li>Freelance consultants</li>
+      <li>Freelance marketers</li>
+      <li>Freelance photographers</li>
+      <li>Virtual assistants</li>
+      <li>Independent contractors</li>
+    </ul>
+
+  </section>
+
+
+  <section>
+
+    <h2>Long-Tail SEO Topics</h2>
+
+    <div class="keyword-box">
+
+      <span class="keyword">
+        how much should I charge as a freelancer
+      </span>
+
+      <span class="keyword">
+        how to calculate freelance hourly rate
+      </span>
+
+      <span class="keyword">
+        how much to charge per hour as a freelancer
+      </span>
+
+      <span class="keyword">
+        freelance rate calculator for beginners
+      </span>
+
+      <span class="keyword">
+        freelance hourly rate based on salary
+      </span>
+
+      <span class="keyword">
+        freelance project pricing calculator
+      </span>
+
+      <span class="keyword">
+        how to set freelance rates
+      </span>
+
+      <span class="keyword">
+        freelance hourly rate calculator USA
+      </span>
+
+      <span class="keyword">
+        self employed hourly rate calculator
+      </span>
+
+      <span class="keyword">
+        freelance pricing calculator
+      </span>
+
+      <span class="keyword">
+        freelance income calculator
+      </span>
+
+      <span class="keyword">
+        freelance earnings calculator
+      </span>
+
+      <span class="keyword">
+        independent contractor hourly rate calculator
+      </span>
+
+      <span class="keyword">
+        freelance consultant rate calculator
+      </span>
+
+      <span class="keyword">
+        freelance designer rate calculator
+      </span>
+
+      <span class="keyword">
+        freelance writer rate calculator
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <section>
+
+    <h2>Frequently Asked Questions</h2>
+
+
+    <div class="faq">
+
+      <h3>How much should I charge as a freelancer?</h3>
+
+      <p>
+        Your freelance rate should cover your target income,
+        business expenses and non-billable working time. Use the
+        calculator above to estimate a starting hourly rate.
+      </p>
+
+    </div>
+
+
+    <div class="faq">
+
+      <h3>How do I calculate my freelance hourly rate?</h3>
+
+      <p>
+        Add your target annual income and business expenses, then
+        divide that amount by your estimated annual billable hours.
+      </p>
+
+    </div>
+
+
+    <div class="faq">
+
+      <h3>What is a good freelance hourly rate?</h3>
+
+      <p>
+        A good freelance hourly rate depends on your skills,
+        experience, industry, location, expenses and the value you
+        provide to clients.
+      </p>
+
+    </div>
+
+
+    <div class="faq">
+
+      <h3>Can I use this freelance calculator in the USA?</h3>
+
+      <p>
+        Yes. The calculator uses US dollars and can be used as a
+        starting point for freelancers and self-employed professionals
+        in the United States.
+      </p>
+
+    </div>
+
+
+    <div class="faq">
+
+      <h3>Should freelancers charge for non-billable hours?</h3>
+
+      <p>
+        Non-billable time should be included when setting your overall
+        rate because freelancers spend time on proposals, marketing,
+        administration, meetings and client communication.
+      </p>
+
+    </div>
+
+
+    <div class="faq">
+
+      <h3>Can I use this calculator for project pricing?</h3>
+
+      <p>
+        Yes. You can use the calculated hourly rate as a starting point
+        for estimating the price of a freelance project based on the
+        number of hours required.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section>
+
+    <h2>Related Needly Calculators</h2>
+
+    <div class="related">
+
+      <a href="savings.html">💰 Savings Calculator</a>
+
+      <a href="travel.html">✈️ Travel Budget</a>
+
+      <a href="car.html">🚗 Car Affordability</a>
+
+      <a href="rent.html">🏠 Rent Affordability</a>
+
+      <a href="debt.html">💳 Debt Payoff</a>
+
+      <a href="electricity.html">⚡ Electricity Cost</a>
+
+      <a href="wedding.html">💍 Wedding Budget</a>
+
+      <a href="mortgage.html">🏡 Mortgage Calculator</a>
+
+    </div>
+
+  </section>
+
+
+  <div class="back">
+    <a href="index.html">
+      ← Back to Needly Homepage
+    </a>
+  </div>
+
+</main>
+
+
+<footer>
+
+  <p>
+    © 2026 Needly.
+    Calculate smarter. Plan better. Move forward.
+  </p>
+
+  <p>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </p>
+
+</footer>
+
+
+<script>
+
+function calculateRate() {
+
+  const income =
+    parseFloat(document.getElementById("income").value);
+
+  const hours =
+    parseFloat(document.getElementById("hours").value);
+
+  const weeks =
+    parseFloat(document.getElementById("weeks").value);
+
+  const expenses =
+    parseFloat(document.getElementById("expenses").value);
+
+  const unpaid =
+    parseFloat(document.getElementById("unpaid").value);
+
+  const error =
+    document.getElementById("error");
+
+  const result =
+    document.getElementById("result");
+
+  error.textContent = "";
+  result.style.display = "none";
+
+
+  if (
+    !income ||
+    income <= 0 ||
+    !hours ||
+    hours <= 0 ||
+    hours > 168 ||
+    !weeks ||
+    weeks <= 0 ||
+    weeks > 52 ||
+    isNaN(expenses) ||
+    expenses < 0 ||
+    isNaN(unpaid) ||
+    unpaid < 0 ||
+    unpaid > 90
+  ) {
+
+    error.textContent =
+      "Please enter valid values in all fields.";
+
+    return;
+  }
+
+
+  const totalWorkingHours =
+    hours * weeks;
+
+
+  const billableHours =
+    totalWorkingHours *
+    (1 - unpaid / 100);
+
+
+  if (billableHours <= 0) {
+
+    error.textContent =
+      "Billable hours must be greater than zero.";
+
+    return;
+  }
+
+
+  const totalNeeded =
+    income + expenses;
+
+
+  const hourlyRate =
+    totalNeeded / billableHours;
+
+
+  const formattedRate =
+    hourlyRate.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2
+    });
+
+
+  document.getElementById("hourlyRate").textContent =
+    formattedRate + " / hour";
+
+
+  document.getElementById("billableHours").textContent =
+    "Estimated annual billable hours: " +
+    Math.round(billableHours).toLoc
