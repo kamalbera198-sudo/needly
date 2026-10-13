@@ -1,1073 +1,883 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Wedding Budget Calculator | Wedding Cost Planner - Needly</title>
 
-  <title>Wedding Budget Calculator - Plan Your Wedding Budget | Needly</title>
+<meta name="description" content="Plan your wedding with Needly's free wedding budget calculator. Estimate venue, catering, photography, flowers, clothing and other wedding expenses in multiple currencies worldwide.">
 
-  <meta name="description" content="Use Needly's free Wedding Budget Calculator to estimate your total wedding budget based on guests, venue, food, photography, decoration, clothing, and other wedding expenses.">
+<meta name="keywords" content="wedding budget calculator, wedding cost calculator, wedding budget planner, wedding expense calculator, wedding budget calculator by guest count, wedding budget breakdown calculator, small wedding budget calculator, wedding cost estimator, wedding planning calculator, wedding budget calculator for 50 guests, wedding budget calculator for 100 guests, wedding reception cost calculator, wedding venue cost calculator, wedding catering cost calculator, backyard wedding budget calculator">
 
-  <meta name="keywords" content="wedding budget calculator, wedding cost calculator, wedding planner calculator, wedding expense calculator, wedding budget planner, how much does a wedding cost">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#db2777">
 
-  <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/wedding.html">
 
-  <link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/wedding.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Wedding Budget Calculator | Needly">
+<meta property="og:description" content="Estimate wedding expenses, calculate catering costs and plan your wedding budget with Needly's free online calculator.">
+<meta property="og:url" content="https://kamalbera198-sudo.github.io/needly/wedding.html">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff7fb;
-      color: #1f2937;
-      line-height: 1.6;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #fff7fb;
+  color: #1f2937;
+  line-height: 1.7;
+}
 
-    .hero {
-      background: linear-gradient(
-        135deg,
-        #ec4899,
-        #db2777,
-        #7c3aed
-      );
-      color: white;
-      text-align: center;
-      padding: 55px 20px;
-    }
+a {
+  overflow-wrap: anywhere;
+}
 
-    .hero .icon {
-      font-size: 58px;
-      margin-bottom: 10px;
-    }
+.hero {
+  background: linear-gradient(135deg, #ec4899, #db2777, #7c3aed);
+  color: white;
+  text-align: center;
+  padding: 48px 18px;
+}
 
-    .hero h1 {
-      font-size: 38px;
-      margin-bottom: 12px;
-    }
+.hero .icon {
+  font-size: 54px;
+}
 
-    .hero p {
-      max-width: 760px;
-      margin: auto;
-      font-size: 18px;
-      opacity: 0.96;
-    }
+.hero h1 {
+  font-size: clamp(28px, 5vw, 40px);
+  line-height: 1.25;
+  margin: 10px 0;
+}
 
-    .container {
-      width: 92%;
-      max-width: 900px;
-      margin: 35px auto;
-    }
+.hero p {
+  max-width: 760px;
+  margin: auto;
+  font-size: 17px;
+}
 
-    .calculator {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.08);
-      border-top: 6px solid #ec4899;
-    }
+.container {
+  width: 92%;
+  max-width: 960px;
+  margin: 30px auto;
+}
 
-    .calculator h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #be185d;
-    }
+.card {
+  background: white;
+  margin-bottom: 24px;
+  padding: 27px;
+  border-radius: 18px;
+  box-shadow: 0 7px 25px rgba(0,0,0,.06);
+  border: 1px solid #fce7f3;
+}
 
-    .input-group {
-      margin-bottom: 18px;
-    }
+.card h2 {
+  color: #be185d;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
 
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 7px;
-    }
+.card h3 {
+  color: #7c3aed;
+  margin: 15px 0 8px;
+}
 
-    input,
-    select {
-      width: 100%;
-      padding: 14px;
-      border: 2px solid #e5e7eb;
-      border-radius: 10px;
-      font-size: 16px;
-      outline: none;
-      background: white;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
 
-    input:focus,
-    select:focus {
-      border-color: #ec4899;
-    }
+.field label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
 
-    button {
-      width: 100%;
-      padding: 15px;
-      border: none;
-      border-radius: 12px;
-      background: linear-gradient(
-        135deg,
-        #ec4899,
-        #7c3aed
-      );
-      color: white;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 8px;
-    }
+input, select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 13px;
+  font-size: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  background: white;
+  color: #1f2937;
+}
 
-    button:hover {
-      opacity: 0.92;
-    }
+input:focus, select:focus {
+  outline: 2px solid #f9a8d4;
+  border-color: #db2777;
+}
 
-    #result {
-      margin-top: 25px;
-      padding: 22px;
-      border-radius: 15px;
-      background: #fdf2f8;
-      border-left: 5px solid #ec4899;
-      display: none;
-    }
+.help {
+  color: #6b7280;
+  font-size: 13px;
+  margin-top: 5px;
+}
 
-    #result h3 {
-      color: #be185d;
-      margin-bottom: 12px;
-    }
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
 
-    .result-item {
-      background: white;
-      margin: 10px 0;
-      padding: 13px;
-      border-radius: 10px;
-      font-weight: bold;
-    }
+button {
+  flex: 1;
+  min-width: 140px;
+  padding: 14px;
+  border: none;
+  border-radius: 11px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .section {
-      background: white;
-      margin-top: 25px;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.06);
-    }
+.calculate {
+  background: linear-gradient(135deg, #ec4899, #7c3aed);
+  color: white;
+}
 
-    .section h2 {
-      color: #be185d;
-      margin-bottom: 15px;
-    }
+.reset {
+  background: #f3f4f6;
+  color: #374151;
+}
 
-    .section h3 {
-      color: #7c3aed;
-      margin-top: 18px;
-      margin-bottom: 8px;
-    }
+button:hover {
+  opacity: .9;
+}
 
-    .formula {
-      background: #fce7f3;
-      padding: 18px;
-      border-radius: 12px;
-      margin: 15px 0;
-      font-weight: bold;
-    }
+#result {
+  display: none;
+  margin-top: 24px;
+  padding: 20px;
+  background: #fdf2f8;
+  border-left: 5px solid #ec4899;
+  border-radius: 13px;
+  overflow-wrap: anywhere;
+}
 
-    .example {
-      background: #f5f3ff;
-      padding: 18px;
-      border-radius: 12px;
-      border-left: 5px solid #7c3aed;
-    }
+#result h3 {
+  color: #be185d;
+  margin: 0 0 12px;
+}
 
-    .tips {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-top: 15px;
-    }
+.result-item {
+  background: white;
+  padding: 11px 13px;
+  margin: 9px 0;
+  border-radius: 9px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
 
-    .tip {
-      padding: 18px;
-      border-radius: 14px;
-      background: #fff8fb;
-      border: 1px solid #fbcfe8;
-    }
+.result-item span:last-child {
+  font-weight: bold;
+  text-align: right;
+}
 
-    .related-links {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 15px;
-    }
+.total {
+  background: #f3e8ff;
+  border: 1px solid #d8b4fe;
+  font-size: 18px;
+}
 
-    .related-links a {
-      text-decoration: none;
-      background: linear-gradient(
-        135deg,
-        #fff1f2,
-        #f5f3ff
-      );
-      color: #7e22ce;
-      padding: 15px;
-      border-radius: 12px;
-      font-weight: bold;
-      border: 1px solid #f5d0fe;
-      transition: 0.2s;
-    }
+.notice {
+  background: #fff7ed;
+  border-left: 4px solid #f59e0b;
+  padding: 13px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 14px;
+}
 
-    .related-links a:hover {
-      transform: translateY(-2px);
-      background: #fce7f3;
-    }
+.formula, .example {
+  padding: 18px;
+  border-radius: 12px;
+  margin-top: 14px;
+  background: #fce7f3;
+  overflow-wrap: anywhere;
+}
 
-    .faq {
-      margin-top: 15px;
-      padding: 16px;
-      border-radius: 12px;
-      background: #fff8fb;
-      border: 1px solid #fce7f3;
-    }
+.example {
+  background: #f5f3ff;
+  border-left: 4px solid #7c3aed;
+}
 
-    .faq strong {
-      display: block;
-      color: #be185d;
-      margin-bottom: 5px;
-    }
+.tips {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 15px;
+}
 
-    .back {
-      text-align: center;
-      margin: 25px 0;
-    }
+.tip {
+  padding: 16px;
+  border: 1px solid #fbcfe8;
+  border-radius: 12px;
+  background: #fff8fb;
+}
 
-    .back a {
-      text-decoration: none;
-      color: #be185d;
-      font-weight: bold;
-    }
+.tip h3 {
+  margin-top: 0;
+}
 
-    footer {
-      margin-top: 40px;
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 30px 15px;
-    }
+.related-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 15px;
+}
 
-    footer a {
-      color: #f9a8d4;
-      text-decoration: none;
-      margin: 0 8px;
-    }
+.related-links a {
+  text-decoration: none;
+  background: linear-gradient(135deg, #fff1f2, #f5f3ff);
+  color: #7e22ce;
+  padding: 14px;
+  border-radius: 11px;
+  font-weight: bold;
+  border: 1px solid #f5d0fe;
+}
 
-    @media (max-width: 650px) {
+.related-links a:hover {
+  background: #fce7f3;
+}
 
-      .hero h1 {
-        font-size: 29px;
+.faq {
+  margin-top: 13px;
+  padding: 15px;
+  background: #fff8fb;
+  border: 1px solid #fce7f3;
+  border-radius: 11px;
+}
+
+.faq h3 {
+  margin: 0 0 6px;
+  color: #be185d;
+  font-size: 17px;
+}
+
+.back {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.back a {
+  color: #be185d;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+footer {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 28px 15px;
+}
+
+footer a {
+  color: #f9a8d4;
+  text-decoration: none;
+  margin: 0 7px;
+}
+
+footer .footer-links {
+  margin-top: 12px;
+  line-height: 2;
+}
+
+@media (max-width: 600px) {
+  .grid, .tips, .related-links {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 19px;
+  }
+
+  .hero {
+    padding: 38px 16px;
+  }
+
+  .result-item {
+    font-size: 14px;
+  }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Needly Wedding Budget Calculator",
+  "url": "https://kamalbera198-sudo.github.io/needly/wedding.html",
+  "description": "A free wedding budget calculator for estimating venue, food, photography, clothing, decoration and other wedding expenses in multiple currencies.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "isAccessibleForFree": true
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a wedding budget calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A wedding budget calculator estimates total wedding expenses by adding venue, catering, photography, decoration, clothing and other costs."
       }
-
-      .hero p {
-        font-size: 16px;
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate a wedding budget by guest count?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply the number of guests by the estimated food cost per guest, then add venue, photography, decoration, clothing and other expenses."
       }
-
-      .calculator,
-      .section {
-        padding: 22px;
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this wedding budget calculator worldwide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can select a supported currency and enter your own estimated costs. Currency selection changes the displayed currency, not the exchange rate or actual local prices."
       }
-
-      .tips,
-      .related-links {
-        grid-template-columns: 1fr;
+    },
+    {
+      "@type": "Question",
+      "name": "Is the wedding cost estimate exact?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It is an estimate based on your inputs. Actual wedding costs vary by country, location, vendor, date and services."
       }
     }
-  </style>
+  ]
+}
+</script>
 </head>
 
 <body>
 
-  <!-- HERO -->
+<header class="hero">
+  <div class="icon" aria-hidden="true">💍</div>
+  <h1>Free Wedding Budget Calculator</h1>
+  <p>
+    Plan your wedding budget anywhere in the world. Estimate venue,
+    catering, photography, flowers, clothing and other expenses
+    using your preferred currency.
+  </p>
+</header>
 
-  <header class="hero">
+<main class="container">
 
-    <div class="icon">💍</div>
+<section class="card">
+  <h2>Plan Your Wedding Budget</h2>
+  <p>Enter your estimated expenses below. Fields can be left at zero if they do not apply.</p>
 
-    <h1>Wedding Budget Calculator</h1>
+  <form id="weddingForm">
+    <div class="grid">
 
-    <p>
-      Estimate your wedding expenses and create a practical
-      budget based on guests, venue, food, photography,
-      decoration, clothing, and other costs.
-    </p>
-
-  </header>
-
-
-  <main class="container">
-
-
-    <!-- CALCULATOR -->
-
-    <section class="calculator">
-
-      <h2>Plan Your Wedding Budget</h2>
-
-
-      <div class="input-group">
-
-        <label for="guests">
-          Number of Guests
-        </label>
-
-        <input
-          type="number"
-          id="guests"
-          placeholder="Example: 150"
-          min="1"
-        >
-
+      <div class="field">
+        <label for="currency">Currency</label>
+        <select id="currency">
+          <option value="USD">USD — US Dollar ($)</option>
+          <option value="INR">INR — Indian Rupee (₹)</option>
+          <option value="GBP">GBP — British Pound (£)</option>
+          <option value="EUR">EUR — Euro (€)</option>
+          <option value="CAD">CAD — Canadian Dollar (CA$)</option>
+          <option value="AUD">AUD — Australian Dollar (A$)</option>
+          <option value="NZD">NZD — New Zealand Dollar (NZ$)</option>
+          <option value="JPY">JPY — Japanese Yen (¥)</option>
+          <option value="SGD">SGD — Singapore Dollar (S$)</option>
+          <option value="AED">AED — UAE Dirham</option>
+          <option value="ZAR">ZAR — South African Rand</option>
+          <option value="BDT">BDT — Bangladeshi Taka (৳)</option>
+          <option value="PKR">PKR — Pakistani Rupee</option>
+          <option value="LKR">LKR — Sri Lankan Rupee</option>
+          <option value="MYR">MYR — Malaysian Ringgit</option>
+          <option value="PHP">PHP — Philippine Peso (₱)</option>
+          <option value="THB">THB — Thai Baht (฿)</option>
+          <option value="SAR">SAR — Saudi Riyal</option>
+          <option value="CHF">CHF — Swiss Franc</option>
+          <option value="NGN">NGN — Nigerian Naira (₦)</option>
+          <option value="KES">KES — Kenyan Shilling</option>
+          <option value="BRL">BRL — Brazilian Real (R$)</option>
+          <option value="MXN">MXN — Mexican Peso</option>
+          <option value="KRW">KRW — South Korean Won (₩)</option>
+          <option value="IDR">IDR — Indonesian Rupiah</option>
+          <option value="TRY">TRY — Turkish Lira (₺)</option>
+        </select>
+        <p class="help">Currency selection changes the display only. It does not convert exchange rates.</p>
       </div>
 
-
-      <div class="input-group">
-
-        <label for="venue">
-          Venue Cost ($)
-        </label>
-
-        <input
-          type="number"
-          id="venue"
-          placeholder="Example: 5000"
-          min="0"
-        >
-
+      <div class="field">
+        <label for="guests">Number of Guests</label>
+        <input type="number" id="guests" min="1" max="1000000" step="1" value="100" required>
       </div>
 
-
-      <div class="input-group">
-
-        <label for="foodPerGuest">
-          Food Cost Per Guest ($)
-        </label>
-
-        <input
-          type="number"
-          id="foodPerGuest"
-          placeholder="Example: 80"
-          min="0"
-          step="0.01"
-        >
-
+      <div class="field">
+        <label for="venue">Venue Cost</label>
+        <input type="number" id="venue" min="0" step="0.01" value="5000" required>
       </div>
 
-
-      <div class="input-group">
-
-        <label for="photography">
-          Photography & Video ($)
-        </label>
-
-        <input
-          type="number"
-          id="photography"
-          placeholder="Example: 2500"
-          min="0"
-        >
-
+      <div class="field">
+        <label for="foodPerGuest">Food Cost Per Guest</label>
+        <input type="number" id="foodPerGuest" min="0" step="0.01" value="50" required>
       </div>
 
-
-      <div class="input-group">
-
-        <label for="decoration">
-          Decoration & Flowers ($)
-        </label>
-
-        <input
-          type="number"
-          id="decoration"
-          placeholder="Example: 3000"
-          min="0"
-        >
-
+      <div class="field">
+        <label for="photography">Photography & Video</label>
+        <input type="number" id="photography" min="0" step="0.01" value="1500" required>
       </div>
 
-
-      <div class="input-group">
-
-        <label for="clothing">
-          Clothing & Accessories ($)
-        </label>
-
-        <input
-          type="number"
-          id="clothing"
-          placeholder="Example: 2000"
-          min="0"
-        >
-
+      <div class="field">
+        <label for="decoration">Decoration & Flowers</label>
+        <input type="number" id="decoration" min="0" step="0.01" value="1200" required>
       </div>
 
-
-      <div class="input-group">
-
-        <label for="other">
-          Other Wedding Expenses ($)
-        </label>
-
-        <input
-          type="number"
-          id="other"
-          placeholder="Example: 1500"
-          min="0"
-        >
-
+      <div class="field">
+        <label for="clothing">Clothing & Accessories</label>
+        <input type="number" id="clothing" min="0" step="0.01" value="1000" required>
       </div>
 
-
-      <button onclick="calculateWedding()">
-        Calculate Wedding Budget
-      </button>
-
-
-      <div id="result"></div>
-
-    </section>
-
-
-    <!-- WHAT IS IT -->
-
-    <section class="section">
-
-      <h2>What Is a Wedding Budget Calculator?</h2>
-
-      <p>
-        A Wedding Budget Calculator helps you estimate the total
-        cost of your wedding by combining major wedding expenses.
-      </p>
-
-      <p style="margin-top:12px;">
-        Instead of looking at each expense separately, you can
-        use one estimate to understand how much money your wedding
-        may require.
-      </p>
-
-    </section>
-
-
-    <!-- HOW IT WORKS -->
-
-    <section class="section">
-
-      <h2>How Does the Wedding Budget Calculator Work?</h2>
-
-      <p>
-        The calculator adds your major wedding expenses together.
-        Food costs are calculated based on the number of guests.
-      </p>
-
-
-      <div class="tips">
-
-        <div class="tip">
-
-          <h3>👥 Guests</h3>
-
-          <p>
-            Enter the number of people you expect to attend.
-          </p>
-
-        </div>
-
-
-        <div class="tip">
-
-          <h3>🏛️ Venue</h3>
-
-          <p>
-            Enter your estimated venue or reception cost.
-          </p>
-
-        </div>
-
-
-        <div class="tip">
-
-          <h3>🍽️ Food</h3>
-
-          <p>
-            Enter the estimated food cost per guest.
-          </p>
-
-        </div>
-
-
-        <div class="tip">
-
-          <h3>📸 Photography</h3>
-
-          <p>
-            Include photography and video costs.
-          </p>
-
-        </div>
-
-
-        <div class="tip">
-
-          <h3>🌸 Decoration</h3>
-
-          <p>
-            Include flowers, decorations, lighting, and related costs.
-          </p>
-
-        </div>
-
-
-        <div class="tip">
-
-          <h3>👗 Clothing</h3>
-
-          <p>
-            Include wedding clothing and accessories.
-          </p>
-
-        </div>
-
+      <div class="field">
+        <label for="music">Music & Entertainment</label>
+        <input type="number" id="music" min="0" step="0.01" value="500" required>
       </div>
 
-    </section>
-
-
-    <!-- FORMULA -->
-
-    <section class="section">
-
-      <h2>Wedding Budget Formula</h2>
-
-      <p>
-        The estimated wedding budget is calculated as:
-      </p>
-
-
-      <div class="formula">
-
-        Total Wedding Budget =
-        Venue +
-        (Guests × Food Cost Per Guest) +
-        Photography +
-        Decoration +
-        Clothing +
-        Other Expenses
-
+      <div class="field">
+        <label for="transport">Transport & Accommodation</label>
+        <input type="number" id="transport" min="0" step="0.01" value="500" required>
       </div>
 
-
-      <p>
-        This gives you a simple estimate of your overall wedding
-        spending based on the numbers you enter.
-      </p>
-
-    </section>
-
-
-    <!-- EXAMPLE -->
-
-    <section class="section">
-
-      <h2>Wedding Budget Example</h2>
-
-
-      <div class="example">
-
-        <p>
-          <strong>Guests:</strong> 150
-        </p>
-
-        <p>
-          <strong>Venue:</strong> $5,000
-        </p>
-
-        <p>
-          <strong>Food per guest:</strong> $80
-        </p>
-
-        <p>
-          <strong>Photography:</strong> $2,500
-        </p>
-
-        <p>
-          <strong>Decoration:</strong> $3,000
-        </p>
-
-        <p>
-          <strong>Clothing:</strong> $2,000
-        </p>
-
-        <p>
-          <strong>Other expenses:</strong> $1,500
-        </p>
-
-
-        <br>
-
-
-        <p>
-          Food cost = 150 × $80 = $12,000
-        </p>
-
-        <p>
-          Estimated total wedding budget =
-          <strong>$26,000</strong>
-        </p>
-
+      <div class="field">
+        <label for="other">Other Wedding Expenses</label>
+        <input type="number" id="other" min="0" step="0.01" value="500" required>
       </div>
 
-    </section>
-
-
-    <!-- TIPS -->
-
-    <section class="section">
-
-      <h2>How to Save Money on a Wedding</h2>
-
-
-      <div class="tips">
-
-        <div class="tip">
-
-          <h3>💰 Set a Budget First</h3>
-
-          <p>
-            Decide your maximum spending limit before booking
-            major wedding services.
-          </p>
-
-        </div>
-
-
-        <div class="tip">
-
-          <h3>👥 Control Guest Count</h3>
-
-          <p>
-            Guest count can significantly affect food and venue costs.
-          </p>
-
-        </div>
-
-
-        <div class="tip">
-
-          <h3>📅 Compare Dates</h3>
-
-          <p>
-            Different wedding dates and venues may have different
-            pricing.
-          </p>
-
-        </div>
-
-
-        <div class="tip">
-
-          <h3>📊 Track Every Expense</h3>
-
-          <p>
-            Keep a list of deposits, bookings, clothing,
-            transportation, and other expenses.
-          </p>
-
-        </div>
-
+      <div class="field">
+        <label for="contingency">Emergency Buffer (%)</label>
+        <input type="number" id="contingency" min="0" max="100" step="1" value="10" required>
+        <p class="help">An optional allowance for unexpected costs.</p>
       </div>
 
-    </section>
-
-
-    <!-- INTERNAL LINKS -->
-
-    <section class="section">
-
-      <h2>Related Needly Calculators</h2>
-
-      <p>
-        Use these free Needly calculators to plan other parts
-        of your personal finances.
-      </p>
-
-
-      <div class="related-links">
-
-        <a href="savings.html">
-          💰 Savings Calculator
-        </a>
-
-
-        <a href="debt.html">
-          💳 Debt Payoff Calculator
-        </a>
-
-
-        <a href="mortgage.html">
-          🏠 Mortgage Calculator
-        </a>
-
-
-        <a href="rent.html">
-          🏡 Rent Affordability Calculator
-        </a>
-
-
-        <a href="car.html">
-          🚗 Car Affordability Calculator
-        </a>
-
-
-        <a href="travel.html">
-          ✈️ Travel Budget Calculator
-        </a>
-
-
-        <a href="electricity.html">
-          ⚡ Electricity Cost Calculator
-        </a>
-
+      <div class="field">
+        <label for="budgetLimit">Your Maximum Budget (Optional)</label>
+        <input type="number" id="budgetLimit" min="0" step="0.01" placeholder="Enter your budget limit">
       </div>
-
-    </section>
-
-
-    <!-- FAQ -->
-
-    <section class="section">
-
-      <h2>Wedding Budget Calculator FAQ</h2>
-
-
-      <div class="faq">
-
-        <strong>
-          What does a wedding budget calculator do?
-        </strong>
-
-        It estimates your total wedding expenses based on
-        the costs you enter.
-
-      </div>
-
-
-      <div class="faq">
-
-        <strong>
-          Does the calculator include food costs?
-        </strong>
-
-        Yes. Food cost is calculated by multiplying the number
-        of guests by the food cost per guest.
-
-      </div>
-
-
-      <div class="faq">
-
-        <strong>
-          Can I use this calculator for a small wedding?
-        </strong>
-
-        Yes. You can enter any number of guests and estimated
-        expenses.
-
-      </div>
-
-
-      <div class="faq">
-
-        <strong>
-          Does this include every possible wedding expense?
-        </strong>
-
-        No. Wedding expenses vary. Use the "Other Wedding
-        Expenses" field for costs that are not listed.
-
-      </div>
-
-
-      <div class="faq">
-
-        <strong>
-          Is the result an exact wedding cost?
-        </strong>
-
-        No. It is an estimate based on the numbers you enter.
-        Actual costs can vary by location, vendor, guest count,
-        date, and services.
-
-      </div>
-
-
-      <div class="faq">
-
-        <strong>
-          Can I change the numbers?
-        </strong>
-
-        Yes. Try different guest counts and expense amounts
-        to compare different wedding budgets.
-
-      </div>
-
-    </section>
-
-
-    <!-- BACK -->
-
-    <div class="back">
-
-      <a href="index.html">
-        ← Back to Needly Calculators
-      </a>
 
     </div>
 
-  </main>
-
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <p>
-      © 2026 Needly. Calculate smarter. Plan better. Move forward.
-    </p>
-
-
-    <div style="margin-top:12px;">
-
-      <a href="about.html">About</a>
-
-      <a href="contact.html">Contact</a>
-
-      <a href="privacy.html">Privacy</a>
-
-      <a href="terms.html">Terms</a>
-
+    <div class="actions">
+      <button type="submit" class="calculate">💍 Calculate Wedding Budget</button>
+      <button type="reset" class="reset">↻ Reset Calculator</button>
     </div>
+  </form>
 
-  </footer>
+  <div id="result" aria-live="polite"></div>
 
+  <div class="notice">
+    <strong>Important:</strong> This calculator provides estimates, not vendor quotes.
+    Prices and taxes vary by country, region, date and wedding requirements.
+  </div>
+</section>
 
-  <!-- JAVASCRIPT -->
+<section class="card">
+  <h2>What Is a Wedding Budget Calculator?</h2>
+  <p>A wedding budget calculator helps you estimate how much your wedding may cost by combining the main expenses in one place. It is useful for couples planning a small ceremony, a large reception, a backyard wedding or a destination wedding.</p>
+  <p style="margin-top:12px;">Needly lets you enter your own costs and choose a currency for displaying your estimate. You can adjust the number of guests and compare different budgets before making bookings.</p>
+</section>
 
-  <script>
+<section class="card">
+  <h2>How to Calculate a Wedding Budget by Guest Count</h2>
+  <p>Guest count is an important factor because catering and some venue costs may increase as more people attend.</p>
 
-    function calculateWedding() {
+  <div class="formula">
+    <strong>Estimated Wedding Budget</strong><br>
+    = Venue + (Number of Guests × Food Cost Per Guest)
+    + Photography + Decoration + Clothing + Entertainment
+    + Transport + Other Expenses + Emergency Buffer
+  </div>
 
-      const guests =
-        parseFloat(
-          document.getElementById("guests").value
-        );
+  <h3>How to use the calculator</h3>
+  <div class="tips">
+    <div class="tip">
+      <h3>👥 1. Choose Guests</h3>
+      <p>Enter the number of people you expect to invite.</p>
+    </div>
+    <div class="tip">
+      <h3>🏛️ 2. Estimate the Venue</h3>
+      <p>Enter the venue or reception booking estimate.</p>
+    </div>
+    <div class="tip">
+      <h3>🍽️ 3. Add Catering</h3>
+      <p>Enter your expected food cost per guest.</p>
+    </div>
+    <div class="tip">
+      <h3>📸 4. Add Other Costs</h3>
+      <p>Include photography, clothing, flowers and remaining expenses.</p>
+    </div>
+  </div>
+</section>
 
-      const venue =
-        parseFloat(
-          document.getElementById("venue").value
-        ) || 0;
+<section class="card">
+  <h2>Wedding Budget Calculator for 50 or 100 Guests</h2>
+  <p>The examples below use illustrative amounts in USD. They are not averages or price quotes for any particular country.</p>
 
-      const foodPerGuest =
-        parseFloat(
-          document.getElementById("foodPerGuest").value
-        ) || 0;
+  <div class="example">
+    <h3>Example A: Wedding for 50 Guests</h3>
+    <p>Venue: $2,000</p>
+    <p>Food: 50 × $40 = $2,000</p>
+    <p>Photography: $800</p>
+    <p>Decoration: $600</p>
+    <p>Clothing: $700</p>
+    <p>Other expenses: $500</p>
+    <p><strong>Subtotal: $6,600</strong></p>
+    <p>With a 10% emergency buffer: <strong>$7,260</strong></p>
+  </div>
 
-      const photography =
-        parseFloat(
-          document.getElementById("photography").value
-        ) || 0;
+  <div class="example">
+    <h3>Example B: Wedding for 100 Guests</h3>
+    <p>Venue: $3,000</p>
+    <p>Food: 100 × $40 = $4,000</p>
+    <p>Photography: $1,000</p>
+    <p>Decoration: $1,000</p>
+    <p>Clothing: $1,000</p>
+    <p>Other expenses: $800</p>
+    <p><strong>Subtotal: $10,800</strong></p>
+    <p>With a 10% emergency buffer: <strong>$11,880</strong></p>
+  </div>
+</section>
 
-      const decoration =
-        parseFloat(
-          document.getElementById("decoration").value
-        ) || 0;
+<section class="card">
+  <h2>Wedding Budget Breakdown: Expenses to Consider</h2>
 
-      const clothing =
-        parseFloat(
-          document.getElementById("clothing").value
-        ) || 0;
+  <h3>Venue and Reception</h3>
+  <p>Consider venue hire, ceremony space, reception facilities, cleaning fees and any required deposits.</p>
 
-      const other =
-        parseFloat(
-          document.getElementById("other").value
-        ) || 0;
+  <h3>Food and Catering</h3>
+  <p>Estimate food and beverage costs per guest. Ask vendors whether service charges, taxes and equipment are included.</p>
 
+  <h3>Photography and Video</h3>
+  <p>Compare packages, coverage hours, editing, albums and delivery terms.</p>
 
-      const result =
-        document.getElementById("result");
+  <h3>Clothing and Accessories</h3>
+  <p>Include outfits, alterations, shoes, accessories and any related preparation costs.</p>
 
+  <h3>Flowers and Decoration</h3>
+  <p>Allow for flowers, lighting, table decorations, ceremony arrangements and setup.</p>
 
-      // Guest validation
+  <h3>Entertainment and Transport</h3>
+  <p>Consider musicians, DJs, sound equipment, guest transport and accommodation where applicable.</p>
+
+  <h3>Other Expenses</h3>
+  <p>Depending on local customs and requirements, you may need to budget for invitations, legal paperwork, ceremony fees, beauty services, gifts, taxes or service charges.</p>
+</section>
+
+<section class="card">
+  <h2>How to Save Money on Your Wedding</h2>
+  <div class="tips">
+    <div class="tip">
+      <h3>💰 Set a Spending Limit</h3>
+      <p>Choose a realistic maximum budget before booking services.</p>
+    </div>
+    <div class="tip">
+      <h3>👥 Review the Guest List</h3>
+      <p>Compare how different guest counts affect catering and venue expenses.</p>
+    </div>
+    <div class="tip">
+      <h3>📅 Compare Dates</h3>
+      <p>Ask vendors about different dates, times and package options.</p>
+    </div>
+    <div class="tip">
+      <h3>📊 Track Deposits</h3>
+      <p>Record deposits, payment deadlines, balances and cancellation policies.</p>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Wedding Budget Planning Around the World</h2>
+  <p>Wedding costs differ significantly between countries, cities and communities. A budget suitable for one location may not be realistic in another.</p>
+  <p style="margin-top:12px;">Whether you are planning a wedding in the United States, United Kingdom, India, Canada, Australia or elsewhere, use local vendor quotes and your own expected expenses for a more useful estimate.</p>
+  <p style="margin-top:12px;">The currency selector changes how amounts are displayed. It does not provide live exchange rates or convert an amount from one currency into another.</p>
+</section>
+
+<section class="card">
+  <h2>Related Free Needly Calculators</h2>
+  <p>Explore other tools to help with budgeting and everyday planning.</p>
+
+  <div class="related-links">
+    <a href="index.html">🏠 Needly Homepage</a>
+    <a href="savings.html">💰 Savings Calculator</a>
+    <a href="debt.html">💳 Debt Payoff Calculator</a>
+    <a href="mortgage.html">🏡 Mortgage Calculator</a>
+    <a href="rent.html">🏠 Rent Affordability Calculator</a>
+    <a href="car.html">🚗 Car Affordability Calculator</a>
+    <a href="travel.html">✈️ Travel Budget Calculator</a>
+    <a href="electricity.html">⚡ Electricity Cost Calculator</a>
+  </div>
+  <p class="help" style="margin-top:12px;">These links assume the corresponding HTML files exist in the same website directory. Remove or update links for pages that are not published.</p>
+</section>
+
+<section class="card">
+  <h2>Wedding Budget Calculator FAQ</h2>
+
+  <div class="faq">
+    <h3>1. What is a wedding budget calculator?</h3>
+    <p>It estimates total wedding expenses by adding the costs you enter for the venue, food, photography, clothing and other categories.</p>
+  </div>
+
+  <div class="faq">
+    <h3>2. How do I calculate a wedding budget by guest count?</h3>
+    <p>Multiply the number of guests by the estimated catering cost per guest, then add the other wedding expenses.</p>
+  </div>
+
+  <div class="faq">
+    <h3>3. Can I use this calculator for 50 or 100 guests?</h3>
+    <p>Yes. Enter your expected guest count and estimated costs to calculate a budget for your wedding.</p>
+  </div>
+
+  <div class="faq">
+    <h3>4. Can I use the wedding cost calculator in my country?</h3>
+    <p>Yes. Select a supported currency and enter costs based on local vendor quotes. The displayed currency is not an exchange-rate conversion.</p>
+  </div>
+
+  <div class="faq">
+    <h3>5. Does the calculator show the exact wedding cost?</h3>
+    <p>No. It provides an estimate based on your inputs. Actual prices depend on location, vendor, date, taxes and services.</p>
+  </div>
+
+  <div class="faq">
+    <h3>6. What is a wedding budget breakdown?</h3>
+    <p>A wedding budget breakdown separates expenses into categories such as venue, catering, photography, decoration, clothing and transport.</p>
+  </div>
+
+  <div class="faq">
+    <h3>7. What is an emergency buffer?</h3>
+    <p>An emergency buffer is an additional allowance for unexpected expenses. The percentage can be adjusted in the calculator.</p>
+  </div>
+
+  <div class="faq">
+    <h3>8. Is this wedding budget calculator free?</h3>
+    <p>Yes. You can use this calculator without paying a fee.</p>
+  </div>
+</section>
+
+<div class="back">
+  <a href="index.html">← Back to Needly Calculators</a>
+</div>
+
+</main>
+
+<footer>
+  <p>© 2026 Needly. Smart Tools for Everyday Life.</p>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  const form = document.getElementById("weddingForm");
+  const result = document.getElementById("result");
+
+  const expenseIds = [
+    "venue",
+    "foodPerGuest",
+    "photography",
+    "decoration",
+    "clothing",
+    "music",
+    "transport",
+    "other"
+  ];
+
+  function getNumber(id) {
+    const input = document.getElementById(id);
+    const value = input.value.trim();
+
+    if (value === "") {
+      return 0;
+    }
+
+    const number = Number(value);
+
+    if (!Number.isFinite(number) || number < 0) {
+      throw new Error("Please enter valid non-negative numbers for all expenses.");
+    }
+
+    return number;
+  }
+
+  function money(amount, currency) {
+    try {
+      return new Intl.NumberFormat("en", {
+        style: "currency",
+        currency: currency,
+        maximumFractionDigits: 2
+      }).format(amount);
+    } catch (error) {
+      return currency + " " + amount.toLocaleString("en", {
+        maximumFractionDigits: 2
+      });
+    }
+  }
+
+  function row(label, amount, currency, extraClass) {
+    return `
+      <div class="result-item ${extraClass || ""}">
+        <span>${label}</span>
+        <span>${money(amount, currency)}</span>
+      </div>
+    `;
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    try {
+      const guestsValue = document.getElementById("guests").value.trim();
+      const guests = Number(guestsValue);
 
       if (
-        isNaN(guests) ||
-        guests <= 0
+        guestsValue === "" ||
+        !Number.isInteger(guests) ||
+        guests < 1 ||
+        guests > 1000000
       ) {
-
-        result.style.display = "block";
-
-        result.innerHTML =
-          "<h3>Please enter a valid number of guests.</h3>";
-
-        return;
+        throw new Error("Please enter a whole number of guests between 1 and 1,000,000.");
       }
 
+      const currency = document.getElementById("currency").value;
+      const venue = getNumber("venue");
+      const foodPerGuest = getNumber("foodPerGuest");
+      const photography = getNumber("photography");
+      const decoration = getNumber("decoration");
+      const clothing = getNumber("clothing");
+      const music = getNumber("music");
+      const transport = getNumber("transport");
+      const other = getNumber("other");
+      const bufferPercent = getNumber("contingency");
 
-      // Negative value validation
+      if (bufferPercent > 100) {
+        throw new Error("The emergency buffer must be between 0% and 100%.");
+      }
+
+      const budgetInput = document.getElementById("budgetLimit").value.trim();
+      const budgetLimit = budgetInput === "" ? null : Number(budgetInput);
 
       if (
-        venue < 0 ||
-        foodPerGuest < 0 ||
-        photography < 0 ||
-        decoration < 0 ||
-        clothing < 0 ||
-        other < 0
+        budgetLimit !== null &&
+        (!Number.isFinite(budgetLimit) || budgetLimit < 0)
       ) {
-
-        result.style.display = "block";
-
-        result.innerHTML =
-          "<h3>Please enter valid expense amounts.</h3>";
-
-        return;
+        throw new Error("Please enter a valid maximum budget, or leave it blank.");
       }
 
-
-      // Food calculation
-
-      const foodCost =
-        guests * foodPerGuest;
-
-
-      // Total calculation
-
-      const total =
+      const foodCost = guests * foodPerGuest;
+      const subtotal =
         venue +
         foodCost +
         photography +
         decoration +
         clothing +
+        music +
+        transport +
         other;
 
+      const buffer = subtotal * bufferPercent / 100;
+      const total = subtotal + buffer;
+      const perGuest = total / guests;
 
-      result.style.display = "block";
+      if (![foodCost, subtotal, buffer, total, perGuest].every(Number.isFinite)) {
+        throw new Error("These values are too large to calculate. Please use smaller amounts.");
+      }
 
+      let budgetMessage = "";
+
+      if (budgetLimit !== null && budgetLimit > 0) {
+        const difference = budgetLimit - total;
+
+        if (difference >= 0) {
+          budgetMessage = `
+            <div class="notice">
+              <strong>Within your budget:</strong>
+              ${money(difference, currency)} remains from your budget limit.
+            </div>
+          `;
+        } else {
+          budgetMessage = `
+            <div class="notice">
+              <strong>Over your budget:</strong>
+              Your estimate exceeds your budget limit by ${money(Math.abs(difference), currency)}.
+              Consider adjusting guest count or expenses.
+            </div>
+          `;
+        }
+      } else if (budgetLimit === 0) {
+        budgetMessage = `
+          <div class="notice">
+            Your maximum budget is set to zero. Enter a positive amount to compare your estimate with a spending limit.
+          </div>
+        `;
+      }
 
       result.innerHTML = `
-
         <h3>💍 Your Estimated Wedding Budget</h3>
-
-
-        <div class="result-item">
-
-          Food Cost:
-          $${foodCost.toLocaleString(
-            "en-US",
-            {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2
-            }
-          )}
-
-        </div>
-
-
-        <div class="result-item">
-
-          Venue:
-          $${venue.toLocaleString(
-            "en-US",
-            {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2
-            }
-          )}
-
-        </div>
-
-
-        <div class="result-item">
-
-          Photography & Video:
-          $${photography.toLocaleString(
-            "en-US",
-            {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2
-            }
-          )}
-
-        </div>
-
-
-        <div class="result-item">
-
-          Decoration:
-          $${decoration.toLocaleString(
-            "en-US",
-            {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2
-            }
-          )}
-
-        </div>
-
-
-        <div class="result-item">
-
-          Clothing:
-          $${clothing.toLocaleString(
-            "en-US",
-            {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2
-            }
-          )}
-
-        </div>
-
-
-        <div class="result-item">
-
-          Other Expenses:
-          $${other.toLocaleString(
-            "en-US",
-            {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2
-            }
-          )}
-
-        </div>
-
-
-        <div class="result-item">
-
-          👑 Total Wedding Budget:
-          $${total.toLocaleString(
-            "en-US",
-            {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2
-            }
-          )}
-
-        </div>
-
+        ${row("Venue", venue, currency)}
+        ${row("Food for " + guests + " guests", foodCost, currency)}
+        ${row("Photography & Video", photography, currency)}
+        ${row("Decoration & Flowers", decoration, currency)}
+        ${row("Clothing & Accessories", clothing, currency)}
+        ${row("Music & Entertainment", music, currency)}
+        ${row("Transport & Accommodation", transport, currency)}
+        ${row("Other Expenses", other, currency)}
+        ${row("Estimated Subtotal", subtotal, currency)}
+        ${row("Emergency Buffer (" + bufferPercent + "%)", buffer, currency)}
+        ${row("TOTAL WEDDING BUDGET", total, currency, "total")}
+        ${row("Estimated Cost Per Guest", perGuest, currency)}
+        ${budgetMessage}
+        <p class="help">Estimate only. Actual costs may vary by location and vendor.</p>
       `;
 
-    }
+      result.style.display = "block";
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
 
-  </script>
+    } catch (error) {
+      result.style.display = "block";
+      result.innerHTML = `
+        <h3>Check Your Entries</h3>
+        <p>${error.message}</p>
+      `;
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  });
+
+  form.addEventListener("reset", function () {
+    window.setTimeout(function () {
+      result.style.display = "none";
+      result.innerHTML = "";
+    }, 0);
+  });
+})();
+</script>
 
 </body>
 </html>
