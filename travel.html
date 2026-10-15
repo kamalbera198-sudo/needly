@@ -3,1613 +3,489 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Travel Budget Calculator - Estimate Your Trip Cost | Needly</title>
-
 <meta name="description" content="Plan your trip with Needly's free Travel Budget Calculator. Estimate flights, hotels, food, transport and other expenses to calculate your total travel budget.">
-
-<meta name="keywords" content="travel budget calculator, trip cost calculator, travel cost calculator, vacation budget calculator, holiday budget calculator, travel expense calculator, international travel budget calculator, travel budget planner, trip budget planner, travel cost estimator, travel expenses calculator, travel cost calculator per person, vacation budget calculator for families, travel budget calculator for 30 days">
-
 <meta name="robots" content="index, follow">
-
 <link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/travel.html">
-
 <meta name="theme-color" content="#0f766e">
-
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Travel Budget Calculator | Needly">
 <meta property="og:description" content="Estimate your trip expenses, compare budgets and plan your next journey with Needly.">
 <meta property="og:url" content="https://kamalbera198-sudo.github.io/needly/travel.html">
 <meta property="og:site_name" content="Needly">
-
+<meta property="og:image" content="https://kamalbera198-sudo.github.io/needly/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Travel Budget Calculator | Needly">
+<meta name="twitter:description" content="Estimate your trip expenses with Needly.">
+<meta name="twitter:image" content="https://kamalbera198-sudo.github.io/needly/og-image.png">
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Needly Travel Budget Calculator",
-  "url": "https://kamalbera198-sudo.github.io/needly/travel.html",
-  "description": "A free travel budget calculator to estimate transportation, accommodation, food and other travel expenses.",
-  "applicationCategory": "TravelApplication",
-  "operatingSystem": "Any",
-  "isAccessibleForFree": true,
-  "publisher": {
-    "@type": "Organization",
-    "name": "Needly",
-    "url": "https://kamalbera198-sudo.github.io/needly/"
-  }
-}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Needly Travel Budget Calculator","url":"https://kamalbera198-sudo.github.io/needly/travel.html","description":"A free travel budget calculator to estimate transportation, accommodation, food and other travel expenses.","applicationCategory":"TravelApplication","operatingSystem":"Any","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Needly","url":"https://kamalbera198-sudo.github.io/needly/"}}
 </script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is a travel budget calculator?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A travel budget calculator estimates trip expenses such as transportation, accommodation, food, activities and other costs."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I calculate a travel budget for 30 days?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. You can enter a trip duration between 1 and 30 days."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I calculate travel costs for multiple people?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Enter the number of travelers to calculate group expenses and estimated costs per person."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does the calculator automatically convert currencies?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. The currency selector changes the currency used to display results. It does not automatically convert amounts using exchange rates."
-      }
-    }
-  ]
-}
-</script>
-
 <style>
-:root {
-  --primary: #0f766e;
-  --primary-dark: #115e59;
-  --secondary: #14b8a6;
-  --background: #f1f5f9;
-  --surface: #ffffff;
-  --text: #172033;
-  --muted: #64748b;
-  --border: #dbe4ee;
-  --success: #15803d;
-  --shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: var(--background);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.65;
-}
-
-a {
-  color: var(--primary);
-}
-
-.container {
-  width: min(100% - 28px, 1000px);
-  margin: auto;
-}
-
-header {
-  background: linear-gradient(135deg, #115e59, #0f766e, #14b8a6);
-  color: white;
-  padding: 20px 0 38px;
-}
-
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.logo {
-  color: white;
-  font-size: 27px;
-  font-weight: 800;
-  text-decoration: none;
-  letter-spacing: -1px;
-}
-
-.top-link {
-  color: white;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.hero {
-  padding: 32px 0 4px;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: clamp(29px, 5vw, 44px);
-  line-height: 1.15;
-  margin: 12px 0;
-}
-
-.hero p {
-  max-width: 690px;
-  margin: 0 auto;
-  color: #ecfdf5;
-  font-size: 16px;
-}
-
-.badge {
-  display: inline-block;
-  background: rgba(255,255,255,.16);
-  border: 1px solid rgba(255,255,255,.28);
-  padding: 5px 12px;
-  border-radius: 25px;
-  font-size: 13px;
-}
-
-main {
-  padding: 24px 0 40px;
-}
-
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 23px;
-  margin-bottom: 22px;
-  box-shadow: var(--shadow);
-}
-
-.card h2 {
-  margin-top: 0;
-  font-size: 23px;
-  line-height: 1.3;
-}
-
-.section-note {
-  color: var(--muted);
-  font-size: 14px;
-  margin-top: -8px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 17px;
-}
-
-.field {
-  min-width: 0;
-}
-
-.field label {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 7px;
-  font-size: 14px;
-}
-
-input,
-select {
-  width: 100%;
-  min-width: 0;
-  min-height: 46px;
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  padding: 11px 12px;
-  background: white;
-  color: var(--text);
-  font-size: 16px;
-}
-
-input:focus,
-select:focus {
-  outline: 3px solid rgba(20,184,166,.2);
-  border-color: var(--primary);
-}
-
-input:disabled {
-  background: #f1f5f9;
-  color: #94a3b8;
-  cursor: not-allowed;
-}
-
-small,
-.help {
-  display: block;
-  color: var(--muted);
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-.required {
-  color: #dc2626;
-}
-
-details {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  margin-top: 22px;
-  overflow: hidden;
-}
-
-summary {
-  cursor: pointer;
-  padding: 15px;
-  background: #f0fdfa;
-  color: var(--primary-dark);
-  font-weight: 800;
-}
-
-.optional-content {
-  padding: 17px;
-}
-
-.optional-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 15px;
-}
-
-.optional-field {
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  min-width: 0;
-}
-
-.check-label {
-  display: flex !important;
-  align-items: flex-start;
-  gap: 9px;
-  cursor: pointer;
-  font-weight: 700 !important;
-  margin-bottom: 10px !important;
-}
-
-.check-label input {
-  width: 18px;
-  min-height: 18px;
-  height: 18px;
-  flex: 0 0 18px;
-  margin: 3px 0 0;
-  accent-color: var(--primary);
-}
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 22px;
-}
-
-button {
-  border: 0;
-  border-radius: 10px;
-  padding: 13px 18px;
-  font-size: 15px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: transform .15s, opacity .15s;
-}
-
-button:hover {
-  opacity: .92;
-  transform: translateY(-1px);
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: white;
-  flex: 1 1 200px;
-}
-
-.btn-secondary {
-  background: #e2e8f0;
-  color: var(--text);
-}
-
-.btn-light {
-  background: #ccfbf1;
-  color: #115e59;
-}
-
-.results {
-  border-top: 5px solid var(--secondary);
-}
-
-.results-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 13px;
-}
-
-.result-box {
-  background: #f0fdfa;
-  padding: 17px;
-  border-radius: 13px;
-  border: 1px solid #ccfbf1;
-  overflow-wrap: anywhere;
-}
-
-.result-box.primary-result {
-  grid-column: 1 / -1;
-  background: linear-gradient(135deg, #115e59, #0f766e);
-  color: white;
-  border: 0;
-}
-
-.result-label {
-  font-size: 13px;
-  opacity: .85;
-  margin-bottom: 5px;
-}
-
-.result-value {
-  font-size: clamp(21px, 4vw, 30px);
-  font-weight: 800;
-  line-height: 1.3;
-  overflow-wrap: anywhere;
-}
-
-.primary-result .result-value {
-  font-size: clamp(29px, 6vw, 40px);
-}
-
-.table-wrap {
-  overflow-x: auto;
-  margin-top: 12px;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 390px;
-}
-
-th,
-td {
-  text-align: left;
-  padding: 12px 9px;
-  border-bottom: 1px solid var(--border);
-}
-
-th {
-  background: #f8fafc;
-  font-size: 13px;
-}
-
-td:last-child,
-th:last-child {
-  text-align: right;
-}
-
-.total-row {
-  font-weight: 800;
-  background: #f0fdfa;
-}
-
-.budget-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.budget-box {
-  padding: 16px 12px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: #fff;
-}
-
-.budget-box h3 {
-  font-size: 15px;
-  margin: 0 0 8px;
-}
-
-.budget-box p {
-  margin: 5px 0;
-  font-weight: 800;
-  overflow-wrap: anywhere;
-}
-
-.budget-box small {
-  line-height: 1.5;
-}
-
-.content h2 {
-  margin-top: 27px;
-}
-
-.content h2:first-child {
-  margin-top: 0;
-}
-
-.content p,
-.content li {
-  color: #334155;
-}
-
-.content li {
-  margin-bottom: 7px;
-}
-
-.faq-item {
-  border-bottom: 1px solid var(--border);
-  padding: 13px 0;
-}
-
-.faq-item:last-child {
-  border-bottom: 0;
-}
-
-.faq-item h3 {
-  font-size: 17px;
-  margin: 0 0 6px;
-}
-
-.faq-item p {
-  margin: 0;
-  color: #475569;
-}
-
-.related-links {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.related-links a {
-  display: block;
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  text-decoration: none;
-  font-weight: 800;
-  background: #f8fafc;
-}
-
-.related-links a:hover {
-  background: #f0fdfa;
-}
-
-.notice {
-  padding: 13px;
-  background: #fffbeb;
-  color: #92400e;
-  border-radius: 10px;
-  font-size: 13px;
-}
-
-footer {
-  padding: 24px 0;
-  background: #0f172a;
-  color: #cbd5e1;
-  text-align: center;
-  font-size: 13px;
-}
-
-footer a {
-  color: #99f6e4;
-  margin: 0 7px;
-}
-
-footer p {
-  margin: 7px 0;
-}
-
-@media (max-width: 620px) {
-  .grid,
-  .optional-grid,
-  .results-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .result-box.primary-result {
-    grid-column: auto;
-  }
-
-  .budget-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .related-links {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    padding: 17px;
-  }
-
-  .hero {
-    padding-top: 25px;
-  }
-
-  .actions button {
-    width: 100%;
-  }
-}
-
-@media print {
-  body {
-    background: white;
-  }
-
-  header {
-    background: white;
-    color: black;
-    padding: 10px 0;
-  }
-
-  .hero p,
-  .top-link,
-  .actions,
-  form,
-  footer {
-    display: none !important;
-  }
-
-  .card {
-    box-shadow: none;
-    break-inside: avoid;
-  }
-
-  .result-box.primary-result {
-    background: white;
-    color: black;
-    border: 1px solid #ccc;
-  }
-}
+:root{--primary:#0f766e;--dark:#115e59;--secondary:#14b8a6;--bg:#f1f5f9;--text:#172033;--muted:#64748b;--border:#dbe4ee;--shadow:0 12px 35px rgba(15,23,42,.07)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+a{color:var(--primary)}
+.container{width:min(100% - 28px,1000px);margin:auto}
+header{background:linear-gradient(135deg,#115e59,#0f766e);color:#fff;padding:20px 0 38px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{color:#fff;font-size:27px;font-weight:800;text-decoration:none;letter-spacing:-1px}
+.links a{color:#fff;text-decoration:none;font-weight:700;margin-left:16px}
+.hero{padding:32px 0 4px;text-align:center}
+.hero h1{font-size:clamp(29px,5vw,44px);line-height:1.15;margin:12px 0}
+.hero p{max-width:690px;margin:0 auto;color:#ecfdf5}
+.badge{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:5px 12px;border-radius:25px;font-size:13px}
+main{padding:24px 0 40px}
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:23px;margin-bottom:22px;box-shadow:var(--shadow)}
+.card h2{margin-top:0;font-size:23px;line-height:1.3}
+.note{color:var(--muted);font-size:14px;margin-top:-8px}
+.grid,.optional-grid,.results-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{min-width:0}
+.field>label,.optional-field>label:not(.check-label){display:block;font-weight:700;margin-bottom:7px;font-size:14px}
+input,select{width:100%;min-height:46px;border:1px solid #cbd5e1;border-radius:10px;padding:11px 12px;background:#fff;color:var(--text);font-size:16px}
+input:focus,select:focus,summary:focus{outline:3px solid rgba(20,184,166,.3);border-color:var(--primary)}
+input:disabled{background:#f1f5f9;color:#94a3b8;cursor:not-allowed}
+small{display:block;color:var(--muted);font-size:12px;margin-top:5px}
+.req{color:#b91c1c}
+details{border:1px solid var(--border);border-radius:12px;margin-top:22px;overflow:hidden}
+summary{cursor:pointer;padding:15px;background:#f0fdfa;color:var(--dark);font-weight:800}
+.optional-content{padding:17px}
+.optional-field{padding:12px;border:1px solid var(--border);border-radius:12px;min-width:0}
+.check-label{display:flex;align-items:flex-start;gap:9px;cursor:pointer;font-weight:700;font-size:14px;margin-bottom:10px}
+.check-label input{width:18px;min-height:18px;height:18px;flex:0 0 18px;margin:3px 0 0;accent-color:var(--primary)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+button{border:0;border-radius:10px;padding:13px 18px;font-size:15px;font-weight:800;cursor:pointer}
+button:hover{opacity:.92}
+.btn-primary{background:var(--dark);color:#fff;flex:1 1 200px}
+.btn-secondary{background:#e2e8f0;color:var(--text)}
+.btn-light{background:#ccfbf1;color:#115e59}
+#formError{display:none;margin-top:16px;padding:12px;background:#fef2f2;color:#991b1b;border:1px solid #fecaca;border-radius:10px;font-size:14px}
+.results{border-top:5px solid var(--secondary)}
+.result-box{background:#f0fdfa;padding:17px;border-radius:13px;border:1px solid #ccfbf1;overflow-wrap:anywhere}
+.primary-result{grid-column:1/-1;background:linear-gradient(135deg,#115e59,#0f766e);color:#fff;border:0}
+.result-label{font-size:13px;opacity:.9;margin-bottom:5px}
+.result-value{font-size:clamp(21px,4vw,30px);font-weight:800;line-height:1.3}
+.primary-result .result-value{font-size:clamp(29px,6vw,40px)}
+.table-wrap{overflow-x:auto;margin-top:12px}
+table{border-collapse:collapse;width:100%;min-width:390px}
+th,td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--border)}
+th{background:#f8fafc;font-size:13px}
+td:last-child,th:last-child{text-align:right}
+.total-row{font-weight:800;background:#f0fdfa}
+.budget-grid,.related-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.budget-box{padding:16px 12px;border:1px solid var(--border);border-radius:12px}
+.budget-box h3{font-size:15px;margin:0 0 8px}
+.budget-box p{margin:5px 0;font-weight:800;overflow-wrap:anywhere}
+.content h2{margin-top:27px}
+.content h2:first-child{margin-top:0}
+.content p,.content li{color:#334155}
+.content li{margin-bottom:7px}
+.faq-item{border-bottom:1px solid var(--border);padding:13px 0}
+.faq-item:last-child{border-bottom:0}
+.faq-item h3{font-size:17px;margin:0 0 6px}
+.faq-item p{margin:0;color:#475569}
+.related-links a{display:block;padding:15px;border-radius:12px;border:1px solid var(--border);text-decoration:none;font-weight:800;background:#f8fafc}
+.related-links a:hover{background:#f0fdfa}
+.notice{padding:13px;background:#fffbeb;color:#92400e;border-radius:10px;font-size:13px}
+footer{padding:24px 0;background:#0f172a;color:#cbd5e1;text-align:center;font-size:13px}
+footer a{color:#99f6e4;margin:0 7px;display:inline-block}
+footer p{margin:7px 0}
+@media(max-width:620px){.grid,.optional-grid,.results-grid,.budget-grid,.related-links{grid-template-columns:1fr}.primary-result{grid-column:auto}.card{padding:17px}.actions button{width:100%}.links a{margin:0 14px 0 0}}
+@media print{body{background:#fff}header{background:#fff;color:#000;padding:10px 0}.logo{color:#000}.hero p,.links,.actions,form,footer,.np{display:none!important}.card{box-shadow:none;break-inside:avoid}.primary-result{background:#fff;color:#000;border:1px solid #ccc}}
 </style>
 </head>
-
 <body>
-
 <header>
-  <div class="container">
-    <nav class="topbar">
-      <a class="logo" href="index.html">Needly</a>
-      <a class="top-link" href="index.html">Home / All Tools</a>
-    </nav>
-
-    <div class="hero">
-      <span class="badge">FREE TRAVEL PLANNING TOOL</span>
-      <h1>Travel Budget Calculator</h1>
-      <p>
-        Estimate your trip cost, organize travel expenses and plan
-        a budget for your next holiday, family vacation or international trip.
-      </p>
-    </div>
-  </div>
+<div class="container">
+<nav class="topbar" aria-label="Main">
+<a class="logo" href="index.html">Needly</a>
+<div class="links"><a href="index.html">All Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+</nav>
+<div class="hero">
+<span class="badge">FREE TRAVEL PLANNING TOOL</span>
+<h1>Travel Budget Calculator</h1>
+<p>Add up flights, hotels, food and other costs to estimate the total price of your trip, per person and per day.</p>
+</div>
+</div>
 </header>
 
 <main class="container">
-
-  <form id="travelForm" class="card" novalidate>
-    <h2>Plan Your Trip</h2>
-    <p class="section-note">
-      Enter your trip details and select the expenses that apply to your journey.
-      Fields marked with * are required.
-    </p>
-
-    <div class="grid">
-
-      <div class="field">
-        <label for="fromCountry">
-          Departure Country <span class="required">*</span>
-        </label>
-        <input
-          id="fromCountry"
-          type="text"
-          placeholder="e.g. India"
-          maxlength="100"
-          required
-        >
-      </div>
-
-      <div class="field">
-        <label for="destinationCountry">
-          Destination Country <span class="required">*</span>
-        </label>
-        <input
-          id="destinationCountry"
-          type="text"
-          placeholder="e.g. Japan"
-          maxlength="100"
-          required
-        >
-      </div>
-
-      <div class="field">
-        <label for="currency">
-          Display Currency <span class="required">*</span>
-        </label>
-
-        <select id="currency" required>
-          <option value="USD">USD - US Dollar</option>
-          <option value="INR">INR - Indian Rupee</option>
-          <option value="EUR">EUR - Euro</option>
-          <option value="GBP">GBP - British Pound</option>
-          <option value="JPY">JPY - Japanese Yen</option>
-          <option value="CAD">CAD - Canadian Dollar</option>
-          <option value="AUD">AUD - Australian Dollar</option>
-          <option value="NZD">NZD - New Zealand Dollar</option>
-          <option value="SGD">SGD - Singapore Dollar</option>
-          <option value="HKD">HKD - Hong Kong Dollar</option>
-          <option value="CNY">CNY - Chinese Yuan</option>
-          <option value="KRW">KRW - South Korean Won</option>
-          <option value="THB">THB - Thai Baht</option>
-          <option value="MYR">MYR - Malaysian Ringgit</option>
-          <option value="IDR">IDR - Indonesian Rupiah</option>
-          <option value="PHP">PHP - Philippine Peso</option>
-          <option value="VND">VND - Vietnamese Dong</option>
-          <option value="BDT">BDT - Bangladeshi Taka</option>
-          <option value="PKR">PKR - Pakistani Rupee</option>
-          <option value="NPR">NPR - Nepalese Rupee</option>
-          <option value="LKR">LKR - Sri Lankan Rupee</option>
-          <option value="AED">AED - UAE Dirham</option>
-          <option value="SAR">SAR - Saudi Riyal</option>
-          <option value="QAR">QAR - Qatari Riyal</option>
-          <option value="KWD">KWD - Kuwaiti Dinar</option>
-          <option value="CHF">CHF - Swiss Franc</option>
-          <option value="ZAR">ZAR - South African Rand</option>
-          <option value="BRL">BRL - Brazilian Real</option>
-          <option value="MXN">MXN - Mexican Peso</option>
-          <option value="TRY">TRY - Turkish Lira</option>
-        </select>
-
-        <small>Changes display currency only; no exchange-rate conversion.</small>
-      </div>
-
-      <div class="field">
-        <label for="travelers">
-          Number of Travelers <span class="required">*</span>
-        </label>
-        <input
-          id="travelers"
-          type="number"
-          min="1"
-          max="1000"
-          step="1"
-          value="2"
-          required
-        >
-      </div>
-
-      <div class="field">
-        <label for="days">
-          Trip Duration (Days) <span class="required">*</span>
-        </label>
-        <input
-          id="days"
-          type="number"
-          min="1"
-          max="30"
-          step="1"
-          value="7"
-          required
-        >
-        <small>Choose a duration from 1 to 30 days.</small>
-      </div>
-
-      <div class="field">
-        <label for="travelDate">Departure Date (Optional)</label>
-        <input id="travelDate" type="date">
-      </div>
-
-      <div class="field">
-        <label for="flight">
-          Flight / Main Transport Cost <span class="required">*</span>
-        </label>
-        <input
-          id="flight"
-          type="number"
-          min="0"
-          max="1000000000000"
-          step="any"
-          value="600"
-          required
-        >
-        <small>Enter the total cost for all travelers in your selected currency.</small>
-      </div>
-
-    </div>
-
-    <details id="optionalDetails">
-      <summary>＋ Add Optional Expenses</summary>
-
-      <div class="optional-content">
-        <p class="section-note">
-          Select a checkbox to include that expense. Unchecked expenses
-          are excluded from your calculation.
-        </p>
-
-        <div class="optional-grid">
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="hotel">
-              <span>Hotel / Accommodation</span>
-            </label>
-            <label for="hotel">Cost per night (group total)</label>
-            <input id="hotel" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="food">
-              <span>Food & Meals</span>
-            </label>
-            <label for="food">Cost per person per day</label>
-            <input id="food" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="localTransport">
-              <span>Local Transportation</span>
-            </label>
-            <label for="localTransport">Cost per person per day</label>
-            <input id="localTransport" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="activities">
-              <span>Activities & Attractions</span>
-            </label>
-            <label for="activities">Cost per person for the trip</label>
-            <input id="activities" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="insurance">
-              <span>Travel Insurance</span>
-            </label>
-            <label for="insurance">Cost per person for the trip</label>
-            <input id="insurance" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="visa">
-              <span>Visa & Documents</span>
-            </label>
-            <label for="visa">Cost per person for the trip</label>
-            <input id="visa" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="shopping">
-              <span>Shopping</span>
-            </label>
-            <label for="shopping">Total group cost</label>
-            <input id="shopping" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="sim">
-              <span>SIM / Internet</span>
-            </label>
-            <label for="sim">Cost per person for the trip</label>
-            <input id="sim" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="luggage">
-              <span>Extra Luggage</span>
-            </label>
-            <label for="luggage">Total group cost</label>
-            <input id="luggage" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="carRental">
-              <span>Car Rental</span>
-            </label>
-            <label for="carRental">Cost per day (group total)</label>
-            <input id="carRental" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="parking">
-              <span>Parking</span>
-            </label>
-            <label for="parking">Total group cost</label>
-            <input id="parking" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="airportTransfer">
-              <span>Airport Transfer</span>
-            </label>
-            <label for="airportTransfer">Total group cost</label>
-            <input id="airportTransfer" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="other">
-              <span>Other Expenses</span>
-            </label>
-            <label for="other">Total group cost</label>
-            <input id="other" type="number" min="0" step="any"
-                   value="0" disabled>
-          </div>
-
-          <div class="optional-field">
-            <label class="check-label">
-              <input type="checkbox" class="opt-toggle" data-field="emergency">
-              <span>Emergency Buffer</span>
-            </label>
-            <label for="emergency">Extra budget percentage (%)</label>
-            <input id="emergency" type="number" min="0" max="100"
-                   step="any" value="10" disabled>
-            <small>Applied to the subtotal of your selected expenses.</small>
-          </div>
-
-        </div>
-      </div>
-    </details>
-
-    <div class="actions">
-      <button type="submit" class="btn-primary">
-        Calculate Travel Budget
-      </button>
-
-      <button type="button" class="btn-secondary" id="resetBtn">
-        Reset Calculator
-      </button>
-    </div>
-  </form>
-
-  <section class="card results" id="results" aria-live="polite">
-    <h2>Your Travel Budget Estimate</h2>
-
-    <p id="tripSummary" class="section-note">
-      Enter your trip details to see your estimated travel budget.
-    </p>
-
-    <div class="results-grid">
-
-      <div class="result-box primary-result">
-        <div class="result-label">Estimated Total Trip Cost</div>
-        <div class="result-value" id="totalCost">—</div>
-      </div>
-
-      <div class="result-box">
-        <div class="result-label">Cost Per Person</div>
-        <div class="result-value" id="perPerson">—</div>
-      </div>
-
-      <div class="result-box">
-        <div class="result-label">Group Cost Per Day</div>
-        <div class="result-value" id="perDay">—</div>
-      </div>
-
-      <div class="result-box">
-        <div class="result-label">Per Person Per Day</div>
-        <div class="result-value" id="personPerDay">—</div>
-      </div>
-
-      <div class="result-box">
-        <div class="result-label">Trip Duration</div>
-        <div class="result-value" id="resultDays">—</div>
-      </div>
-
-    </div>
-
-    <div class="actions">
-      <button type="button" class="btn-light" id="downloadBtn">
-        Download Budget Report
-      </button>
-
-      <button type="button" class="btn-secondary" id="printBtn">
-        Print / Save PDF
-      </button>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>Travel Expense Breakdown</h2>
-
-    <p class="section-note">
-      Review how your estimated trip budget is distributed.
-    </p>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Expense Category</th>
-            <th>Estimated Cost</th>
-          </tr>
-        </thead>
-
-        <tbody id="breakdownBody">
-          <tr>
-            <td>Main Transportation</td>
-            <td>—</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>Compare Your Travel Budget</h2>
-
-    <p class="section-note">
-      These are illustrative planning scenarios based on your entered total.
-      They are not actual destination prices or guaranteed travel quotes.
-    </p>
-
-    <div class="budget-grid">
-
-      <div class="budget-box">
-        <h3>Budget Plan</h3>
-        <p id="budgetLow">—</p>
-        <small>80% of your calculated estimate.</small>
-      </div>
-
-      <div class="budget-box">
-        <h3>Standard Plan</h3>
-        <p id="budgetStandard">—</p>
-        <small>100% of your calculated estimate.</small>
-      </div>
-
-      <div class="budget-box">
-        <h3>Comfort Plan</h3>
-        <p id="budgetComfort">—</p>
-        <small>130% of your calculated estimate.</small>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="card content">
-    <h2>Travel Budget Calculator: Plan Your Trip Expenses</h2>
-
-    <p>
-      Planning a trip is easier when you understand how much it may cost.
-      Needly's free Travel Budget Calculator helps you estimate your travel
-      expenses before you leave home. Whether you are planning a weekend
-      getaway, a family holiday, a solo adventure or an international trip,
-      you can organize your estimated expenses in one place.
-    </p>
-
-    <p>
-      Enter your departure country, destination country, number of travelers
-      and trip duration. You can plan a journey lasting from 1 to 30 days.
-      Add your main transportation cost and select the optional expenses
-      relevant to your trip.
-    </p>
-
-    <h2>Calculate Your Total Trip Cost</h2>
-
-    <p>
-      Your travel budget may include flights, accommodation, meals, local
-      transportation, activities, travel insurance and other expenses.
-      This trip cost calculator combines the amounts you enter to estimate
-      the total cost of your journey.
-    </p>
-
-    <p>
-      You can also review your estimated travel cost per person, group cost
-      per day and cost per person per day. These figures can help you compare
-      different travel plans before making bookings.
-    </p>
-
-    <h2>Plan a Travel Budget for Any Destination</h2>
-
-    <p>
-      Travel expenses depend on your destination, season, accommodation,
-      transportation choices and personal preferences. A short city break
-      may need a different budget from a longer holiday.
-    </p>
-
-    <p>
-      Use this vacation budget calculator to compare possible plans. For
-      example, you can estimate the cost of a 7-day vacation, compare it
-      with a 10-day trip, or prepare a budget for a journey of up to 30 days.
-    </p>
-
-    <h2>Estimate Hotel, Food and Transportation Costs</h2>
-
-    <p>
-      Accommodation, food and transportation can make up a large part of a
-      travel budget. Enter your estimated hotel cost per night, food cost
-      per person per day and local transportation expenses when applicable.
-    </p>
-
-    <p>
-      You can also include activities, attractions, travel insurance, visa
-      fees, shopping, SIM or internet costs, extra luggage, car rental,
-      parking, airport transfers and an emergency buffer.
-    </p>
-
-    <h2>Travel Budget Calculator for Families and Solo Travelers</h2>
-
-    <p>
-      Every traveler has different needs. A solo traveler may focus on
-      accommodation and transport, while a family may need to consider
-      expenses for several people.
-    </p>
-
-    <p>
-      Enter the number of travelers and select the expense categories that
-      apply. Costs entered per person are multiplied by the traveler count,
-      while group expenses are included as entered.
-    </p>
-
-    <h2>How to Use This Travel Expense Calculator</h2>
-
-    <ol>
-      <li>Enter your departure country and destination country.</li>
-      <li>Select the currency you want to use for displaying your estimate.</li>
-      <li>Enter the number of travelers and trip duration.</li>
-      <li>Enter the total cost of flights or your main transportation.</li>
-      <li>Open the optional expenses section and select applicable categories.</li>
-      <li>Enter your expected costs and select Calculate Travel Budget.</li>
-      <li>Review your results and download or print your budget report.</li>
-    </ol>
-
-    <h2>Make a Practical Travel Budget</h2>
-
-    <p>
-      Use realistic estimates based on your own travel research. Check
-      accommodation rates, transportation fares, visa requirements and
-      activity prices before finalizing your budget.
-    </p>
-
-    <p>
-      The result is an estimate, not a guaranteed quote. Actual costs may
-      change due to seasonal prices, exchange rates, taxes, availability
-      and unexpected expenses.
-    </p>
-
-    <div class="notice">
-      Currency note: the selected currency changes the display format only.
-      Enter all expense amounts in the same selected currency. This calculator
-      does not fetch live exchange rates or automatically convert currencies.
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>Frequently Asked Questions</h2>
-
-    <div class="faq-item">
-      <h3>What is a travel budget calculator?</h3>
-      <p>
-        A travel budget calculator estimates trip expenses such as
-        transportation, accommodation, food, activities and other costs.
-      </p>
-    </div>
-
-    <div class="faq-item">
-      <h3>How do I calculate the total cost of a trip?</h3>
-      <p>
-        Enter your trip details, add the main transportation cost, select
-        optional expenses and calculate your estimated total.
-      </p>
-    </div>
-
-    <div class="faq-item">
-      <h3>Can I calculate a travel budget for 7, 10 or 30 days?</h3>
-      <p>
-        Yes. You can enter any trip duration from 1 to 30 days. Daily expenses
-        are calculated using the duration you enter.
-      </p>
-    </div>
-
-    <div class="faq-item">
-      <h3>Can I calculate travel expenses for multiple people?</h3>
-      <p>
-        Yes. Enter the number of travelers. Expenses entered per person are
-        multiplied by the number of travelers where applicable.
-      </p>
-    </div>
-
-    <div class="faq-item">
-      <h3>Can I include hotel and food expenses?</h3>
-      <p>
-        Yes. Both are optional. Activate the relevant checkbox and enter
-        your estimated hotel cost per night or food cost per person per day.
-      </p>
-    </div>
-
-    <div class="faq-item">
-      <h3>Does this calculator support international trips?</h3>
-      <p>
-        Yes. You can enter different departure and destination countries.
-        Select a display currency, but enter all expenses using that same
-        currency because automatic exchange-rate conversion is not available.
-      </p>
-    </div>
-
-    <div class="faq-item">
-      <h3>Is this travel budget calculator free?</h3>
-      <p>
-        Yes. Needly's Travel Budget Calculator is free to use for estimating
-        your travel expenses.
-      </p>
-    </div>
-
-    <div class="faq-item">
-      <h3>Are the estimated travel costs guaranteed to be accurate?</h3>
-      <p>
-        No. The results depend on your inputs. Actual travel prices may vary
-        by destination, season, provider, taxes and other factors.
-      </p>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>Explore More Free Calculators</h2>
-
-    <p>
-      Explore more Needly tools to help organize your everyday expenses
-      and financial plans.
-    </p>
-
-    <div class="related-links">
-      <a href="index.html">Explore All Free Calculators</a>
-      <a href="savings.html">Savings Calculator</a>
-      <a href="wedding.html">Wedding Budget Calculator</a>
-    </div>
-  </section>
-
+<form id="travelForm" class="card" novalidate>
+<h2>Plan Your Trip</h2>
+<p class="note">Fields marked with * are required. Enter every amount in the same currency.</p>
+<div class="grid">
+<div class="field"><label for="fromCountry">Departure Country (optional)</label><input id="fromCountry" type="text" placeholder="e.g. India" maxlength="100"><small>Shown in your report only. It does not change the calculation.</small></div>
+<div class="field"><label for="destinationCountry">Destination Country (optional)</label><input id="destinationCountry" type="text" placeholder="e.g. Japan" maxlength="100"><small>Shown in your report only. It does not change the calculation.</small></div>
+<div class="field"><label for="currency">Display Currency <span class="req">*</span></label><select id="currency"></select><small>Changes the display format only. There is no exchange-rate conversion, so enter all amounts in this currency.</small></div>
+<div class="field"><label for="travelers">Number of Travelers <span class="req">*</span></label><input id="travelers" type="number" min="1" max="1000" step="1" value="2"></div>
+<div class="field"><label for="days">Trip Duration (Days) <span class="req">*</span></label><input id="days" type="number" min="1" max="30" step="1" value="7"><small>1 to 30 days.</small></div>
+<div class="field"><label for="travelDate">Departure Date (optional)</label><input id="travelDate" type="date"><small>Shown in your report only.</small></div>
+<div class="field"><label for="flight">Flight / Main Transport Cost <span class="req">*</span></label><input id="flight" type="number" min="0" step="any" placeholder="e.g. 1200"><small>Total for all travelers.</small></div>
+</div>
+
+<details id="optionalDetails">
+<summary>＋ Add Optional Expenses</summary>
+<div class="optional-content">
+<p class="note">Tick a box to include that expense. Unticked expenses are left out.</p>
+<div class="optional-grid" id="optionalGrid"></div>
+</div>
+</details>
+
+<div id="formError" role="alert"></div>
+<div class="actions">
+<button type="submit" class="btn-primary">Calculate Travel Budget</button>
+<button type="button" class="btn-secondary" id="resetBtn">Reset Calculator</button>
+</div>
+</form>
+
+<section class="card results" id="results" aria-live="polite">
+<h2>Your Travel Budget Estimate</h2>
+<p id="tripSummary" class="note">Enter your trip details to see your estimated travel budget.</p>
+<div class="results-grid">
+<div class="result-box primary-result"><div class="result-label">Estimated Total Trip Cost</div><div class="result-value" id="totalCost">—</div></div>
+<div class="result-box"><div class="result-label">Cost Per Person</div><div class="result-value" id="perPerson">—</div></div>
+<div class="result-box"><div class="result-label">Group Cost Per Day</div><div class="result-value" id="perDay">—</div></div>
+<div class="result-box"><div class="result-label">Per Person Per Day</div><div class="result-value" id="personPerDay">—</div></div>
+<div class="result-box"><div class="result-label">Trip Duration</div><div class="result-value" id="resultDays">—</div></div>
+</div>
+<div class="actions">
+<button type="button" class="btn-light" id="downloadBtn">Download Budget Report</button>
+<button type="button" class="btn-secondary" id="printBtn">Print / Save PDF</button>
+</div>
+</section>
+
+<section class="card">
+<h2>Travel Expense Breakdown</h2>
+<div class="table-wrap"><table><thead><tr><th>Expense Category</th><th>Estimated Cost</th></tr></thead><tbody id="breakdownBody"><tr><td>Calculate to see your breakdown</td><td>—</td></tr></tbody></table></div>
+</section>
+
+<section class="card">
+<h2>Budget Flexibility: 80% / 100% / 130%</h2>
+<p class="note">What if your real costs come in lower or higher than your estimate? These are simple multiples of your total, not real destination prices or quotes.</p>
+<div class="budget-grid">
+<div class="budget-box"><h3>20% lower</h3><p id="budgetLow">—</p><small>80% of your estimate.</small></div>
+<div class="budget-box"><h3>As entered</h3><p id="budgetStandard">—</p><small>100% of your estimate.</small></div>
+<div class="budget-box"><h3>30% higher</h3><p id="budgetComfort">—</p><small>130% of your estimate.</small></div>
+</div>
+</section>
+
+<section class="card content np">
+<h2>How This Travel Budget Calculator Works</h2>
+<p>You enter your own cost estimates and the calculator combines them. It does not know real prices for any destination, so the result is only as good as the numbers you research. These are the formulas it uses:</p>
+<ul>
+<li><strong>Hotel</strong> = cost per night × nights. Nights = days − 1 (minimum 1), so a 7-day trip is charged 6 nights.</li>
+<li><strong>Food and local transport</strong> = per-person daily cost × travelers × days.</li>
+<li><strong>Activities, insurance, visa and SIM</strong> = per-person cost × travelers.</li>
+<li><strong>Car rental</strong> = daily cost × days.</li>
+<li><strong>Flights, shopping, extra luggage, parking, airport transfer and other</strong> = entered as a group total.</li>
+<li><strong>Emergency buffer</strong> = percentage × subtotal (flights included). Total = subtotal + buffer.</li>
+<li><strong>Per person</strong> = total ÷ travelers. <strong>Per day</strong> = total ÷ days.</li>
+</ul>
+
+<h2>Example: 7 Days, 2 Travelers</h2>
+<p>These figures are made up for illustration. Replace them with your own research.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Expense</th><th>Calculation</th><th>Amount</th></tr></thead>
+<tbody>
+<tr><td>Flights</td><td>Total for both travelers</td><td>1,200.00</td></tr>
+<tr><td>Hotel</td><td>80 per night × 6 nights</td><td>480.00</td></tr>
+<tr><td>Food</td><td>25 × 2 people × 7 days</td><td>350.00</td></tr>
+<tr><td>Local transport</td><td>8 × 2 people × 7 days</td><td>112.00</td></tr>
+<tr><td>Activities</td><td>100 × 2 people</td><td>200.00</td></tr>
+<tr><td>Travel insurance</td><td>30 × 2 people</td><td>60.00</td></tr>
+<tr><td>SIM / internet</td><td>10 × 2 people</td><td>20.00</td></tr>
+<tr class="total-row"><td>Subtotal</td><td></td><td>2,422.00</td></tr>
+<tr><td>Emergency buffer</td><td>10% of subtotal</td><td>242.20</td></tr>
+<tr class="total-row"><td>Total</td><td></td><td>2,664.20</td></tr>
+</tbody></table></div>
+<p>That is about 1,332.10 per person, 380.60 per day for the group and 190.30 per person per day.</p>
+
+<h2>Tips for a Realistic Trip Budget</h2>
+<ul>
+<li>Research each category separately. A flight search, a hotel search and a look at typical meal prices are more reliable than one guessed number.</li>
+<li>Keep an emergency buffer. Around 10% is a common rule of thumb, but plans and prices vary.</li>
+<li>Remember what scales with group size. Food, insurance and visa fees usually multiply per traveler, while a hotel room or rental car often does not.</li>
+<li>Check visa and insurance requirements before booking, since some fees are non-refundable.</li>
+<li>Compare versions of the same trip. Change the number of days or the hotel cost, calculate again and see which choice matters most.</li>
+</ul>
+
+<h2>What This Calculator Does Not Do</h2>
+<p>It does not convert currencies, look up live prices, or compare two trips side by side. It supports trips of 1 to 30 days.</p>
+<div class="notice">This is an estimate based on the values you enter, not a quote or financial advice. Actual costs can change with season, taxes, availability and exchange rates.</div>
+<p><small>Last updated: October 2026</small></p>
+</section>
+
+<section class="card np" id="faq">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>How many nights does the calculator charge for a 7-day trip?</h3><p>It charges 6 nights. Hotel nights are calculated as the number of days minus one, with a minimum of one night.</p></div>
+<div class="faq-item"><h3>Which costs are multiplied by the number of travelers?</h3><p>Food, local transport, activities, travel insurance, visa fees and SIM costs are entered per person and multiplied by travelers. Flights, hotel, shopping, extra luggage, parking, airport transfer, car rental and other expenses are entered as group totals.</p></div>
+<div class="faq-item"><h3>Is the emergency buffer applied to my flight cost too?</h3><p>Yes. The buffer percentage is applied to the subtotal of everything you included, flights as well.</p></div>
+<div class="faq-item"><h3>How much emergency buffer should I add?</h3><p>Around 10% is a common rule of thumb, but there is no fixed right amount. Use more if your plans are uncertain or prices are volatile.</p></div>
+<div class="faq-item"><h3>Does this calculator convert currencies?</h3><p>No. The currency selector changes how amounts are displayed. Enter all amounts in the same currency, because no exchange rates are applied.</p></div>
+<div class="faq-item"><h3>Are the results guaranteed to be accurate?</h3><p>No. Results depend entirely on the figures you enter, and real prices vary by destination, season, provider and taxes.</p></div>
+</section>
+
+<section class="card np">
+<h2>Explore More Free Calculators</h2>
+<div class="related-links">
+<a href="savings.html">Savings Calculator</a>
+<a href="wedding.html">Wedding Budget Calculator</a>
+<a href="car.html">Car Affordability</a>
+<a href="rent.html">Rent Affordability</a>
+<a href="debt.html">Debt Payoff</a>
+<a href="index.html">All Free Calculators</a>
+</div>
+</section>
 </main>
 
 <footer>
-  <div class="container">
-    <p><strong>Needly</strong> — Smart Tools for Everyday Life</p>
-    <p>Free tools to help you plan, estimate and organize everyday tasks.</p>
-    <p>
-      <a href="index.html">Home</a>
-      <a href="travel.html">Travel Calculator</a>
-      <a href="savings.html">Savings Calculator</a>
-      <a href="wedding.html">Wedding Calculator</a>
-    </p>
-    <p>© <span id="year"></span> Needly. All rights reserved.</p>
-  </div>
+<div class="container">
+<p><strong>Needly</strong> — Smart Tools for Everyday Life</p>
+<p><a href="index.html">Home</a><a href="savings.html">Savings</a><a href="travel.html">Travel</a><a href="car.html">Car</a><a href="rent.html">Rent</a><a href="debt.html">Debt</a><a href="freelancer.html">Freelancer</a><a href="electricity.html">Electricity</a><a href="wedding.html">Wedding</a><a href="mortgage.html">Mortgage</a></p>
+<p><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></p>
+<p>© <span id="year"></span> Needly. All rights reserved.</p>
+</div>
 </footer>
 
 <script>
 "use strict";
-
-const form = document.getElementById("travelForm");
-
-const optionalFields = [
-  { id: "hotel", label: "Hotel / Accommodation" },
-  { id: "food", label: "Food & Meals" },
-  { id: "localTransport", label: "Local Transportation" },
-  { id: "activities", label: "Activities & Attractions" },
-  { id: "insurance", label: "Travel Insurance" },
-  { id: "visa", label: "Visa & Documents" },
-  { id: "shopping", label: "Shopping" },
-  { id: "sim", label: "SIM / Internet" },
-  { id: "luggage", label: "Extra Luggage" },
-  { id: "carRental", label: "Car Rental" },
-  { id: "parking", label: "Parking" },
-  { id: "airportTransfer", label: "Airport Transfer" },
-  { id: "other", label: "Other Expenses" },
-  { id: "emergency", label: "Emergency Buffer" }
-];
-
+const $ = id => document.getElementById(id);
+const form = $("travelForm");
 let lastReport = null;
 
-function getNumber(id) {
-  const element = document.getElementById(id);
-  const value = Number(element.value);
+const CURRENCIES = "USD|US Dollar;INR|Indian Rupee;EUR|Euro;GBP|British Pound;JPY|Japanese Yen;CAD|Canadian Dollar;AUD|Australian Dollar;NZD|New Zealand Dollar;SGD|Singapore Dollar;HKD|Hong Kong Dollar;CNY|Chinese Yuan;KRW|South Korean Won;THB|Thai Baht;MYR|Malaysian Ringgit;IDR|Indonesian Rupiah;PHP|Philippine Peso;VND|Vietnamese Dong;BDT|Bangladeshi Taka;PKR|Pakistani Rupee;NPR|Nepalese Rupee;LKR|Sri Lankan Rupee;AED|UAE Dirham;SAR|Saudi Riyal;QAR|Qatari Riyal;KWD|Kuwaiti Dinar;CHF|Swiss Franc;ZAR|South African Rand;BRL|Brazilian Real;MXN|Mexican Peso;TRY|Turkish Lira";
+CURRENCIES.split(";").forEach(c => {
+  const [code, name] = c.split("|");
+  const o = new Option(code + " - " + name, code, code === "INR", code === "INR");
+  $("currency").add(o);
+});
 
-  if (
-    element.value.trim() === "" ||
-    !Number.isFinite(value) ||
-    value < 0
-  ) {
-    throw new Error("Please enter a valid non-negative amount for " + id + ".");
-  }
+// id, label, help, multiplier(travelers, days, nights)
+const OPTIONAL = [
+  ["hotel", "Hotel / Accommodation", "Cost per night (group total). Nights = days − 1, minimum 1.", (t, d, n) => n],
+  ["food", "Food & Meals", "Cost per person per day", (t, d) => t * d],
+  ["localTransport", "Local Transportation", "Cost per person per day", (t, d) => t * d],
+  ["activities", "Activities & Attractions", "Cost per person for the trip", t => t],
+  ["insurance", "Travel Insurance", "Cost per person for the trip", t => t],
+  ["visa", "Visa & Documents", "Cost per person for the trip", t => t],
+  ["shopping", "Shopping", "Total group cost", () => 1],
+  ["sim", "SIM / Internet", "Cost per person for the trip", t => t],
+  ["luggage", "Extra Luggage", "Total group cost", () => 1],
+  ["carRental", "Car Rental", "Cost per day (group total)", (t, d) => d],
+  ["parking", "Parking", "Total group cost", () => 1],
+  ["airportTransfer", "Airport Transfer", "Total group cost", () => 1],
+  ["other", "Other Expenses", "Total group cost", () => 1],
+  ["emergency", "Emergency Buffer", "Percent of the subtotal (flight included), 0 to 100.", null]
+];
 
-  if (value > 1000000000000) {
-    throw new Error("The amount entered for " + id + " is too large.");
-  }
+OPTIONAL.forEach(([id, label, help]) => {
+  const box = document.createElement("div");
+  box.className = "optional-field";
+  const cl = document.createElement("label");
+  cl.className = "check-label";
+  const cb = document.createElement("input");
+  cb.type = "checkbox";
+  cb.className = "opt-toggle";
+  cb.dataset.field = id;
+  const sp = document.createElement("span");
+  sp.textContent = label;
+  cl.append(cb, sp);
+  const lb = document.createElement("label");
+  lb.htmlFor = id;
+  lb.textContent = help;
+  const inp = document.createElement("input");
+  inp.id = id;
+  inp.type = "number";
+  inp.min = "0";
+  if (id === "emergency") inp.max = "100";
+  inp.step = "any";
+  inp.value = id === "emergency" ? "10" : "0";
+  inp.disabled = true;
+  box.append(cl, lb, inp);
+  $("optionalGrid").appendChild(box);
+  cb.addEventListener("change", () => {
+    inp.disabled = !cb.checked;
+    if (cb.checked) inp.focus();
+  });
+});
 
-  return value;
+function showError(msg) {
+  const el = $("formError");
+  el.textContent = msg || "";
+  el.style.display = msg ? "block" : "none";
 }
 
-function formatMoney(amount) {
-  const currency = document.getElementById("currency").value;
+function getNum(id, label) {
+  const el = $(id);
+  const v = Number(el.value);
+  if (el.value.trim() === "" || !Number.isFinite(v) || v < 0) {
+    throw new Error("Please enter a valid amount (0 or more) for " + label + ".");
+  }
+  if (v > 1e12) throw new Error("The amount entered for " + label + " is too large.");
+  return v;
+}
 
+function money(amount) {
+  const currency = $("currency").value;
   try {
-    return new Intl.NumberFormat(undefined, {
-      style: "currency",
-      currency: currency,
-      maximumFractionDigits: 2
-    }).format(amount);
-  } catch (error) {
+    return new Intl.NumberFormat(undefined, { style: "currency", currency }).format(amount);
+  } catch (e) {
     return currency + " " + amount.toFixed(2);
   }
 }
 
-function isOptionalEnabled(id) {
-  const checkbox = document.querySelector(
-    '.opt-toggle[data-field="' + id + '"]'
-  );
+const enabled = id => document.querySelector('.opt-toggle[data-field="' + id + '"]').checked;
 
-  return checkbox && checkbox.checked;
-}
-
-function getOptionalAmount(id) {
-  if (!isOptionalEnabled(id)) {
-    return 0;
-  }
-
-  return getNumber(id);
-}
-
-function validateTrip() {
-  const from = document.getElementById("fromCountry").value.trim();
-  const destination =
-    document.getElementById("destinationCountry").value.trim();
-
-  if (!from || !destination) {
-    throw new Error("Please enter both departure and destination countries.");
-  }
-
-  const travelers = getNumber("travelers");
-  const days = getNumber("days");
-  const flight = getNumber("flight");
-
-  if (!Number.isInteger(travelers) || travelers < 1 || travelers > 1000) {
-    throw new Error("Number of travelers must be a whole number from 1 to 1000.");
-  }
-
-  if (!Number.isInteger(days) || days < 1 || days > 30) {
-    throw new Error("Trip duration must be a whole number from 1 to 30 days.");
-  }
-
-  return {
-    from,
-    destination,
-    travelers,
-    days,
-    flight
-  };
-}
-
-function calculateBudget(event) {
-  if (event) {
-    event.preventDefault();
-  }
-
+function calculate(event) {
+  if (event) event.preventDefault();
   try {
-    const trip = validateTrip();
+    showError("");
+    const from = $("fromCountry").value.trim();
+    const dest = $("destinationCountry").value.trim();
+    const travelers = getNum("travelers", "Number of Travelers");
+    const days = getNum("days", "Trip Duration");
+    if (!Number.isInteger(travelers) || travelers < 1 || travelers > 1000) {
+      throw new Error("Number of travelers must be a whole number from 1 to 1000.");
+    }
+    if (!Number.isInteger(days) || days < 1 || days > 30) {
+      throw new Error("Trip duration must be a whole number from 1 to 30 days.");
+    }
+    const flight = getNum("flight", "Flight / Main Transport Cost");
+    const nights = Math.max(days - 1, 1);
 
-    const travelers = trip.travelers;
-    const days = trip.days;
-
-    const expenses = [];
-
-    expenses.push({
-      label: "Flight / Main Transportation",
-      amount: trip.flight
-    });
-
-    const hotel = getOptionalAmount("hotel") * days;
-    const food = getOptionalAmount("food") * travelers * days;
-    const localTransport =
-      getOptionalAmount("localTransport") * travelers * days;
-
-    const activities = getOptionalAmount("activities") * travelers;
-    const insurance = getOptionalAmount("insurance") * travelers;
-    const visa = getOptionalAmount("visa") * travelers;
-
-    const shopping = getOptionalAmount("shopping");
-    const sim = getOptionalAmount("sim") * travelers;
-    const luggage = getOptionalAmount("luggage");
-    const carRental = getOptionalAmount("carRental") * days;
-    const parking = getOptionalAmount("parking");
-    const airportTransfer = getOptionalAmount("airportTransfer");
-    const other = getOptionalAmount("other");
-
-    const optionalCosts = [
-      ["Hotel / Accommodation", hotel, "hotel"],
-      ["Food & Meals", food, "food"],
-      ["Local Transportation", localTransport, "localTransport"],
-      ["Activities & Attractions", activities, "activities"],
-      ["Travel Insurance", insurance, "insurance"],
-      ["Visa & Documents", visa, "visa"],
-      ["Shopping", shopping, "shopping"],
-      ["SIM / Internet", sim, "sim"],
-      ["Extra Luggage", luggage, "luggage"],
-      ["Car Rental", carRental, "carRental"],
-      ["Parking", parking, "parking"],
-      ["Airport Transfer", airportTransfer, "airportTransfer"],
-      ["Other Expenses", other, "other"]
-    ];
-
-    optionalCosts.forEach(function (item) {
-      if (isOptionalEnabled(item[2])) {
-        expenses.push({
-          label: item[0],
-          amount: item[1]
-        });
+    const expenses = [{ label: "Flight / Main Transportation", amount: flight }];
+    OPTIONAL.forEach(([id, label, , mult]) => {
+      if (mult && enabled(id)) {
+        expenses.push({ label, amount: getNum(id, label) * mult(travelers, days, nights) });
       }
     });
 
-    const subtotal = expenses.reduce(function (sum, item) {
-      return sum + item.amount;
-    }, 0);
-
-    const emergencyPercent = isOptionalEnabled("emergency")
-      ? getNumber("emergency")
-      : 0;
-
-    if (emergencyPercent > 100) {
-      throw new Error("Emergency buffer must be between 0 and 100 percent.");
+    const subtotal = expenses.reduce((s, e) => s + e.amount, 0);
+    let pct = 0;
+    if (enabled("emergency")) {
+      pct = getNum("emergency", "Emergency Buffer");
+      if (pct > 100) throw new Error("Emergency buffer must be between 0 and 100 percent.");
+      expenses.push({ label: "Emergency Buffer (" + pct + "%)", amount: subtotal * pct / 100 });
     }
 
-    const emergencyAmount = subtotal * emergencyPercent / 100;
-
-    if (isOptionalEnabled("emergency")) {
-      expenses.push({
-        label: "Emergency Buffer (" + emergencyPercent + "%)",
-        amount: emergencyAmount
-      });
-    }
-
-    const total = subtotal + emergencyAmount;
+    const total = subtotal + (subtotal * pct / 100);
     const perPerson = total / travelers;
     const perDay = total / days;
-    const personPerDay = total / travelers / days;
+    const personPerDay = perPerson / days;
 
-    document.getElementById("totalCost").textContent = formatMoney(total);
-    document.getElementById("perPerson").textContent = formatMoney(perPerson);
-    document.getElementById("perDay").textContent = formatMoney(perDay);
-    document.getElementById("personPerDay").textContent =
-      formatMoney(personPerDay);
+    $("totalCost").textContent = money(total);
+    $("perPerson").textContent = money(perPerson);
+    $("perDay").textContent = money(perDay);
+    $("personPerDay").textContent = money(personPerDay);
+    $("resultDays").textContent = days + (days === 1 ? " day" : " days");
 
-    document.getElementById("resultDays").textContent =
-      days + (days === 1 ? " day" : " days");
+    const date = $("travelDate").value;
+    const route = from && dest ? from + " → " + dest + " | " : (dest ? "To " + dest + " | " : "");
+    $("tripSummary").textContent = route + travelers + (travelers === 1 ? " traveler" : " travelers") +
+      " | " + days + (days === 1 ? " day" : " days") + (date ? " | Departing " + date : "");
 
-    document.getElementById("tripSummary").textContent =
-      trip.from + " → " + trip.destination +
-      " | " + travelers + (travelers === 1 ? " traveler" : " travelers") +
-      " | " + days + (days === 1 ? " day" : " days");
-
-    const tableBody = document.getElementById("breakdownBody");
-    tableBody.replaceChildren();
-
-    expenses.forEach(function (item) {
-      const row = document.createElement("tr");
-      const nameCell = document.createElement("td");
-      const amountCell = document.createElement("td");
-
-      nameCell.textContent = item.label;
-      amountCell.textContent = formatMoney(item.amount);
-
-      row.appendChild(nameCell);
-      row.appendChild(amountCell);
-      tableBody.appendChild(row);
-    });
-
-    const totalRow = document.createElement("tr");
-    totalRow.className = "total-row";
-
-    const totalLabel = document.createElement("td");
-    totalLabel.textContent = "Total Trip Cost";
-
-    const totalValue = document.createElement("td");
-    totalValue.textContent = formatMoney(total);
-
-    totalRow.appendChild(totalLabel);
-    totalRow.appendChild(totalValue);
-    tableBody.appendChild(totalRow);
-
-    document.getElementById("budgetLow").textContent =
-      formatMoney(total * 0.8);
-
-    document.getElementById("budgetStandard").textContent =
-      formatMoney(total);
-
-    document.getElementById("budgetComfort").textContent =
-      formatMoney(total * 1.3);
-
-    lastReport = {
-      from: trip.from,
-      destination: trip.destination,
-      travelers: travelers,
-      days: days,
-      currency: document.getElementById("currency").value,
-      expenses: expenses.map(function (item) {
-        return {
-          label: item.label,
-          amount: item.amount
-        };
-      }),
-      total: total,
-      perPerson: perPerson,
-      perDay: perDay,
-      personPerDay: personPerDay,
-      emergencyPercent: emergencyPercent
+    const body = $("breakdownBody");
+    body.replaceChildren();
+    const addRow = (name, amount, cls) => {
+      const tr = document.createElement("tr");
+      if (cls) tr.className = cls;
+      const a = document.createElement("td");
+      const b = document.createElement("td");
+      a.textContent = name;
+      b.textContent = money(amount);
+      tr.append(a, b);
+      body.appendChild(tr);
     };
+    expenses.forEach(e => addRow(e.label, e.amount));
+    addRow("Total Trip Cost", total, "total-row");
 
-  } catch (error) {
+    $("budgetLow").textContent = money(total * 0.8);
+    $("budgetStandard").textContent = money(total);
+    $("budgetComfort").textContent = money(total * 1.3);
+
+    lastReport = { from, dest, date, travelers, days, nights, currency: $("currency").value, expenses, total, perPerson, perDay, personPerDay };
+  } catch (err) {
     lastReport = null;
-    alert(error.message || "Unable to calculate your travel budget.");
+    showError(err.message || "Unable to calculate your travel budget.");
   }
 }
 
-document.querySelectorAll(".opt-toggle").forEach(function (checkbox) {
-  checkbox.addEventListener("change", function () {
-    const fieldId = checkbox.dataset.field;
-    const field = document.getElementById(fieldId);
+form.addEventListener("submit", calculate);
+$("currency").addEventListener("change", () => { if (lastReport) calculate(); });
 
-    field.disabled = !checkbox.checked;
-
-    if (checkbox.checked) {
-      field.focus();
-    }
-  });
-});
-
-form.addEventListener("submit", calculateBudget);
-
-document.getElementById("currency").addEventListener("change", function () {
-  if (lastReport) {
-    calculateBudget();
-  }
-});
-
-document.getElementById("downloadBtn").addEventListener("click", function () {
-  if (!lastReport) {
-    alert("Please calculate your travel budget first.");
-    return;
-  }
-
-  const report = lastReport;
-
+$("downloadBtn").addEventListener("click", () => {
+  if (!lastReport) { showError("Please calculate your travel budget first."); return; }
+  const r = lastReport;
   const lines = [
     "NEEDLY - TRAVEL BUDGET REPORT",
     "================================",
-    "Departure: " + report.from,
-    "Destination: " + report.destination,
-    "Travelers: " + report.travelers,
-    "Trip Duration: " + report.days + " days",
-    "Display Currency: " + report.currency,
+    "Departure: " + (r.from || "-"),
+    "Destination: " + (r.dest || "-"),
+    "Departure Date: " + (r.date || "-"),
+    "Travelers: " + r.travelers,
+    "Trip Duration: " + r.days + " days (" + r.nights + " hotel nights)",
+    "Display Currency: " + r.currency,
     "",
     "EXPENSE BREAKDOWN",
     "-----------------"
   ];
-
-  report.expenses.forEach(function (item) {
-    lines.push(item.label + ": " + formatMoney(item.amount));
-  });
-
-  lines.push("");
-  lines.push("TOTAL TRIP COST: " + formatMoney(report.total));
-  lines.push("COST PER PERSON: " + formatMoney(report.perPerson));
-  lines.push("GROUP COST PER DAY: " + formatMoney(report.perDay));
-  lines.push("PER PERSON PER DAY: " + formatMoney(report.personPerDay));
-  lines.push("");
-  lines.push("Note: This is an estimate based on the values entered.");
-  lines.push("Currency selection does not perform exchange-rate conversion.");
-  lines.push("Created with Needly Travel Budget Calculator.");
-
-  const blob = new Blob(
-    [lines.join("\n")],
-    { type: "text/plain;charset=utf-8" }
-  );
-
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-
-  link.href = url;
-  link.download = "needly-travel-budget-report.txt";
-
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-
+  r.expenses.forEach(e => lines.push(e.label + ": " + money(e.amount)));
+  lines.push("", "TOTAL TRIP COST: " + money(r.total),
+    "COST PER PERSON: " + money(r.perPerson),
+    "GROUP COST PER DAY: " + money(r.perDay),
+    "PER PERSON PER DAY: " + money(r.personPerDay), "",
+    "Note: This is an estimate based on the values entered.",
+    "No exchange-rate conversion is applied.",
+    "Created with Needly Travel Budget Calculator.");
+  const url = URL.createObjectURL(new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" }));
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "needly-travel-budget-report.txt";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
   URL.revokeObjectURL(url);
 });
 
-document.getElementById("printBtn").addEventListener("click", function () {
-  if (!lastReport) {
-    alert("Please calculate your travel budget first.");
-    return;
-  }
-
+$("printBtn").addEventListener("click", () => {
+  if (!lastReport) { showError("Please calculate your travel budget first."); return; }
   window.print();
 });
 
-document.getElementById("resetBtn").addEventListener("click", function () {
+$("resetBtn").addEventListener("click", () => {
   form.reset();
-
-  document.getElementById("currency").value = "USD";
-  document.getElementById("travelers").value = "2";
-  document.getElementById("days").value = "7";
-  document.getElementById("flight").value = "600";
-
-  document.querySelectorAll(".opt-toggle").forEach(function (checkbox) {
-    checkbox.checked = false;
-
-    const field = document.getElementById(checkbox.dataset.field);
-    field.disabled = true;
-
-    field.value = checkbox.dataset.field === "emergency" ? "10" : "0";
+  $("currency").value = "INR";
+  document.querySelectorAll(".opt-toggle").forEach(cb => {
+    cb.checked = false;
+    const f = $(cb.dataset.field);
+    f.disabled = true;
+    f.value = cb.dataset.field === "emergency" ? "10" : "0";
   });
-
-  document.getElementById("optionalDetails").open = false;
-
+  $("optionalDetails").open = false;
   lastReport = null;
-
-  document.getElementById("totalCost").textContent = "—";
-  document.getElementById("perPerson").textContent = "—";
-  document.getElementById("perDay").textContent = "—";
-  document.getElementById("personPerDay").textContent = "—";
-  document.getElementById("resultDays").textContent = "—";
-
-  document.getElementById("tripSummary").textContent =
-    "Enter your trip details to see your estimated travel budget.";
-
-  document.getElementById("breakdownBody").replaceChildren();
-
-  document.getElementById("budgetLow").textContent = "—";
-  document.getElementById("budgetStandard").textContent = "—";
-  document.getElementById("budgetComfort").textContent = "—";
+  showError("");
+  ["totalCost", "perPerson", "perDay", "personPerDay", "resultDays", "budgetLow", "budgetStandard", "budgetComfort"]
+    .forEach(id => { $(id).textContent = "—"; });
+  $("tripSummary").textContent = "Enter your trip details to see your estimated travel budget.";
+  $("breakdownBody").innerHTML = "<tr><td>Calculate to see your breakdown</td><td>—</td></tr>";
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+$("year").textContent = new Date().getFullYear();
 
+// Build FAQPage schema from the visible FAQ so markup always matches the page.
+(function () {
+  const items = [...document.querySelectorAll(".faq-item")].map(i => ({
+    "@type": "Question",
+    name: i.querySelector("h3").textContent.trim(),
+    acceptedAnswer: { "@type": "Answer", text: i.querySelector("p").textContent.trim() }
+  }));
+  const s = document.createElement("script");
+  s.type = "application/ld+json";
+  s.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: items });
+  document.head.appendChild(s);
+})();
+</script>
 </body>
 </html>
