@@ -1,716 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Car Affordability Calculator - How Much Car Can I Afford? | Needly</title>
+  <title>Car Affordability Calculator - How Much Car Can I Afford?</title>
 
-  <meta name="description" content="Use Needly's free Car Affordability Calculator to estimate how much you may be able to spend on a car based on your monthly income, expenses, and down payment.">
-
-  <meta name="keywords" content="car affordability calculator, how much car can I afford, car budget calculator, car payment budget, affordable car calculator">
-
+  <meta name="description" content="Free car affordability calculator. Enter your income, expenses, down payment, interest rate and loan term to estimate how much car you can afford.">
   <meta name="robots" content="index, follow">
-
   <link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/car.html">
 
   <style>
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #172033;
-      background:
-        linear-gradient(135deg, #dbeafe 0%, #eef2ff 48%, #fce7f3 100%);
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
       line-height: 1.6;
     }
 
-    /* HERO */
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, #1d4ed8, #2563eb, #4f46e5, #7c3aed);
-      color: white;
-      text-align: center;
-      padding: 60px 20px 85px;
-      box-shadow: 0 12px 35px rgba(37, 99, 235, 0.25);
+    .calculator,
+    .content {
+      max-width: 700px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-    }
-
-    .hero::before {
-      width: 240px;
-      height: 240px;
-      left: -90px;
-      top: -110px;
-    }
-
-    .hero::after {
-      width: 320px;
-      height: 320px;
-      right: -120px;
-      bottom: -170px;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .car-icon {
-      font-size: 54px;
-      margin-bottom: 5px;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: 40px;
-      font-weight: 800;
-    }
-
-    .hero p {
-      margin: 10px auto 0;
-      font-size: 18px;
-      max-width: 650px;
-      opacity: 0.94;
-    }
-
-    /* MAIN */
-
-    main {
-      max-width: 900px;
-      margin: -35px auto 50px;
-      padding: 0 18px;
-      position: relative;
-      z-index: 5;
-    }
-
-    /* CALCULATOR */
 
     .calculator {
-      background: rgba(255,255,255,0.97);
-      border-radius: 24px;
-      padding: 32px;
-      box-shadow: 0 15px 40px rgba(15,23,42,0.13);
-      border: 1px solid rgba(255,255,255,0.8);
-      margin-bottom: 28px;
+      max-width: 500px;
     }
 
-    .calculator-title {
+    h1 {
       text-align: center;
-      margin-bottom: 28px;
     }
 
-    .calculator-title h2 {
-      margin: 0;
-      color: #1d4ed8;
-      font-size: 28px;
+    h2 {
+      margin-top: 30px;
     }
 
-    .calculator-title p {
-      color: #64748b;
-      margin: 7px 0 0;
-    }
-
-    /* INPUTS */
-
-    .field {
+    .home {
+      display: block;
+      text-align: center;
       margin-bottom: 20px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     label {
       display: block;
-      margin-bottom: 8px;
-      font-weight: 700;
-      color: #334155;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .hint {
+      display: block;
+      font-weight: normal;
+      font-size: 13px;
+      color: #6b7280;
     }
 
     input {
       width: 100%;
-      padding: 15px;
-      border-radius: 12px;
-      border: 2px solid #cbd5e1;
-      background: #f8fafc;
-      color: #172033;
+      padding: 12px;
+      margin-top: 7px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 8px;
       font-size: 16px;
-      outline: none;
-      transition: 0.2s;
     }
 
-    input:focus {
-      border-color: #2563eb;
-      background: white;
-      box-shadow: 0 0 0 4px rgba(37,99,235,0.10);
-    }
-
-    /* BUTTON */
-
-    .calculate-btn {
+    button {
       width: 100%;
-      padding: 16px;
+      margin-top: 20px;
+      padding: 14px;
       border: none;
-      border-radius: 13px;
-      background:
-        linear-gradient(135deg, #2563eb, #4f46e5, #7c3aed);
+      border-radius: 8px;
+      background: #2563eb;
       color: white;
-      font-size: 18px;
-      font-weight: 700;
+      font-size: 17px;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(37,99,235,0.25);
-      transition: 0.2s;
     }
-
-    .calculate-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 26px rgba(37,99,235,0.35);
-    }
-
-    .calculate-btn:active {
-      transform: translateY(0);
-    }
-
-    /* RESULT */
 
     #result {
-      margin-top: 25px;
-      padding: 25px;
-      border-radius: 17px;
-      background:
-        linear-gradient(135deg, #eff6ff, #eef2ff, #f5f3ff);
-      border: 1px solid #bfdbfe;
       display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: #eef6ff;
+      border-radius: 10px;
     }
 
-    #result h2 {
-      margin-top: 0;
-      color: #1d4ed8;
+    .note {
+      font-size: 13px;
+      color: #6b7280;
     }
 
-    #result p {
-      margin: 10px 0;
-      font-size: 17px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 15px;
     }
 
-    #result strong {
-      color: #4f46e5;
-      font-size: 18px;
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 8px;
+      text-align: right;
     }
 
-    /* INFO CARDS */
-
-    .info-card {
-      background: rgba(255,255,255,0.95);
-      padding: 28px;
-      border-radius: 20px;
-      margin-bottom: 22px;
-      box-shadow: 0 8px 25px rgba(15,23,42,0.07);
+    th {
+      background: #f3f4f6;
     }
 
-    .info-card h2 {
-      margin-top: 0;
-      color: #1d4ed8;
-    }
-
-    .info-card h3 {
-      color: #7c3aed;
-      margin-bottom: 5px;
+    .table-wrap {
+      overflow-x: auto;
     }
 
     .formula {
-      background: #eff6ff;
-      border-left: 5px solid #2563eb;
-      padding: 14px 16px;
-      margin: 12px 0;
-      border-radius: 10px;
-      color: #1e3a8a;
-      font-weight: 700;
+      background: #f3f4f6;
+      padding: 12px;
+      border-radius: 8px;
+      font-family: monospace;
+      white-space: pre-wrap;
     }
 
-    /* HOME */
+    footer {
+      max-width: 700px;
+      margin: 20px auto;
+      text-align: center;
+      font-size: 14px;
+    }
 
-    .home-link {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 10px;
-      background: white;
-      color: #1d4ed8;
+    footer a {
+      color: #2563eb;
       text-decoration: none;
-      font-weight: 700;
-      box-shadow: 0 5px 18px rgba(15,23,42,0.08);
-    }
-
-    .home-link:hover {
-      color: #7c3aed;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 600px) {
-
-      .hero {
-        padding: 45px 15px 75px;
-      }
-
-      .hero h1 {
-        font-size: 29px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .car-icon {
-        font-size: 45px;
-      }
-
-      main {
-        margin-top: -25px;
-        padding: 0 12px;
-      }
-
-      .calculator,
-      .info-card {
-        padding: 21px;
-        border-radius: 17px;
-      }
-
-      .calculator-title h2 {
-        font-size: 23px;
-      }
-
+      margin: 0 8px;
     }
 
   </style>
+
 </head>
 
 <body>
 
-  <!-- HERO -->
+  <div class="calculator">
 
-  <header class="hero">
+    <h1>🚗 Car Affordability Calculator</h1>
 
-    <div class="hero-content">
-
-      <div class="car-icon">
-        🚗
-      </div>
-
-      <h1>
-        Car Affordability Calculator
-      </h1>
-
-      <p>
-        Estimate how much car you may be able to afford
-        based on your income, expenses, and down payment.
-      </p>
-
-    </div>
-
-  </header>
-
-
-  <main>
-
-
-    <!-- CALCULATOR -->
-
-    <section class="calculator">
-
-      <div class="calculator-title">
-
-        <h2>
-          🚘 Find Your Car Budget
-        </h2>
-
-        <p>
-          Enter your monthly financial details to get an estimate.
-        </p>
-
-      </div>
-
-
-      <div class="field">
-
-        <label for="income">
-          Monthly Income ($)
-        </label>
-
-        <input
-          type="number"
-          id="income"
-          placeholder="e.g. 5000"
-          min="0.01"
-          step="0.01"
-        >
-
-      </div>
-
-
-      <div class="field">
-
-        <label for="expenses">
-          Monthly Expenses ($)
-        </label>
-
-        <input
-          type="number"
-          id="expenses"
-          placeholder="e.g. 2500"
-          min="0"
-          step="0.01"
-        >
-
-      </div>
-
-
-      <div class="field">
-
-        <label for="downPayment">
-          Down Payment ($)
-        </label>
-
-        <input
-          type="number"
-          id="downPayment"
-          placeholder="e.g. 5000"
-          min="0"
-          step="0.01"
-        >
-
-      </div>
-
-
-      <button
-        class="calculate-btn"
-        onclick="calculateCar()"
-      >
-        🚗 Calculate Car Affordability
-      </button>
-
-
-      <div id="result"></div>
-
-    </section>
-
-
-    <!-- HOW IT WORKS -->
-
-    <section class="info-card">
-
-      <h2>
-        How the Car Affordability Calculator Works
-      </h2>
-
-      <p>
-        Needly's Car Affordability Calculator provides an estimate
-        of how much you may be able to spend on a car based on your
-        monthly income, monthly expenses, and down payment.
-      </p>
-
-      <p>
-        The calculator first estimates the money available after
-        your monthly expenses. It then uses a simple budgeting
-        rule to estimate a monthly car budget and an approximate
-        car price.
-      </p>
-
-    </section>
-
-
-    <!-- FORMULA -->
-
-    <section class="info-card">
-
-      <h2>
-        Car Affordability Formula
-      </h2>
-
-      <div class="formula">
-        Available Income =
-        Monthly Income − Monthly Expenses
-      </div>
-
-      <div class="formula">
-        Monthly Car Budget =
-        Available Income × 20%
-      </div>
-
-      <div class="formula">
-        Estimated Car Price =
-        Monthly Car Budget × 60 + Down Payment
-      </div>
-
-      <p>
-        This is a simplified budgeting estimate and is not a
-        personalized financial recommendation.
-      </p>
-
-    </section>
-
-
-    <!-- EXAMPLE -->
-
-    <section class="info-card">
-
-      <h2>
-        Car Affordability Example
-      </h2>
-
-      <p>
-        Suppose your monthly income is $5,000, your monthly
-        expenses are $2,500, and your down payment is $5,000.
-      </p>
-
-      <div class="formula">
-        Available income = $5,000 − $2,500 = $2,500
-      </div>
-
-      <div class="formula">
-        Monthly car budget = $2,500 × 20% = $500
-      </div>
-
-      <div class="formula">
-        Estimated car price = $500 × 60 + $5,000
-        = $35,000
-      </div>
-
-      <p>
-        The estimated affordable car price would therefore be
-        approximately <strong>$35,000</strong>.
-      </p>
-
-    </section>
-
-
-    <!-- WHY USE -->
-
-    <section class="info-card">
-
-      <h2>
-        Why Use a Car Affordability Calculator?
-      </h2>
-
-      <p>
-        Buying a car is a major financial decision. Estimating
-        your car budget before shopping can help you compare
-        vehicles within a realistic price range.
-      </p>
-
-      <p>
-        You can use this calculator before visiting dealerships,
-        comparing used cars, planning a down payment, or creating
-        a monthly transportation budget.
-      </p>
-
-    </section>
-
-
-    <!-- FAQ -->
-
-    <section class="info-card">
-
-      <h2>
-        Frequently Asked Questions
-      </h2>
-
-
-      <h3>
-        How much car can I afford?
-      </h3>
-
-      <p>
-        It depends on your income, expenses, existing financial
-        commitments, down payment, and other costs associated
-        with owning a vehicle.
-      </p>
-
-
-      <h3>
-        Does this calculator include insurance and fuel?
-      </h3>
-
-      <p>
-        No. The estimate is based on the income, expenses, and
-        down payment you enter. Insurance, fuel, maintenance,
-        taxes, and registration should also be considered when
-        creating a complete car budget.
-      </p>
-
-
-      <h3>
-        Is the result a guaranteed affordable car price?
-      </h3>
-
-      <p>
-        No. It is a simplified estimate intended for planning
-        purposes. Your actual affordable amount may be different.
-      </p>
-
-
-      <h3>
-        Is the Car Affordability Calculator free?
-      </h3>
-
-      <p>
-        Yes. Needly's Car Affordability Calculator is free to use.
-      </p>
-
-    </section>
-
-
-    <a
-      class="home-link"
-      href="index.html"
-    >
+    <a class="home" href="./">
       ← Back to Home
     </a>
 
-  </main>
+    <label>
+      Monthly Income, before tax ($)
+    </label>
+
+    <input
+      type="number"
+      id="income"
+      placeholder="Example: 5000"
+      min="0"
+      inputmode="decimal"
+    >
+
+    <label>
+      Monthly Expenses ($)
+      <span class="hint">Rent, bills, debts and other regular costs</span>
+    </label>
+
+    <input
+      type="number"
+      id="expenses"
+      placeholder="Example: 2500"
+      min="0"
+      inputmode="decimal"
+    >
+
+    <label>Down Payment ($)</label>
+
+    <input
+      type="number"
+      id="down"
+      placeholder="Example: 5000"
+      min="0"
+      inputmode="decimal"
+    >
+
+    <label>Loan Interest Rate (% per year)</label>
+
+    <input
+      type="number"
+      id="rate"
+      value="7"
+      min="0"
+      step="0.1"
+      inputmode="decimal"
+    >
+
+    <label>Loan Term (months)</label>
+
+    <input
+      type="number"
+      id="term"
+      value="60"
+      min="1"
+      inputmode="numeric"
+    >
+
+    <button onclick="calculate()">
+      Calculate Car Budget
+    </button>
+
+    <div id="result"></div>
+
+  </div>
+
+
+  <div class="content">
+
+    <h2>How the Car Affordability Calculator Works</h2>
+
+    <p>
+      This car affordability calculator estimates how much car you may
+      be able to afford based on your monthly income, monthly expenses,
+      down payment, loan interest rate and loan term.
+    </p>
+
+    <p>
+      Use it as a car budget calculator to find a comfortable monthly
+      car payment, and as a car price calculator to see the price range
+      of an affordable car before you visit a dealership.
+    </p>
+
+    <p>
+      It first finds the money left after your monthly expenses. It then
+      sets aside 20% of that amount as a monthly car payment, works out
+      how large a loan that payment can cover at your interest rate, and
+      adds your down payment.
+    </p>
+
+    <h2>Car Affordability Formula</h2>
+
+    <div class="formula">Available Income = Monthly Income - Monthly Expenses
+
+Monthly Car Budget = Available Income x 20%
+
+Loan Amount = Monthly Car Budget x (1 - (1 + r)^-n) / r
+
+Estimated Car Price = Loan Amount + Down Payment
+
+r = annual interest rate / 12 / 100
+n = loan term in months</div>
+
+    <p class="note">
+      This is a simplified budgeting estimate and is not personalized
+      financial advice.
+    </p>
+
+    <h2>Car Affordability Example</h2>
+
+    <p>
+      Suppose your monthly income is $5,000, your monthly expenses are
+      $2,500, your down payment is $5,000, and you take a 60-month loan
+      at 7% interest.
+    </p>
+
+    <p>
+      Available income = $5,000 - $2,500 = $2,500<br>
+      Monthly car budget = $2,500 x 20% = $500<br>
+      Loan amount = about $25,250<br>
+      Estimated car price = $25,250 + $5,000 = <b>about $30,250</b>
+    </p>
+
+    <h2>How Much Car Can I Afford? Quick Reference</h2>
+
+    <p>
+      Estimated car price with a $5,000 down payment, 7% interest and a
+      60-month loan:
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Monthly Income</th>
+          <th>Monthly Expenses</th>
+          <th>Monthly Car Budget</th>
+          <th>Estimated Car Price</th>
+        </tr>
+        <tr><td>$3,000</td><td>$1,800</td><td>$240</td><td>about $17,100</td></tr>
+        <tr><td>$4,000</td><td>$2,200</td><td>$360</td><td>about $23,200</td></tr>
+        <tr><td>$5,000</td><td>$2,500</td><td>$500</td><td>about $30,250</td></tr>
+        <tr><td>$6,000</td><td>$3,000</td><td>$600</td><td>about $35,300</td></tr>
+        <tr><td>$8,000</td><td>$4,000</td><td>$800</td><td>about $45,400</td></tr>
+      </table>
+    </div>
+
+    <h2>The 20/4/10 Rule for Buying a Car</h2>
+
+    <p>
+      A common guideline for car buying is the 20/4/10 rule: put at
+      least 20% down, finance for no more than 4 years, and keep your
+      total monthly car costs, including loan payment, insurance and
+      fuel, under 10% of your gross income. Use it as a cross-check
+      alongside this calculator.
+    </p>
+
+    <h2>Why Use a Car Affordability Calculator?</h2>
+
+    <p>
+      Buying a car is a major financial decision. Estimating your car
+      budget before shopping can help you compare vehicles within a
+      realistic price range, plan a down payment, and avoid a loan that
+      strains your monthly budget.
+    </p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>How much car can I afford?</h3>
+    <p>
+      A common guideline is the 20/4/10 rule: 20% down, a loan of no more
+      than 4 years, and total car costs under 10% of gross income. Your
+      real limit also depends on your expenses, other debts and the
+      interest rate you get.
+    </p>
+
+    <h3>What car can I afford?</h3>
+    <p>
+      Enter your monthly income, monthly expenses and down payment above.
+      The calculator shows the estimated price of the car you can afford,
+      along with the monthly car payment it is based on. Compare that
+      price with the cars you are considering.
+    </p>
+
+    <h3>How much should I spend on a car based on income?</h3>
+    <p>
+      Under the 20/4/10 rule, total monthly car costs, including loan
+      payment, insurance and fuel, should stay under 10% of your gross
+      monthly income. For example, with $5,000 monthly income that is
+      about $500 per month for everything car-related.
+    </p>
+
+    <h3>How much car can I afford on my monthly income?</h3>
+    <p>
+      It depends on what is left after your regular expenses, not on
+      income alone. This calculator subtracts your monthly expenses,
+      sets aside 20% of the remainder as a car payment, and turns that
+      payment into a car price using your interest rate and loan term.
+    </p>
+
+    <h3>How do the interest rate and down payment change how much car I can afford?</h3>
+    <p>
+      A higher interest rate lowers the loan your monthly budget can
+      cover, so the car price goes down. A larger down payment adds
+      directly to the car price you can afford. Change both in the
+      calculator to compare. A longer loan term raises the price you can
+      afford, but you pay more interest overall.
+    </p>
+
+    <h3>How much car can I afford with bad credit?</h3>
+    <p>
+      Lower credit scores usually mean a higher interest rate. To plan
+      for this, enter a higher rate in the calculator. In the $5,000
+      income example above, a 15% rate instead of 7% lowers the
+      estimated car price from about $30,250 to about $26,000. Your
+      actual rate depends on your lender.
+    </p>
+
+    <h3>How much car can I afford with a $50,000 salary?</h3>
+    <p>
+      A $50,000 salary is about $4,170 per month. With around $2,200 in
+      monthly expenses, a $5,000 down payment, 7% interest and a
+      60-month loan, this calculator gives an estimated car price of
+      about $24,900. Your own expenses and rate will change this.
+    </p>
+
+    <h3>How much car can I afford with a $60,000 salary?</h3>
+    <p>
+      A $60,000 salary is $5,000 per month. With around $2,700 in monthly
+      expenses and the same loan terms, the estimate is about $28,200.
+    </p>
+
+    <h3>How much car can I afford with a $5,000 down payment?</h3>
+    <p>
+      A larger down payment lowers the loan you need, so the same monthly
+      budget buys a more expensive car. Enter your down payment above to
+      see the difference.
+    </p>
+
+    <h3>Does this calculator include insurance and fuel?</h3>
+    <p>
+      No. Insurance, fuel, maintenance, sales tax and registration are
+      not included, so keep room in your budget for them.
+    </p>
+
+    <h3>Is the result a guaranteed affordable car price?</h3>
+    <p>
+      No. It is a simplified estimate for planning. Your actual lender
+      terms and costs may be different.
+    </p>
+
+    <h3>Is the Car Affordability Calculator free?</h3>
+    <p>Yes. Needly's Car Affordability Calculator is free to use.</p>
+
+  </div>
+
+  <footer>
+    <a href="./">Home</a>
+    <a href="rent.html">Rent Affordability Calculator</a>
+    <!-- About, Contact, Privacy Policy ও Terms পেজ তৈরি হলে এখানে লিংক যোগ করুন -->
+  </footer>
 
 
   <script>
 
-    function calculateCar() {
+    function calculate() {
 
-      const income =
-        Number(
-          document.getElementById("income").value
-        );
+      let income =
+        Number(document.getElementById("income").value);
 
-      const expenses =
-        Number(
-          document.getElementById("expenses").value
-        );
+      let expenses =
+        Number(document.getElementById("expenses").value);
 
-      const downPayment =
-        Number(
-          document.getElementById("downPayment").value
-        );
+      let down =
+        Number(document.getElementById("down").value);
 
-      const result =
+      let rate =
+        Number(document.getElementById("rate").value);
+
+      let term =
+        Number(document.getElementById("term").value);
+
+      let result =
         document.getElementById("result");
 
 
-      if (income <= 0) {
+      if (income <= 0 || expenses < 0 || down < 0 || rate < 0 || term <= 0) {
+
+        result.innerHTML =
+          "Please enter valid numbers.";
 
         result.style.display = "block";
 
-        result.innerHTML =
-          "<p>Please enter a valid monthly income greater than $0.</p>";
-
         return;
-
-      }
-
-
-      if (expenses < 0) {
-
-        result.style.display = "block";
-
-        result.innerHTML =
-          "<p>Monthly expenses cannot be negative.</p>";
-
-        return;
-
-      }
-
-
-      if (downPayment < 0) {
-
-        result.style.display = "block";
-
-        result.innerHTML =
-          "<p>Down payment cannot be negative.</p>";
-
-        return;
-
       }
 
 
       if (expenses >= income) {
 
+        result.innerHTML =
+          "⚠️ Your expenses are too high compared with your income.";
+
         result.style.display = "block";
 
-        result.innerHTML =
-          "<p>Monthly expenses should be less than monthly income.</p>";
-
         return;
-
       }
 
 
-      const available =
-        income - expenses;
+      let available = income - expenses;
+
+      let monthlyCarBudget = available * 0.20;
+
+      let monthlyRate = rate / 12 / 100;
+
+      let loanAmount;
+
+      if (monthlyRate === 0) {
+
+        loanAmount = monthlyCarBudget * term;
+
+      } else {
+
+        loanAmount =
+          monthlyCarBudget *
+          (1 - Math.pow(1 + monthlyRate, -term)) /
+          monthlyRate;
+      }
+
+      let estimatedCarPrice = loanAmount + down;
 
 
-      const monthlyCarBudget =
-        available * 0.20;
+      result.innerHTML =
 
+        "<h3>🎯 Your Estimated Car Budget</h3>" +
 
-      const estimatedCarPrice =
-        monthlyCarBudget * 60 + downPayment;
+        "<p>Money available after expenses: <b>$" +
+        available.toFixed(2) +
+        "</b></p>" +
+
+        "<p>Suggested monthly car budget: <b>$" +
+        monthlyCarBudget.toFixed(2) +
+        "</b></p>" +
+
+        "<p>Loan amount this budget can cover: <b>$" +
+        loanAmount.toFixed(2) +
+        "</b></p>" +
+
+        "<p>Estimated affordable car price: <b>$" +
+        estimatedCarPrice.toFixed(2) +
+        "</b></p>" +
+
+        "<p class='note'>Insurance, fuel, maintenance and sales tax are not included.</p>";
 
 
       result.style.display = "block";
-
-
-      result.innerHTML = `
-
-        <h2>
-          🚘 Your Estimated Car Budget
-        </h2>
-
-        <p>
-          Available income:
-          <strong>
-            $${available.toFixed(2)}
-          </strong>
-        </p>
-
-        <p>
-          Estimated monthly car budget:
-          <strong>
-            $${monthlyCarBudget.toFixed(2)}
-          </strong>
-        </p>
-
-        <p>
-          Down payment:
-          <strong>
-            $${downPayment.toFixed(2)}
-          </strong>
-        </p>
-
-        <p>
-          Estimated car price:
-          <strong>
-            $${estimatedCarPrice.toFixed(2)}
-          </strong>
-        </p>
-
-      `;
 
     }
 
   </script>
 
 </body>
+
 </html>
