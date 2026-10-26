@@ -1,670 +1,664 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Rent Affordability Calculator - How Much Rent Can I Afford? | Needly</title>
+<title>Rent Affordability Calculator - How Much Rent Can I Afford? | Needly</title>
 
-  <meta name="description" content="Use Needly's free Rent Affordability Calculator to estimate how much monthly rent you may be able to afford based on your income and monthly debt payments.">
+<meta name="description" content="Use Needly's free rent affordability calculator to estimate affordable monthly rent based on income, debt, expenses and utilities. Calculate rent ratios and move-in costs.">
 
-  <meta name="keywords" content="rent affordability calculator, how much rent can I afford, rent budget calculator, affordable rent calculator, monthly rent calculator">
+<meta name="robots" content="index, follow">
 
-  <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/rent.html">
 
-  <link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/rent.html">
+<meta name="theme-color" content="#111827">
 
-  <style>
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    * {
-      box-sizing: border-box;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #111827;
+  line-height: 1.7;
+}
+
+header {
+  background: linear-gradient(135deg, #111827, #1d4ed8);
+  color: white;
+  text-align: center;
+  padding: 35px 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.3;
+}
+
+header p {
+  color: #dbeafe;
+  margin-bottom: 0;
+}
+
+.breadcrumb {
+  max-width: 900px;
+  margin: 18px auto 0;
+  padding: 0 15px;
+  font-size: 14px;
+}
+
+.breadcrumb a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.calculator {
+  max-width: 650px;
+  margin: 25px auto;
+  padding: 28px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.07);
+}
+
+.home {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin-top: 17px;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 13px;
+  margin-top: 7px;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-size: 16px;
+  background: white;
+}
+
+input:focus, select:focus {
+  outline: 2px solid #93c5fd;
+  border-color: #2563eb;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 22px;
+  border: none;
+  border-radius: 9px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+.reset-button {
+  margin-top: 10px;
+  background: #4b5563;
+}
+
+#result {
+  display: none;
+  margin-top: 25px;
+  padding: 20px;
+  background: #eff6ff;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.result-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #dbeafe;
+}
+
+.status {
+  margin-top: 15px;
+  padding: 13px;
+  border-radius: 8px;
+  background: #dcfce7;
+}
+
+.warning {
+  background: #fef3c7;
+}
+
+.content-section {
+  max-width: 900px;
+  margin: 25px auto;
+  padding: 28px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.04);
+}
+
+.content-section h2 {
+  color: #1d4ed8;
+  line-height: 1.4;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.tool-card {
+  display: block;
+  padding: 17px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  color: #111827;
+  text-decoration: none;
+  transition: .2s;
+}
+
+.tool-card:hover {
+  background: #eff6ff;
+  border-color: #2563eb;
+}
+
+.tool-card strong {
+  display: block;
+  color: #1d4ed8;
+  margin-bottom: 5px;
+}
+
+.faq-item {
+  padding: 14px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.faq-item h3 {
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+footer {
+  padding: 25px 15px;
+  text-align: center;
+  color: #6b7280;
+}
+
+footer a {
+  color: #2563eb;
+  margin: 0 7px;
+}
+
+@media(max-width:600px) {
+  header h1 {
+    font-size: 27px;
+  }
+
+  .calculator, .content-section {
+    margin: 18px 12px;
+    padding: 20px;
+  }
+}
+</style>
+
+<!-- WebApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Rent Affordability Calculator",
+  "url": "https://kamalbera198-sudo.github.io/needly/rent.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "description": "Free rent affordability calculator to estimate monthly rent, housing expenses and move-in costs.",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://kamalbera198-sudo.github.io/needly/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Rent Affordability Calculator",
+      "item": "https://kamalbera198-sudo.github.io/needly/rent.html"
     }
+  ]
+}
+</script>
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #172033;
-      background:
-        linear-gradient(135deg, #fef3c7 0%, #eff6ff 48%, #f5f3ff 100%);
-      line-height: 1.6;
-    }
-
-    /* HERO */
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, #b45309, #d97706, #2563eb, #4f46e5);
-      color: white;
-      text-align: center;
-      padding: 60px 20px 85px;
-      box-shadow: 0 12px 35px rgba(37, 99, 235, 0.22);
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-    }
-
-    .hero::before {
-      width: 240px;
-      height: 240px;
-      left: -90px;
-      top: -110px;
-    }
-
-    .hero::after {
-      width: 320px;
-      height: 320px;
-      right: -120px;
-      bottom: -170px;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .home-icon {
-      font-size: 54px;
-      margin-bottom: 5px;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: 40px;
-      font-weight: 800;
-    }
-
-    .hero p {
-      margin: 10px auto 0;
-      font-size: 18px;
-      max-width: 650px;
-      opacity: 0.94;
-    }
-
-    /* MAIN */
-
-    main {
-      max-width: 900px;
-      margin: -35px auto 50px;
-      padding: 0 18px;
-      position: relative;
-      z-index: 5;
-    }
-
-    /* CALCULATOR */
-
-    .calculator {
-      background: rgba(255,255,255,0.97);
-      border-radius: 24px;
-      padding: 32px;
-      box-shadow: 0 15px 40px rgba(15,23,42,0.13);
-      border: 1px solid rgba(255,255,255,0.8);
-      margin-bottom: 28px;
-    }
-
-    .calculator-title {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .calculator-title h2 {
-      margin: 0;
-      color: #b45309;
-      font-size: 28px;
-    }
-
-    .calculator-title p {
-      color: #64748b;
-      margin: 7px 0 0;
-    }
-
-    /* INPUT */
-
-    .field {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 700;
-      color: #334155;
-    }
-
-    input {
-      width: 100%;
-      padding: 15px;
-      border-radius: 12px;
-      border: 2px solid #cbd5e1;
-      background: #f8fafc;
-      color: #172033;
-      font-size: 16px;
-      outline: none;
-      transition: 0.2s;
-    }
-
-    input:focus {
-      border-color: #d97706;
-      background: white;
-      box-shadow: 0 0 0 4px rgba(217,119,6,0.10);
-    }
-
-    /* BUTTON */
-
-    .calculate-btn {
-      width: 100%;
-      padding: 16px;
-      border: none;
-      border-radius: 13px;
-      background:
-        linear-gradient(135deg, #d97706, #ea580c, #4f46e5);
-      color: white;
-      font-size: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(217,119,6,0.25);
-      transition: 0.2s;
-    }
-
-    .calculate-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 26px rgba(217,119,6,0.35);
-    }
-
-    .calculate-btn:active {
-      transform: translateY(0);
-    }
-
-    /* RESULT */
-
-    #result {
-      margin-top: 25px;
-      padding: 25px;
-      border-radius: 17px;
-      background:
-        linear-gradient(135deg, #fffbeb, #eff6ff, #eef2ff);
-      border: 1px solid #fde68a;
-      display: none;
-    }
-
-    #result h2 {
-      margin-top: 0;
-      color: #b45309;
-    }
-
-    #result p {
-      margin: 10px 0;
-      font-size: 17px;
-    }
-
-    #result strong {
-      color: #b45309;
-      font-size: 18px;
-    }
-
-    /* INFO CARDS */
-
-    .info-card {
-      background: rgba(255,255,255,0.95);
-      padding: 28px;
-      border-radius: 20px;
-      margin-bottom: 22px;
-      box-shadow: 0 8px 25px rgba(15,23,42,0.07);
-    }
-
-    .info-card h2 {
-      margin-top: 0;
-      color: #b45309;
-    }
-
-    .info-card h3 {
-      color: #4f46e5;
-      margin-bottom: 5px;
-    }
-
-    .formula {
-      background: #fffbeb;
-      border-left: 5px solid #d97706;
-      padding: 14px 16px;
-      margin: 12px 0;
-      border-radius: 10px;
-      color: #92400e;
-      font-weight: 700;
-    }
-
-    /* HOME */
-
-    .home-link {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 10px;
-      background: white;
-      color: #b45309;
-      text-decoration: none;
-      font-weight: 700;
-      box-shadow: 0 5px 18px rgba(15,23,42,0.08);
-    }
-
-    .home-link:hover {
-      color: #4f46e5;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 600px) {
-
-      .hero {
-        padding: 45px 15px 75px;
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much rent can I afford?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A common guideline suggests keeping rent around 30% of gross monthly income. Your suitable budget depends on debt, utilities, living costs and local housing prices."
       }
-
-      .hero h1 {
-        font-size: 29px;
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 30% rent rule?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 30% rent rule is a budgeting guideline that suggests spending around 30% or less of gross income on rent. It is not a universal requirement."
       }
-
-      .hero p {
-        font-size: 16px;
+    },
+    {
+      "@type": "Question",
+      "name": "What are move-in costs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Move-in costs may include the first month's rent, a security deposit and other fees required before moving into a rental property."
       }
-
-      .home-icon {
-        font-size: 45px;
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this rent calculator internationally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Select a supported currency and enter all amounts in that currency. This calculator does not convert exchange rates."
       }
-
-      main {
-        margin-top: -25px;
-        padding: 0 12px;
-      }
-
-      .calculator,
-      .info-card {
-        padding: 21px;
-        border-radius: 17px;
-      }
-
-      .calculator-title h2 {
-        font-size: 23px;
-      }
-
     }
+  ]
+}
+</script>
 
-  </style>
 </head>
 
 <body>
 
-  <!-- HERO -->
+<header>
+  <h1>🏠 Rent Affordability Calculator</h1>
+  <p>How Much Rent Can You Afford? Plan Your Monthly Housing Budget.</p>
+</header>
 
-  <header class="hero">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="./">Home</a>
+  <span aria-hidden="true"> › </span>
+  <span aria-current="page">Rent Affordability Calculator</span>
+</nav>
 
-    <div class="hero-content">
+<main>
 
-      <div class="home-icon">
-        🏠
-      </div>
+<section class="calculator">
 
-      <h1>
-        Rent Affordability Calculator
-      </h1>
+<a class="home" href="./">← Back to Home</a>
 
-      <p>
-        Estimate how much monthly rent you may be able to afford
-        based on your income and debt payments.
-      </p>
+<h2>Calculate Your Rent Budget</h2>
 
-    </div>
+<p>Enter your monthly income and expenses to estimate an affordable rent budget.</p>
 
-  </header>
+<form id="rentForm">
 
+<label for="currency">Currency</label>
+<select id="currency">
+  <option value="USD">USD - US Dollar ($)</option>
+  <option value="INR">INR - Indian Rupee (₹)</option>
+  <option value="GBP">GBP - British Pound (£)</option>
+  <option value="EUR">EUR - Euro (€)</option>
+  <option value="CAD">CAD - Canadian Dollar (CA$)</option>
+  <option value="AUD">AUD - Australian Dollar (A$)</option>
+  <option value="JPY">JPY - Japanese Yen (¥)</option>
+  <option value="BDT">BDT - Bangladeshi Taka (৳)</option>
+  <option value="PKR">PKR - Pakistani Rupee (₨)</option>
+  <option value="AED">AED - UAE Dirham</option>
+  <option value="SGD">SGD - Singapore Dollar (S$)</option>
+  <option value="ZAR">ZAR - South African Rand (R)</option>
+</select>
 
-  <main>
+<label for="income">Gross Monthly Income</label>
+<input type="number" id="income" min="0.01" step="any" placeholder="Enter your monthly income" required>
 
+<label for="debt">Monthly Debt Payments</label>
+<input type="number" id="debt" min="0" step="any" value="0" required>
 
-    <!-- CALCULATOR -->
+<label for="expenses">Other Monthly Living Expenses (excluding rent)</label>
+<input type="number" id="expenses" min="0" step="any" value="0" required>
 
-    <section class="calculator">
+<label for="utilities">Monthly Utilities (electricity, water, internet)</label>
+<input type="number" id="utilities" min="0" step="any" value="0" required>
 
-      <div class="calculator-title">
+<label for="desiredRent">Desired Monthly Rent (optional)</label>
+<input type="number" id="desiredRent" min="0" step="any" placeholder="Enter expected rent">
 
-        <h2>
-          🏡 Find Your Rent Budget
-        </h2>
+<h3>Move-in Cost Estimate</h3>
 
-        <p>
-          Enter your monthly financial details to get an estimate.
-        </p>
+<label for="deposit">Security Deposit</label>
+<input type="number" id="deposit" min="0" step="any" value="0" required>
 
-      </div>
+<label for="fees">Other Move-in Fees</label>
+<input type="number" id="fees" min="0" step="any" value="0" required>
 
+<button type="submit">Calculate My Rent Budget</button>
+<button type="reset" class="reset-button">Reset Calculator</button>
 
-      <div class="field">
+</form>
 
-        <label for="income">
-          Monthly Income ($)
-        </label>
+<div id="result" aria-live="polite" role="status"></div>
 
-        <input
-          type="number"
-          id="income"
-          placeholder="e.g. 5000"
-          min="0.01"
-          step="0.01"
-        >
+</section>
 
-      </div>
+<section class="content-section">
 
+<h2>What Is a Rent Affordability Calculator?</h2>
 
-      <div class="field">
+<p>A Rent Affordability Calculator helps you estimate how much monthly rent may fit your budget. It considers your gross monthly income, debt payments, living expenses and utilities to provide a starting point for rental planning.</p>
 
-        <label for="debt">
-          Monthly Debt Payments ($)
-        </label>
+<p>Whether you are renting an apartment, house or studio, planning your budget before signing a lease can help you understand your regular costs and avoid taking on more rent than you can comfortably manage.</p>
 
-        <input
-          type="number"
-          id="debt"
-          placeholder="e.g. 500"
-          min="0"
-          step="0.01"
-        >
+<h2>How Much Rent Can I Afford?</h2>
 
-      </div>
+<p>A common budgeting guideline is to spend around 30% of gross monthly income on rent. For example, if your gross monthly income is 3,000 units of your chosen currency, 30% would be 900 units.</p>
 
+<p>This is a general guideline, not a universal rule. Your take-home income, debt, local housing prices, utilities, transport expenses and savings goals can change the amount that makes sense for you.</p>
 
-      <button
-        class="calculate-btn"
-        onclick="calculateRent()"
-      >
-        🏠 Calculate Rent Affordability
-      </button>
+<h2>How to Calculate Affordable Rent</h2>
 
+<p>This calculator uses two estimates:</p>
 
-      <div id="result"></div>
+<ul>
+  <li><strong>30% rent guideline:</strong> Gross monthly income multiplied by 0.30.</li>
+  <li><strong>Budget-based rent estimate:</strong> The lower of the 30% guideline and your income remaining after the expenses entered.</li>
+</ul>
 
-    </section>
+<p>The budget-based estimate is a starting point, not a guarantee of affordability. It does not automatically account for every expense, tax or emergency. Review your complete budget before choosing a property.</p>
 
+<h2>What Are Rental Move-in Costs?</h2>
 
-    <!-- HOW IT WORKS -->
+<p>Moving into a rental home can require more money than the monthly rent alone. Depending on your location and rental agreement, initial costs may include the first month's rent, a security deposit, an application fee, moving expenses or utility setup fees.</p>
 
-    <section class="info-card">
+<p>Use the move-in section above to estimate your first month's rent, security deposit and other fees. Actual requirements vary by property and local law.</p>
+
+<h2>Tips for Creating a Rental Budget</h2>
+
+<ul>
+  <li>Use realistic monthly income figures.</li>
+  <li>Include debt payments and regular living expenses.</li>
+  <li>Estimate electricity, water, internet and other housing costs.</li>
+  <li>Keep money available for emergencies and savings where possible.</li>
+  <li>Compare the total housing cost rather than rent alone.</li>
+  <li>Check local rental requirements before signing a lease.</li>
+</ul>
 
-      <h2>
-        How the Rent Affordability Calculator Works
-      </h2>
+<h2>Explore More Free Needly Calculators</h2>
 
-      <p>
-        Needly's Rent Affordability Calculator estimates a
-        recommended maximum monthly rent based on your monthly
-        income.
-      </p>
+<p>Use these related tools to plan other parts of your budget. Links must match the actual filenames in your Needly repository.</p>
 
-      <p>
-        The calculator uses a simple 30% income guideline to
-        estimate a recommended rent amount. It also shows how
-        much income remains after your monthly debt payments.
-      </p>
+<div class="tool-grid">
 
-    </section>
+<a class="tool-card" href="savings.html">
+<strong>💰 Savings Calculator</strong>
+Plan savings goals and estimate potential savings growth.
+</a>
 
+<a class="tool-card" href="travel.html">
+<strong>✈️ Travel Budget Calculator</strong>
+Estimate accommodation, food, transport and trip expenses.
+</a>
+
+<a class="tool-card" href="car.html">
+<strong>🚗 Car Affordability Calculator</strong>
+Estimate car costs against your budget.
+</a>
+
+<a class="tool-card" href="electricity.html">
+<strong>⚡ Electricity Cost Calculator</strong>
+Estimate electricity usage and costs.
+</a>
+
+<a class="tool-card" href="mortgage.html">
+<strong>🏡 Mortgage Calculator</strong>
+Estimate mortgage payments and home loan costs.
+</a>
+
+<a class="tool-card" href="debt.html">
+<strong>💳 Debt Payoff Calculator</strong>
+Plan debt repayments and estimate your payoff schedule.
+</a>
+
+<a class="tool-card" href="wedding.html">
+<strong>💍 Wedding Budget Calculator</strong>
+Estimate wedding expenses and plan your budget.
+</a>
+
+<a class="tool-card" href="freelancer.html">
+<strong>💻 Freelancer Rate Calculator</strong>
+Estimate an hourly freelance rate based on your goals.
+</a>
+
+</div>
+
+</section>
+
+<section class="content-section">
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+<h3>1. How much rent can I afford on my salary?</h3>
+<p>A common starting point is around 30% of gross income. However, debt, utilities, essential expenses and local rental prices affect the amount that works for you.</p>
+</div>
+
+<div class="faq-item">
+<h3>2. What is the 30% rent rule?</h3>
+<p>The 30% rent rule is a budgeting guideline suggesting that rent should be around 30% or less of gross income. It is not a requirement and may not fit every household.</p>
+</div>
+
+<div class="faq-item">
+<h3>3. Should I include debt payments in my rent budget?</h3>
+<p>Yes. Debt payments reduce the money available for housing, food, transport and savings. Include regular debt payments when planning your budget.</p>
+</div>
+
+<div class="faq-item">
+<h3>4. Does this calculator include utility bills?</h3>
+<p>Yes. Enter estimated monthly electricity, water, internet and other utility costs in the utilities field.</p>
+</div>
+
+<div class="faq-item">
+<h3>5. How do I calculate rental move-in costs?</h3>
+<p>Add the first month's rent to your security deposit and other initial fees. This calculator estimates these costs using the values you enter.</p>
+</div>
+
+<div class="faq-item">
+<h3>6. Can I use this calculator in India or other countries?</h3>
+<p>Yes. Select a supported currency and enter all amounts in that currency. The calculator does not convert currencies or update exchange rates.</p>
+</div>
+
+<div class="faq-item">
+<h3>7. Does this calculator guarantee that I can afford a home?</h3>
+<p>No. It provides a budget estimate based on your entries. Actual affordability depends on your complete financial situation, local housing costs and rental requirements.</p>
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>© 2026 Needly. Smart Tools for Everyday Life.</p>
+
+<p>
+<a href="./">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy-policy.html">Privacy Policy</a>
+<a href="disclaimer.html">Disclaimer</a>
+</p>
+
+</footer>
 
-    <!-- FORMULA -->
-
-    <section class="info-card">
-
-      <h2>
-        Rent Affordability Formula
-      </h2>
-
-      <div class="formula">
-        Recommended Rent =
-        Monthly Income × 30%
-      </div>
-
-      <div class="formula">
-        Income After Debt =
-        Monthly Income − Monthly Debt Payments
-      </div>
-
-      <p>
-        The 30% guideline is a common budgeting rule of thumb,
-        not a guarantee that a particular rent amount will be
-        affordable for everyone.
-      </p>
-
-    </section>
-
-
-    <!-- EXAMPLE -->
-
-    <section class="info-card">
-
-      <h2>
-        Rent Affordability Example
-      </h2>
-
-      <p>
-        Suppose your monthly income is $5,000 and your monthly
-        debt payments are $500.
-      </p>
-
-      <div class="formula">
-        Recommended rent = $5,000 × 30% = $1,500
-      </div>
-
-      <div class="formula">
-        Income after debt = $5,000 − $500 = $4,500
-      </div>
-
-      <p>
-        Based on the 30% guideline, the estimated maximum
-        recommended rent would be <strong>$1,500 per month</strong>.
-      </p>
-
-    </section>
-
-
-    <!-- WHY USE -->
-
-    <section class="info-card">
-
-      <h2>
-        Why Use a Rent Affordability Calculator?
-      </h2>
-
-      <p>
-        Rent is one of the largest monthly expenses for many
-        households. Estimating your rent budget before choosing
-        a home can help you compare apartments and neighborhoods
-        more realistically.
-      </p>
-
-      <p>
-        You can use this calculator when moving to a new city,
-        searching for an apartment, planning a household budget,
-        or comparing different rental options.
-      </p>
-
-    </section>
-
-
-    <!-- FAQ -->
-
-    <section class="info-card">
-
-      <h2>
-        Frequently Asked Questions
-      </h2>
-
-
-      <h3>
-        How much rent can I afford?
-      </h3>
-
-      <p>
-        A common budgeting guideline is to keep rent around
-        30% of monthly income. However, your actual affordable
-        amount also depends on debt, utilities, food, transport,
-        savings, and other expenses.
-      </p>
-
-
-      <h3>
-        Does this calculator include utilities?
-      </h3>
-
-      <p>
-        No. The calculator estimates rent only. Utilities,
-        internet, insurance, maintenance, and other housing
-        expenses should be considered separately.
-      </p>
-
-
-      <h3>
-        What if my debt payments are very high?
-      </h3>
-
-      <p>
-        High monthly debt payments can reduce the amount of
-        income available for other expenses. Use the result as
-        a planning estimate and consider your complete budget.
-      </p>
-
-
-      <h3>
-        Is the Rent Affordability Calculator free?
-      </h3>
-
-      <p>
-        Yes. Needly's Rent Affordability Calculator is free to use.
-      </p>
-
-    </section>
-
-
-    <a
-      class="home-link"
-      href="index.html"
-    >
-      ← Back to Home
-    </a>
-
-  </main>
-
-
-  <script>
-
-    function calculateRent() {
-
-      const income =
-        Number(
-          document.getElementById("income").value
-        );
-
-      const debt =
-        Number(
-          document.getElementById("debt").value
-        );
-
-      const result =
-        document.getElementById("result");
-
-
-      if (income <= 0) {
-
-        result.style.display = "block";
-
-        result.innerHTML =
-          "<p>Please enter a valid monthly income greater than $0.</p>";
-
-        return;
-
-      }
-
-
-      if (debt < 0) {
-
-        result.style.display = "block";
-
-        result.innerHTML =
-          "<p>Monthly debt payments cannot be negative.</p>";
-
-        return;
-
-      }
-
-
-      if (debt >= income) {
-
-        result.style.display = "block";
-
-        result.innerHTML =
-          "<p>Monthly debt payments should be less than monthly income.</p>";
-
-        return;
-
-      }
-
-
-      const recommendedRent =
-        income * 0.30;
-
-
-      const incomeAfterDebt =
-        income - debt;
-
-
-      result.style.display = "block";
-
-
-      result.innerHTML = `
-
-        <h2>
-          🏡 Your Rent Budget
-        </h2>
-
-        <p>
-          Monthly income:
-          <strong>
-            $${income.toFixed(2)}
-          </strong>
-        </p>
-
-        <p>
-          Monthly debt payments:
-          <strong>
-            $${debt.toFixed(2)}
-          </strong>
-        </p>
-
-        <p>
-          Recommended maximum rent:
-          <strong>
-            $${recommendedRent.toFixed(2)} / month
-          </strong>
-        </p>
-
-        <p>
-          Income after debt payments:
-          <strong>
-            $${incomeAfterDebt.toFixed(2)}
-          </strong>
-        </p>
-
-      `;
-
+<script>
+const currencySymbols = {
+  USD: "$",
+  INR: "₹",
+  GBP: "£",
+  EUR: "€",
+  CAD: "CA$",
+  AUD: "A$",
+  JPY: "¥",
+  BDT: "৳",
+  PKR: "₨",
+  AED: "AED ",
+  SGD: "S$",
+  ZAR: "R"
+};
+
+function money(amount, currency) {
+  const symbol = currencySymbols[currency] || currency + " ";
+
+  return symbol + amount.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+document.getElementById("rentForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const currency = document.getElementById("currency").value;
+  const income = Number(document.getElementById("income").value);
+  const debt = Number(document.getElementById("debt").value);
+  const expenses = Number(document.getElementById("expenses").value);
+  const utilities = Number(document.getElementById("utilities").value);
+  const deposit = Number(document.getElementById("deposit").value);
+  const fees = Number(document.getElementById("fees").value);
+
+  const desiredInput = document.getElementById("desiredRent").value.trim();
+  const desiredRent = desiredInput === "" ? null : Number(desiredInput);
+
+  const result = document.getElementById("result");
+
+  const values = [income, debt, expenses, utilities, deposit, fees];
+
+  if (
+    values.some(value => !Number.isFinite(value)) ||
+    income <= 0 ||
+    [debt, expenses, utilities, deposit, fees].some(value => value < 0) ||
+    (desiredRent !== null &&
+      (!Number.isFinite(desiredRent) || desiredRent < 0))
+  ) {
+    result.innerHTML = "<h3>Please check your entries</h3><p>Enter a positive monthly income and valid non-negative values for expenses and fees.</p>";
+    result.style.display = "block";
+    return;
+  }
+
+  const recommendedRent = income * 0.30;
+
+  const moneyBeforeRent = income - debt - expenses - utilities;
+
+  const affordableRent = Math.max(
+    0,
+    Math.min(recommendedRent, moneyBeforeRent)
+  );
+
+  const moveInCosts = (desiredRent === null ? recommendedRent : desiredRent)
+    + deposit + fees;
+
+  const remainingAfterGuideline = moneyBeforeRent - recommendedRent;
+
+  let html = "<h3>🎯 Your Rent Budget Results</h3>";
+
+  html += "<div class='result-item'>30% Income Rent Guideline: <strong>" +
+    money(recommendedRent, currency) + "</strong></div>";
+
+  html += "<div class='result-item'>Estimated Budget-Based Affordable Rent: <strong>" +
+    money(affordableRent, currency) + "</strong></div>";
+
+  html += "<div class='result-item'>Income After Entered Debt, Living Expenses and Utilities: <strong>" +
+    money(moneyBeforeRent, currency) + "</strong></div>";
+
+  html += "<div class='result-item'>Money Remaining After the 30% Rent Guideline: <strong>" +
+    money(remainingAfterGuideline, currency) + "</strong></div>";
+
+  if (desiredRent !== null) {
+    const remainingAfterDesiredRent = moneyBeforeRent - desiredRent;
+    const rentRatio = desiredRent / income * 100;
+
+    html += "<h3>Your Desired Rent</h3>";
+
+    html += "<div class='result-item'>Desired Monthly Rent: <strong>" +
+      money(desiredRent, currency) + "</strong></div>";
+
+    html += "<div class='result-item'>Rent as Percentage of Gross Income: <strong>" +
+      rentRatio.toFixed(1) + "%</strong></div>";
+
+    html += "<div class='result-item'>Money Remaining After Desired Rent and Entered Costs: <strong>" +
+      money(remainingAfterDesiredRent, currency) + "</strong></div>";
+
+    if (remainingAfterDesiredRent < 0) {
+      html += "<div class='status warning'><strong>Budget Warning:</strong> Your entered rent and expenses exceed your income.</div>";
+    } else if (rentRatio > 30) {
+      html += "<div class='status warning'><strong>Review Your Budget:</strong> Your rent exceeds the common 30% guideline. Check your remaining expenses and savings needs.</div>";
+    } else {
+      html += "<div class='status'><strong>Budget Check:</strong> Your desired rent is within the common 30% guideline. Make sure the remaining amount covers all your needs.</div>";
     }
+  }
 
-  </script>
+  html += "<h3>Move-in Cost Estimate</h3>";
+
+  html += "<div class='result-item'>First Month's Rent Used for Estimate: <strong>" +
+    money(desiredRent === null ? recommendedRent : desiredRent, currency) + "</strong></div>";
+
+  html += "<div class='result-item'>Security Deposit: <strong>" +
+    money(deposit, currency) + "</strong></div>";
+
+  html += "<div class='result-item'>Other Move-in Fees: <strong>" +
+    money(fees, currency) + "</strong></div>";
+
+  html += "<div class='result-item'>Estimated Total Initial Cost: <strong>" +
+    money(moveInCosts, currency) + "</strong></div>";
+
+  html += "<p><small>Estimates only. The 30% guideline is not suitable for everyone. Currency conversion, taxes and unentered expenses are not included.</small></p>";
+
+  result.innerHTML = html;
+  result.style.display = "block";
+});
+
+document.getElementById("rentForm").addEventListener("reset", function() {
+  const result = document.getElementById("result");
+  result.innerHTML = "";
+  result.style.display = "none";
+});
+</script>
 
 </body>
 </html>
