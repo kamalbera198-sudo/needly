@@ -1,1055 +1,530 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Debt Payoff Calculator - Calculate Your Debt-Free Date | Needly</title>
-
-    <meta name="description" content="Use Needly's free Debt Payoff Calculator to estimate how long it may take to pay off your debt based on your balance, interest rate, and monthly payment.">
-
-    <meta name="keywords" content="debt payoff calculator, debt repayment calculator, credit card payoff calculator, debt free calculator, how to pay off debt, monthly debt payment calculator">
-
-    <meta name="robots" content="index, follow">
-
-    <link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/debt.html">
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f7ff;
-            color: #172033;
-            line-height: 1.65;
-        }
-
-        /* HERO */
-
-        header {
-            background:
-                linear-gradient(
-                    135deg,
-                    #7c2d12,
-                    #dc2626,
-                    #7c3aed,
-                    #2563eb
-                );
-
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .hero-icon {
-            font-size: 55px;
-        }
-
-        header h1 {
-            font-size: 42px;
-            margin: 12px 0;
-        }
-
-        header p {
-            max-width: 760px;
-            margin: auto;
-            font-size: 18px;
-        }
-
-
-        /* MAIN */
-
-        .container {
-            width: 92%;
-            max-width: 950px;
-            margin: 35px auto;
-        }
-
-
-        /* CALCULATOR */
-
-        .calculator {
-            background: white;
-            padding: 32px;
-            border-radius: 20px;
-
-            box-shadow:
-                0 12px 35px rgba(0,0,0,0.10);
-        }
-
-        .calculator h2 {
-            text-align: center;
-            color: #7c3aed;
-            margin-top: 0;
-        }
-
-        label {
-            display: block;
-            margin-top: 18px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            padding: 14px;
-            margin-top: 7px;
-
-            border: 1px solid #d1d5db;
-            border-radius: 10px;
-
-            font-size: 16px;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #7c3aed;
-            box-shadow: 0 0 0 3px rgba(124,58,237,0.12);
-        }
-
-        button {
-            width: 100%;
-            padding: 16px;
-            margin-top: 25px;
-
-            border: none;
-            border-radius: 12px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #dc2626,
-                    #7c3aed,
-                    #2563eb
-                );
-
-            color: white;
-            font-size: 17px;
-            font-weight: bold;
-
-            cursor: pointer;
-        }
-
-        button:hover {
-            opacity: 0.92;
-        }
-
-
-        /* RESULT */
-
-        #result {
-            margin-top: 25px;
-            padding: 22px;
-
-            border-radius: 14px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #eff6ff,
-                    #f5f3ff,
-                    #fff1f2
-                );
-
-            border-left: 6px solid #7c3aed;
-
-            font-weight: bold;
-        }
-
-
-        /* CONTENT CARDS */
-
-        .section {
-            background: white;
-            margin-top: 25px;
-            padding: 30px;
-
-            border-radius: 18px;
-
-            box-shadow:
-                0 7px 25px rgba(0,0,0,0.06);
-        }
-
-        .section h2 {
-            color: #7c3aed;
-            margin-top: 0;
-        }
-
-        .section h3 {
-            color: #2563eb;
-        }
-
-
-        /* HIGHLIGHT BOX */
-
-        .highlight {
-            padding: 20px;
-            border-radius: 14px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #fef3c7,
-                    #fce7f3,
-                    #ede9fe
-                );
-
-            border-left: 5px solid #f59e0b;
-        }
-
-
-        /* FORMULA */
-
-        .formula {
-            background: #111827;
-            color: #ffffff;
-
-            padding: 20px;
-
-            border-radius: 12px;
-
-            font-family: monospace;
-
-            overflow-x: auto;
-        }
-
-
-        /* STEPS */
-
-        .steps {
-            display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(200px, 1fr));
-
-            gap: 15px;
-        }
-
-        .step {
-            padding: 20px;
-            border-radius: 14px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #eff6ff,
-                    #f5f3ff
-                );
-        }
-
-        .step strong {
-            color: #7c3aed;
-        }
-
-
-        /* LINKS */
-
-        a {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-
-        /* FAQ */
-
-        .faq {
-            margin-top: 20px;
-            padding: 18px;
-
-            border-radius: 12px;
-
-            background: #f8fafc;
-        }
-
-        .faq h3 {
-            margin-top: 0;
-        }
-
-
-        /* FOOTER */
-
-        footer {
-            margin-top: 50px;
-            padding: 35px 20px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #111827,
-                    #312e81
-                );
-
-            color: white;
-            text-align: center;
-        }
-
-        footer a {
-            color: #bfdbfe;
-            margin: 0 8px;
-        }
-
-
-        /* MOBILE */
-
-        @media (max-width: 600px) {
-
-            header {
-                padding: 45px 18px;
-            }
-
-            header h1 {
-                font-size: 31px;
-            }
-
-            header p {
-                font-size: 16px;
-            }
-
-            .calculator,
-            .section {
-                padding: 21px;
-            }
-
-            .steps {
-                grid-template-columns: 1fr;
-            }
-        }
-
-    </style>
-</head>
-
-
-<body>
-
-
-<!-- HERO -->
-
-<header>
-
-    <div class="hero-icon">💳</div>
-
-    <h1>Debt Payoff Calculator</h1>
-
-    <p>
-        Estimate how long it may take to pay off your debt
-        and discover a clearer path toward becoming debt-free.
-    </p>
-
-</header>
-
-
-
-<div class="container">
-
-
-    <!-- CALCULATOR -->
-
-    <div class="calculator">
-
-        <h2>Calculate Your Debt Payoff Time</h2>
-
-
-        <label for="balance">
-            Current Debt Balance ($)
-        </label>
-
-        <input
-            type="number"
-            id="balance"
-            placeholder="Example: 10000"
-            min="0"
-            step="0.01"
-        >
-
-
-        <label for="interest">
-            Annual Interest Rate (%)
-        </label>
-
-        <input
-            type="number"
-            id="interest"
-            placeholder="Example: 18"
-            min="0"
-            step="0.01"
-        >
-
-
-        <label for="payment">
-            Monthly Payment ($)
-        </label>
-
-        <input
-            type="number"
-            id="payment"
-            placeholder="Example: 300"
-            min="0"
-            step="0.01"
-        >
-
-
-        <button onclick="calculateDebt()">
-            Calculate Debt Payoff
-        </button>
-
-
-        <div id="result">
-
-            Enter your debt information
-            and click the button to calculate.
-
-        </div>
-
-    </div>
-
-
-
-    <!-- INTRO -->
-
-    <div class="section">
-
-        <h2>What Is a Debt Payoff Calculator?</h2>
-
-        <p>
-            A Debt Payoff Calculator helps you estimate how long
-            it may take to repay a debt based on your current
-            balance, annual interest rate, and monthly payment.
-        </p>
-
-        <p>
-            It can be useful for credit card debt, personal loans,
-            and other types of installment or revolving debt.
-            Understanding your estimated payoff timeline can make
-            debt planning easier.
-        </p>
-
-        <div class="highlight">
-
-            <strong>Important:</strong>
-
-            This calculator provides an estimate. Actual payoff
-            time may vary because of changing interest rates,
-            fees, additional charges, payment dates, and changes
-            in your monthly payment.
-
-        </div>
-
-    </div>
-
-
-
-    <!-- HOW IT WORKS -->
-
-    <div class="section">
-
-        <h2>How the Debt Payoff Calculator Works</h2>
-
-        <div class="steps">
-
-            <div class="step">
-
-                <strong>1. Enter your balance</strong>
-
-                <p>
-                    Enter the amount of debt you currently owe.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <strong>2. Enter your interest rate</strong>
-
-                <p>
-                    Enter your annual percentage interest rate.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <strong>3. Enter your payment</strong>
-
-                <p>
-                    Enter the amount you plan to pay each month.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <strong>4. Calculate</strong>
-
-                <p>
-                    The calculator estimates your payoff timeline.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- FORMULA -->
-
-    <div class="section">
-
-        <h2>Debt Payoff Formula</h2>
-
-        <p>
-            When interest is greater than zero, the calculator
-            uses a monthly interest rate to estimate the number
-            of payments required.
-        </p>
-
-        <div class="formula">
-
-            Monthly Interest Rate = Annual Rate ÷ 12
-
-            <br><br>
-
-            n = -log(1 - (r × Balance ÷ Payment))
-                ÷ log(1 + r)
-
-            <br><br>
-
-            Where:
-
-            <br>
-
-            n = estimated number of months
-
-            <br>
-
-            r = monthly interest rate
-
-            <br>
-
-            Balance = current debt
-
-            <br>
-
-            Payment = monthly payment
-
-        </div>
-
-    </div>
-
-
-
-    <!-- EXAMPLE -->
-
-    <div class="section">
-
-        <h2>Debt Payoff Calculator Example</h2>
-
-        <p>
-            Imagine you have a debt balance of
-            <strong>$10,000</strong>, an annual interest rate of
-            <strong>18%</strong>, and you plan to pay
-            <strong>$300 per month</strong>.
-        </p>
-
-        <p>
-            Entering these numbers into the calculator gives you
-            an estimated payoff timeline based on the assumed
-            monthly interest rate.
-        </p>
-
-        <div class="highlight">
-
-            💡 Increasing your monthly payment can reduce the
-            number of months required to repay debt and may also
-            reduce the total interest paid.
-
-        </div>
-
-    </div>
-
-
-
-    <!-- PAY DEBT FASTER -->
-
-    <div class="section">
-
-        <h2>How to Pay Off Debt Faster</h2>
-
-        <h3>1. Pay more than the minimum</h3>
-
-        <p>
-            When possible, paying more than the required minimum
-            can help reduce your balance faster.
-        </p>
-
-
-        <h3>2. Create a monthly debt budget</h3>
-
-        <p>
-            Decide how much you can consistently allocate toward
-            debt repayment each month.
-        </p>
-
-
-        <h3>3. Avoid adding new high-interest debt</h3>
-
-        <p>
-            Reducing new borrowing can make it easier to focus
-            your available money on existing balances.
-        </p>
-
-
-        <h3>4. Track your progress</h3>
-
-        <p>
-            Reviewing your balance regularly can help you stay
-            aware of your progress toward becoming debt-free.
-        </p>
-
-    </div>
-
-
-
-    <!-- RELATED CALCULATORS -->
-
-    <div class="section">
-
-        <h2>Related Financial Calculators</h2>
-
-        <p>
-            Continue planning your finances with other free
-            Needly calculators:
-        </p>
-
-        <ul>
-
-            <li>
-                <a href="savings.html">
-                    Savings Calculator
-                </a>
-            </li>
-
-            <li>
-                <a href="rent.html">
-                    Rent Affordability Calculator
-                </a>
-            </li>
-
-            <li>
-                <a href="car.html">
-                    Car Affordability Calculator
-                </a>
-            </li>
-
-            <li>
-                <a href="mortgage.html">
-                    Mortgage Calculator
-                </a>
-            </li>
-
-            <li>
-                <a href="travel.html">
-                    Travel Budget Calculator
-                </a>
-            </li>
-
-        </ul>
-
-    </div>
-
-
-
-    <!-- FAQ -->
-
-    <div class="section">
-
-        <h2>Frequently Asked Questions</h2>
-
-
-        <div class="faq">
-
-            <h3>
-                What is a debt payoff calculator?
-            </h3>
-
-            <p>
-                A debt payoff calculator estimates how long it may
-                take to repay a debt based on your balance, interest
-                rate, and monthly payment.
-            </p>
-
-        </div>
-
-
-        <div class="faq">
-
-            <h3>
-                Can I use this for credit card debt?
-            </h3>
-
-            <p>
-                Yes. You can use the calculator to estimate a
-                credit card payoff timeline when you know the
-                balance, interest rate, and planned monthly payment.
-            </p>
-
-        </div>
-
-
-        <div class="faq">
-
-            <h3>
-                What happens if my monthly payment is too low?
-            </h3>
-
-            <p>
-                If your payment does not cover the monthly interest,
-                the debt may not be paid off under the assumptions
-                used by the calculator.
-            </p>
-
-        </div>
-
-
-        <div class="faq">
-
-            <h3>
-                Does paying more reduce debt faster?
-            </h3>
-
-            <p>
-                Generally, making larger payments reduces the
-                outstanding principal faster, assuming other
-                conditions remain the same.
-            </p>
-
-        </div>
-
-
-        <div class="faq">
-
-            <h3>
-                Is this calculator financial advice?
-            </h3>
-
-            <p>
-                No. This tool provides an estimate for educational
-                and planning purposes and should not be considered
-                personalized financial advice.
-            </p>
-
-        </div>
-
-    </div>
-
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Debt Payoff Calculator - Debt-Free Date & Interest | Needly</title>
+<meta name="description" content="Use Needly's free debt payoff calculator to estimate your debt-free date, monthly payments, total interest and repayment schedule. Supports multiple currencies worldwide.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://kamalbera198-sudo.github.io/needly/debt.html"><meta property="og:title" content="Free Debt Payoff Calculator | Needly">
+<meta property="og:description" content="Estimate your debt-free date, interest costs and repayment schedule with this free debt payoff calculator.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kamalbera198-sudo.github.io/needly/debt.html"><style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#111827;line-height:1.65}
+header{background:linear-gradient(135deg,#111827,#1d4ed8);color:#fff;text-align:center;padding:30px 16px}
+header h1{margin:0;font-size:clamp(27px,5vw,38px)}
+header p{color:#e5e7eb;margin:8px 0 0}
+nav{background:#fff;padding:14px 10px;text-align:center;border-bottom:1px solid #e5e7eb}
+nav a{display:inline-block;margin:4px 8px;color:#1d4ed8;text-decoration:none;font-weight:bold;font-size:14px}
+.container{max-width:1000px;margin:25px auto;padding:0 15px}
+.breadcrumb{font-size:14px;margin:15px 0;color:#6b7280}
+.breadcrumb a{color:#2563eb;text-decoration:none}
+.card{background:#fff;padding:25px;border-radius:16px;box-shadow:0 5px 22px rgba(0,0,0,.06);margin-bottom:25px}
+h2{line-height:1.3}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+label{display:block;font-weight:bold;margin-bottom:6px}
+input,select{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:9px;font-size:16px;background:#fff}
+button,.button{display:inline-block;padding:12px 16px;border:0;border-radius:9px;background:#2563eb;color:#fff;font-size:16px;font-weight:bold;cursor:pointer;text-decoration:none;margin:7px 5px 0 0}
+button:hover,.button:hover{background:#1d4ed8}
+.secondary{background:#374151}
+.error{color:#b91c1c;font-weight:bold}
+#result{display:none;margin-top:22px}
+.results-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.metric{background:#eff6ff;border-radius:10px;padding:15px;overflow-wrap:anywhere}
+.metric span{display:block;color:#4b5563;font-size:14px}
+.metric strong{font-size:20px;color:#1d4ed8}
+.table-wrap{overflow-x:auto;margin-top:20px}
+table{border-collapse:collapse;width:100%;min-width:540px}
+th,td{padding:10px;border:1px solid #e5e7eb;text-align:right}
+th{background:#eff6ff}
+th:first-child,td:first-child{text-align:left}
+.content h2{color:#1d4ed8;margin-top:28px}
+.content h3{margin-bottom:5px}
+.content a,.links a{color:#1d4ed8}
+.faq{border-bottom:1px solid #e5e7eb;padding:12px 0}
+.faq h3{font-size:17px;margin:0 0 5px}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.links a{background:#eff6ff;padding:9px 12px;border-radius:8px;text-decoration:none}
+footer{text-align:center;padding:25px 15px;color:#6b7280;background:#fff;margin-top:30px}
+.small{font-size:14px;color:#6b7280}
+@media(max-width:600px){
+.grid,.results-grid{grid-template-columns:1fr}
+.card{padding:18px}
+header{padding:25px 12px}
+}
+@media print{
+nav,.breadcrumb,.form-card,.print-hide,footer{display:none!important}
+body{background:#fff}
+.container{max-width:100%;margin:0;padding:0}
+.card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}
+#result{display:block!important}
+}
+</style><script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Needly Debt Payoff Calculator",
+  "url":"https://kamalbera198-sudo.github.io/needly/debt.html",
+  "applicationCategory":"FinanceApplication",
+  "operatingSystem":"Any",
+  "description":"A free debt payoff calculator for estimating repayment time, interest costs and monthly repayment schedules.",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script><script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://kamalbera198-sudo.github.io/needly/"},
+    {"@type":"ListItem","position":2,"name":"Debt Payoff Calculator","item":"https://kamalbera198-sudo.github.io/needly/debt.html"}
+  ]
+}
+</script></head><body><header>
+  <h1>💳 Debt Payoff Calculator</h1>
+  <p>Estimate your debt-free date, interest costs and repayment plan.</p>
+  <p>Free worldwide tool by Needly — Smart Tools for Everyday Life</p>
+</header><nav aria-label="Main navigation">
+  <a href="./">Home</a>
+  <a href="savings.html">Savings</a>
+  <a href="travel.html">Travel</a>
+  <a href="car.html">Car Affordability</a>
+  <a href="rent.html">Rent</a>
+  <a href="debt.html">Debt Payoff</a>
+  <a href="freelancer.html">Freelancer Rate</a>
+  <a href="electricity.html">Electricity</a>
+  <a href="wedding.html">Wedding</a>
+  <a href="mortgage.html">Mortgage</a>
+</nav><main class="container">  <div class="breadcrumb">
+    <a href="./">Home</a> › <span aria-current="page">Debt Payoff Calculator</span>
+  </div>  <section class="card form-card">
+    <h2>Calculate Your Debt Payoff Plan</h2>
+    <p>Enter your current balance, interest rate and planned monthly payment to estimate how long repayment may take.</p><div class="grid">
+  <div>
+    <label for="currency">Currency</label>
+    <select id="currency">
+      <option value="USD">USD — US Dollar</option>
+      <option value="INR">INR — Indian Rupee</option>
+      <option value="GBP">GBP — British Pound</option>
+      <option value="EUR">EUR — Euro</option>
+      <option value="CAD">CAD — Canadian Dollar</option>
+      <option value="AUD">AUD — Australian Dollar</option>
+      <option value="JPY">JPY — Japanese Yen</option>
+      <option value="BDT">BDT — Bangladeshi Taka</option>
+      <option value="PKR">PKR — Pakistani Rupee</option>
+      <option value="SGD">SGD — Singapore Dollar</option>
+      <option value="AED">AED — UAE Dirham</option>
+      <option value="SAR">SAR — Saudi Riyal</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="debt">Total Debt Balance</label>
+    <input type="number" id="debt" min="0.01" step="0.01" placeholder="10000" inputmode="decimal">
+  </div>
+
+  <div>
+    <label for="rate">Annual Interest Rate (%)</label>
+    <input type="number" id="rate" min="0" max="1000" step="0.01" value="0" placeholder="18" inputmode="decimal">
+  </div>
+
+  <div>
+    <label for="payment">Monthly Payment</label>
+    <input type="number" id="payment" min="0.01" step="0.01" placeholder="500" inputmode="decimal">
+  </div>
+
+  <div>
+    <label for="extra">Extra Monthly Payment (Optional)</label>
+    <input type="number" id="extra" min="0" step="0.01" value="0" placeholder="50" inputmode="decimal">
+  </div>
+
+  <div>
+    <label for="startDate">First Payment Date</label>
+    <input type="date" id="startDate">
+  </div>
 </div>
 
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <p>
-        © 2026 Needly.
-        Calculate smarter. Plan better. Move forward.
-    </p>
-
-    <p>
-
-        <a href="index.html">Home</a>
-
-        <a href="about.html">About</a>
-
-        <a href="contact.html">Contact</a>
-
-        <a href="privacy.html">Privacy</a>
-
-        <a href="terms.html">Terms</a>
-
-    </p>
-
-</footer>
-
-
-
-<script>
-
-function calculateDebt() {
-
-    const balance =
-        parseFloat(
-            document.getElementById("balance").value
-        );
-
-    const annualRate =
-        parseFloat(
-            document.getElementById("interest").value
-        );
-
-    const payment =
-        parseFloat(
-            document.getElementById("payment").value
-        );
-
-    const result =
-        document.getElementById("result");
-
-
-    /* VALIDATION */
-
-    if (isNaN(balance) || balance <= 0) {
-
-        result.innerHTML =
-            "⚠️ Please enter a valid debt balance.";
-
-        return;
-    }
-
-
-    if (isNaN(annualRate) || annualRate < 0) {
-
-        result.innerHTML =
-            "⚠️ Please enter a valid interest rate.";
-
-        return;
-    }
-
-
-    if (isNaN(payment) || payment <= 0) {
-
-        result.innerHTML =
-            "⚠️ Please enter a valid monthly payment.";
-
-        return;
-    }
-
-
-    /* ZERO INTEREST */
-
-    if (annualRate === 0) {
-
-        const months =
-            Math.ceil(balance / payment);
-
-        const years =
-            Math.floor(months / 12);
-
-        const remainingMonths =
-            months % 12;
-
-        let timeText = "";
-
-        if (years > 0) {
-
-            timeText +=
-                years +
-                (years === 1 ? " year" : " years");
-        }
-
-        if (remainingMonths > 0) {
-
-            if (timeText !== "") {
-                timeText += " ";
-            }
-
-            timeText +=
-                remainingMonths +
-                (remainingMonths === 1
-                    ? " month"
-                    : " months");
-        }
-
-        if (timeText === "") {
-            timeText = "less than 1 month";
-        }
-
-
-        result.innerHTML = `
-
-            💳 <strong>Estimated Payoff Time:</strong>
-            ${timeText}
-
-            <br><br>
-
-            📅 <strong>Total Payments:</strong>
-            ${months} months
-
-            <br><br>
-
-            💰 <strong>Estimated Total Paid:</strong>
-            $${(months * payment).toLocaleString(
-                undefined,
-                {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                }
-            )}
-
-        `;
-
-        return;
-    }
-
-
-    /* MONTHLY RATE */
-
-    const monthlyRate =
-        annualRate / 100 / 12;
-
-
-    /*
-       If payment is less than or equal to
-       first month's interest, debt cannot
-       be paid off using this payment.
-    */
-
-    const firstMonthInterest =
-        balance * monthlyRate;
-
-
-    if (payment <= firstMonthInterest) {
-
-        result.innerHTML = `
-
-            ⚠️ <strong>Debt may not be paid off.</strong>
-
-            <br><br>
-
-            Your monthly payment is not greater
-            than the estimated first month's interest.
-
-            <br><br>
-
-            Consider increasing your monthly payment.
-
-        `;
-
-        return;
-    }
-
-
-    /* MONTH CALCULATION */
-
-    const numerator =
-        Math.log(
-            payment /
-            (payment - balance * monthlyRate)
-        );
-
-    const denominator =
-        Math.log(1 + monthlyRate);
-
-
-    const months =
-        Math.ceil(
-            numerator / denominator
-        );
-
-
-    /* TOTAL PAYMENT */
-
-    const totalPaid =
-        months * payment;
-
-
-    /* ESTIMATED INTEREST */
-
-    const estimatedInterest =
-        totalPaid - balance;
-
-
-    /* TIME */
-
-    const years =
-        Math.floor(months / 12);
-
-    const remainingMonths =
-        months % 12;
-
-
-    let timeText = "";
-
-
-    if (years > 0) {
-
-        timeText +=
-            years +
-            (years === 1 ? " year" : " years");
-    }
-
-
-    if (remainingMonths > 0) {
-
-        if (timeText !== "") {
-            timeText += " ";
-        }
-
-        timeText +=
-            remainingMonths +
-            (remainingMonths === 1
-                ? " month"
-                : " months");
-    }
-
-
-    if (timeText === "") {
-        timeText = "less than 1 month";
-    }
-
-
-    /* RESULT */
-
-    result.innerHTML = `
-
-        🎯 <strong>Estimated Debt-Free Time:</strong>
-        ${timeText}
-
-        <br><br>
-
-        📅 <strong>Total Payments:</strong>
-        ${months} months
-
-        <br><br>
-
-        💰 <strong>Estimated Total Paid:</strong>
-        $${totalPaid.toLocaleString(
-            undefined,
-            {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }
-        )}
-
-        <br><br>
-
-        📈 <strong>Estimated Interest:</strong>
-        $${estimatedInterest.toLocaleString(
-            undefined,
-            {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }
-        )}
-
-    `;
-
+<button type="button" onclick="calculateDebt()">Calculate Payoff</button>
+<button type="button" class="secondary" onclick="resetCalculator()">Reset</button>
+<p class="small">This estimate assumes a fixed annual interest rate and monthly payments. Actual lender calculations and fees may differ.</p>
+<div id="error" class="error" role="alert" aria-live="polite"></div>
+
+  </section>  <section id="result" class="card" aria-live="polite">
+    <h2>🎯 Your Debt Payoff Results</h2>
+    <div class="results-grid">
+      <div class="metric"><span>Estimated Debt-Free Date</span><strong id="payoffDate">—</strong></div>
+      <div class="metric"><span>Time to Pay Off</span><strong id="payoffTime">—</strong></div>
+      <div class="metric"><span>Total Interest</span><strong id="totalInterest">—</strong></div>
+      <div class="metric"><span>Total Amount Paid</span><strong id="totalPaid">—</strong></div>
+      <div class="metric"><span>Regular Monthly Payment</span><strong id="monthlyPayment">—</strong></div>
+      <div class="metric"><span>First Month's Interest</span><strong id="firstInterest">—</strong></div>
+    </div><p id="resultNote"></p>
+<div class="print-hide">
+  <button type="button" onclick="window.print()">Print Results</button>
+  <button type="button" class="secondary" onclick="downloadCSV()">Download CSV Schedule</button>
+</div>
+
+<div id="scheduleSection" class="table-wrap">
+  <h3>Monthly Repayment Schedule</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Payment Date</th>
+        <th>Payment</th>
+        <th>Interest</th>
+        <th>Principal</th>
+        <th>Remaining Balance</th>
+      </tr>
+    </thead>
+    <tbody id="scheduleBody"></tbody>
+  </table>
+</div>
+
+  </section>  <section class="card content">
+    <h2>What Is a Debt Payoff Calculator?</h2>
+    <p>A <strong>debt payoff calculator</strong> helps you estimate how long it could take to repay a debt using a planned monthly payment. By entering your balance and annual interest rate, you can estimate the interest cost, total amount paid and expected debt-free date.</p>
+    <p>You can use this free debt repayment calculator for planning payments on credit cards, personal loans and other debts. Choose the currency you use in your budget. Currency selection changes how amounts are displayed; it does not convert money between currencies.</p><h2>How to Use This Debt Repayment Calculator</h2>
+<ol>
+  <li>Select your preferred currency.</li>
+  <li>Enter your current outstanding debt balance.</li>
+  <li>Enter the annual interest rate charged by your lender.</li>
+  <li>Enter the monthly payment you plan to make.</li>
+  <li>Optionally add an extra monthly payment.</li>
+  <li>Select your first payment date and calculate your estimate.</li>
+</ol>
+
+<h2>How Is Debt Payoff Calculated?</h2>
+<p>For this estimate, interest is calculated monthly using the annual interest rate divided by 12. Each month's interest is added to the outstanding balance, and the payment is applied to the balance. The final payment may be smaller than the normal monthly payment.</p>
+<p>When the interest rate is zero, the basic estimate is the balance divided by the monthly payment, rounded up to the next whole month. When interest applies, the calculator generates a month-by-month schedule. If the planned payment does not cover the interest, the debt will not be paid off under the entered assumptions.</p>
+
+<h2>Debt Avalanche vs. Debt Snowball</h2>
+<h3>Debt Avalanche Method</h3>
+<p>The debt avalanche method prioritizes the debt with the highest interest rate while you continue making required payments on other debts. It can reduce total interest when followed consistently.</p>
+<h3>Debt Snowball Method</h3>
+<p>The debt snowball method prioritizes the smallest debt balance first. Some people prefer this approach because paying off smaller balances can make progress feel more manageable.</p>
+<p>If you have several debts, compare their balances, interest rates, minimum payments and any fees before choosing a repayment strategy.</p>
+
+<h2>Ways to Make a Debt Repayment Plan</h2>
+<ul>
+  <li>Build a realistic monthly budget before choosing a payment amount.</li>
+  <li>Check your lender's interest rate, fees and payment conditions.</li>
+  <li>Consider extra payments only when essential expenses are covered.</li>
+  <li>Check whether additional payments have prepayment penalties.</li>
+  <li>Review your repayment plan when your income or expenses change.</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq">
+  <h3>1. What is a debt payoff calculator?</h3>
+  <p>It estimates how long it may take to repay a debt and how much interest you may pay based on your balance, interest rate and planned payments.</p>
+</div>
+<div class="faq">
+  <h3>2. How do I calculate my debt-free date?</h3>
+  <p>Enter your outstanding balance, annual interest rate, monthly payment and first payment date. The calculator estimates the final payment date under those assumptions.</p>
+</div>
+<div class="faq">
+  <h3>3. Does this calculator include interest?</h3>
+  <p>Yes. Enter your annual interest rate. If the rate is zero, the estimate calculates repayment without interest.</p>
+</div>
+<div class="faq">
+  <h3>4. Can I calculate credit card debt?</h3>
+  <p>Yes. You can use it to estimate repayment of credit card debt, provided you enter the applicable balance, interest rate and payment amount.</p>
+</div>
+<div class="faq">
+  <h3>5. Can I use it for a personal loan?</h3>
+  <p>Yes, it can provide a simplified estimate for personal loans and similar debts. Lender fees and repayment rules may affect actual results.</p>
+</div>
+<div class="faq">
+  <h3>6. What if my monthly payment is too low?</h3>
+  <p>If the payment does not cover the monthly interest, the balance will not decrease. The calculator will show a warning.</p>
+</div>
+<div class="faq">
+  <h3>7. Does an extra payment reduce interest?</h3>
+  <p>An extra payment generally reduces the outstanding principal sooner, which can reduce future interest, assuming the lender applies it to principal without additional fees.</p>
+</div>
+<div class="faq">
+  <h3>8. Can I choose a different currency?</h3>
+  <p>Yes. Select a supported currency to display amounts in that currency. This feature does not perform live currency conversion.</p>
+</div>
+<div class="faq">
+  <h3>9. Is the debt payoff calculator free?</h3>
+  <p>Yes. You can use this calculator without paying or creating an account.</p>
+</div>
+<div class="faq">
+  <h3>10. Does it provide financial advice?</h3>
+  <p>No. It provides mathematical estimates for planning purposes, not personalized financial, legal or tax advice.</p>
+</div>
+<div class="faq">
+  <h3>11. Can I pay off debt faster?</h3>
+  <p>Depending on your circumstances, paying more toward principal may shorten repayment time. Review your budget and lender conditions first.</p>
+</div>
+<div class="faq">
+  <h3>12. Why is my actual payoff date different?</h3>
+  <p>Lenders may use different interest calculations, daily balances, payment dates, fees and rounding rules. These can change the actual payoff date.</p>
+</div>
+<div class="faq">
+  <h3>13. Can I print my repayment schedule?</h3>
+  <p>Yes. Calculate your results, then select Print Results to print or save the schedule as a PDF through your browser.</p>
+</div>
+<div class="faq">
+  <h3>14. Can I download my monthly payment schedule?</h3>
+  <p>Yes. Use the Download CSV Schedule button after calculating your results. You can open the file in compatible spreadsheet software.</p>
+</div>
+<div class="faq">
+  <h3>15. Does this calculator store my financial details?</h3>
+  <p>This calculator performs calculations in your browser and does not include code to send the entered values to a server. Website hosting and third-party services may have their own data practices.</p>
+</div>
+
+  </section>  <section class="card">
+    <h2>Explore More Free Needly Calculators</h2>
+    <div class="links">
+      <a href="savings.html">Savings Calculator</a>
+      <a href="travel.html">Travel Budget Calculator</a>
+      <a href="car.html">Car Affordability Calculator</a>
+      <a href="rent.html">Rent Affordability Calculator</a>
+      <a href="freelancer.html">Freelancer Rate Calculator</a>
+      <a href="electricity.html">Electricity Cost Calculator</a>
+      <a href="wedding.html">Wedding Budget Calculator</a>
+      <a href="mortgage.html">Mortgage Calculator</a>
+    </div>
+  </section>  <section class="card">
+    <h2>About Needly</h2>
+    <p>Needly provides simple online calculators designed to help people around the world estimate everyday costs, plan budgets and compare financial scenarios.</p>
+    <div class="links">
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </div>
+    <p class="small"><strong>Disclaimer:</strong> Results are estimates for educational and planning purposes only. They are not a guarantee of lender terms or personalized financial advice. Verify all figures with your lender before making financial decisions.</p>
+  </section></main><footer>
+  <p>© 2026 Needly. All rights reserved.</p>
+  <p>Smart Tools for Everyday Life</p>
+</footer><script>
+"use strict";
+
+let repaymentRows = [];
+let lastCurrency = "USD";
+
+const currencySymbols = {
+  USD:"$", INR:"₹", GBP:"£", EUR:"€", CAD:"CA$", AUD:"A$",
+  JPY:"¥", BDT:"৳", PKR:"Rs ", SGD:"S$", AED:"AED ", SAR:"SAR "
+};
+
+function money(value) {
+  const currency = document.getElementById("currency").value;
+  try {
+    return new Intl.NumberFormat("en", {
+      style:"currency",
+      currency:currency,
+      maximumFractionDigits: currency === "JPY" ? 0 : 2
+    }).format(value);
+  } catch (e) {
+    return (currencySymbols[currency] || "") + Number(value).toFixed(2);
+  }
 }
 
-</script>
+function formatDate(date) {
+  return new Intl.DateTimeFormat("en", {
+    year:"numeric", month:"short", day:"numeric"
+  }).format(date);
+}
 
+function addMonths(date, months) {
+  const result = new Date(date);
+  const day = result.getDate();
+  result.setDate(1);
+  result.setMonth(result.getMonth() + months);
+  const lastDay = new Date(
+    result.getFullYear(), result.getMonth() + 1, 0
+  ).getDate();
+  result.setDate(Math.min(day, lastDay));
+  return result;
+}
 
-</body>
+function calculateDebt() {
+  const debt = Number(document.getElementById("debt").value);
+  const annualRate = Number(document.getElementById("rate").value);
+  const regularPayment = Number(document.getElementById("payment").value);
+  const extraPayment = Number(document.getElementById("extra").value || 0);
+  const startValue = document.getElementById("startDate").value;
+  const error = document.getElementById("error");
+  const result = document.getElementById("result");
+
+  error.textContent = "";
+  result.style.display = "none";
+  repaymentRows = [];
+
+  if (!Number.isFinite(debt) || debt <= 0) {
+    error.textContent = "Please enter a debt balance greater than zero.";
+    return;
+  }
+  if (!Number.isFinite(annualRate) || annualRate < 0 || annualRate > 1000) {
+    error.textContent = "Please enter a valid annual interest rate from 0 to 1000%.";
+    return;
+  }
+  if (!Number.isFinite(regularPayment) || regularPayment <= 0) {
+    error.textContent = "Please enter a monthly payment greater than zero.";
+    return;
+  }
+  if (!Number.isFinite(extraPayment) || extraPayment < 0) {
+    error.textContent = "Extra monthly payment cannot be negative.";
+    return;
+  }
+
+  let startDate;
+  if (startValue) {
+    startDate = new Date(startValue + "T12:00:00");
+    if (Number.isNaN(startDate.getTime())) {
+      error.textContent = "Please select a valid first payment date.";
+      return;
+    }
+  } else {
+    startDate = new Date();
+    startDate.setHours(12, 0, 0, 0);
+    startDate.setDate(1);
+    startDate = addMonths(startDate, 1);
+  }
+
+  const monthlyRate = annualRate / 100 / 12;
+  const plannedPayment = regularPayment + extraPayment;
+
+  if (monthlyRate > 0 && plannedPayment <= debt * monthlyRate) {
+    error.textContent =
+      "Your monthly payment must be greater than the first month's interest. Increase the payment to estimate a payoff date.";
+    return;
+  }
+
+  let balance = debt;
+  let totalInterest = 0;
+  let totalPaid = 0;
+  let month = 0;
+  const firstInterest = debt * monthlyRate;
+  const maxMonths = 1200;
+
+  while (balance > 0.005 && month < maxMonths) {
+    month++;
+
+    const interest = balance * monthlyRate;
+    const amountDue = balance + interest;
+    const paymentThisMonth = Math.min(plannedPayment, amountDue);
+    const principal = Math.max(0, paymentThisMonth - interest);
+    const remaining = Math.max(0, amountDue - paymentThisMonth);
+    const date = addMonths(startDate, month - 1);
+
+    totalInterest += interest;
+    totalPaid += paymentThisMonth;
+    balance = remaining;
+
+    repaymentRows.push({
+      month:month,
+      date:formatDate(date),
+      payment:paymentThisMonth,
+      interest:interest,
+      principal:principal,
+      balance:balance
+    });
+  }
+
+  if (balance > 0.005) {
+    error.textContent =
+      "The repayment period exceeds 100 years. Please review your balance, interest rate and monthly payment.";
+    return;
+  }
+
+  const finalDate = addMonths(startDate, month - 1);
+  const years = Math.floor(month / 12);
+  const remainingMonths = month % 12;
+  let duration = [];
+
+  if (years > 0) duration.push(years + (years === 1 ? " year" : " years"));
+  if (remainingMonths > 0) duration.push(remainingMonths + (remainingMonths === 1 ? " month" : " months"));
+  if (!duration.length) duration.push("Less than 1 month");
+
+  document.getElementById("payoffDate").textContent = formatDate(finalDate);
+  document.getElementById("payoffTime").textContent = duration.join(" ");
+  document.getElementById("totalInterest").textContent = money(totalInterest);
+  document.getElementById("totalPaid").textContent = money(totalPaid);
+  document.getElementById("monthlyPayment").textContent = money(plannedPayment);
+  document.getElementById("firstInterest").textContent = money(firstInterest);
+
+  document.getElementById("resultNote").textContent =
+    "This estimate uses " + month + " monthly payment(s). The final payment may be smaller than your planned payment. Actual lender calculations may differ.";
+
+  const tbody = document.getElementById("scheduleBody");
+  tbody.innerHTML = "";
+
+  repaymentRows.forEach(function(row) {
+    const tr = document.createElement("tr");
+    [
+      row.month, row.date, money(row.payment), money(row.interest),
+      money(row.principal), money(row.balance)
+    ].forEach(function(value) {
+      const td = document.createElement("td");
+      td.textContent = value;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+
+  result.style.display = "block";
+  lastCurrency = document.getElementById("currency").value;
+  result.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function downloadCSV() {
+  if (!repaymentRows.length) {
+    document.getElementById("error").textContent =
+      "Please calculate your debt payoff before downloading the schedule.";
+    return;
+  }
+
+  const currency = document.getElementById("currency").value;
+  const rows = [
+    ["Month","Payment Date","Payment (" + currency + ")",
+     "Interest (" + currency + ")","Principal (" + currency + ")",
+     "Remaining Balance (" + currency + ")"]
+  ];
+
+  repaymentRows.forEach(function(row) {
+    rows.push([
+      row.month, row.date, row.payment.toFixed(2),
+      row.interest.toFixed(2), row.principal.toFixed(2),
+      row.balance.toFixed(2)
+    ]);
+  });
+
+  const csv = rows.map(function(row) {
+    return row.map(function(value) {
+      return '"' + String(value).replace(/"/g, '""') + '"';
+    }).join(",");
+  }).join("\r\n");
+
+  const blob = new Blob(["\uFEFF" + csv], {
+    type:"text/csv;charset=utf-8;"
+  });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "needly-debt-payoff-schedule.csv";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function resetCalculator() {
+  document.getElementById("debt").value = "";
+  document.getElementById("rate").value = "0";
+  document.getElementById("payment").value = "";
+  document.getElementById("extra").value = "0";
+  document.getElementById("startDate").value = "";
+  document.getElementById("error").textContent = "";
+  document.getElementById("result").style.display = "none";
+  document.getElementById("scheduleBody").innerHTML = "";
+  repaymentRows = [];
+}
+
+document.getElementById("startDate").value = "";
+</script></body>
 </html>
